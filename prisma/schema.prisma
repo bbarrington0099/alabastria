@@ -1,0 +1,1342 @@
+// Alabastria Prisma Schema
+// Full data model for D&D world management application
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================================
+// USER & AUTHENTICATION (Auth.js Compatible)
+// ============================================================================
+
+enum UserRole {
+  ADMIN
+  DM
+  GUILD_MEMBER
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String    @unique
+  emailVerified      DateTime?
+  image              String?
+  passwordHash       String
+  role               UserRole  @default(GUILD_MEMBER)
+  mustChangePassword Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  // Auth.js relations
+  accounts Account[]
+  sessions Session[]
+
+  // App relations
+  characters           Character[]
+  questReportsAuthored QuestReport[]     @relation("AuthoredBy")
+  guildMemberships     GuildMembership[]
+  dmGuilds             GuildDM[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================================================
+// WORLD & GEOGRAPHY
+// ============================================================================
+
+model World {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  description     String   @db.Text
+  circumferenceMi Int?
+  diameterMi      Int?
+  ageCycles       Int?
+  surfaceAreaSqMi BigInt?
+  official        Boolean  @default(true)
+
+  continents Continent[]
+}
+
+model Continent {
+  id              String  @id @default(uuid())
+  name            String  @unique
+  slug            String  @unique
+  description     String  @db.Text
+  lengthMi        Int?
+  widthMi         Int?
+  heightMi        Int?
+  surfaceAreaSqMi Int?
+  official        Boolean @default(true)
+
+  // Flag/Colors
+  primaryColor    String?
+  secondaryColor  String?
+  flagSymbol      String?
+  flagDescription String? @db.Text
+  mapImagePath    String?
+  flagImagePath   String?
+
+  // Relations
+  worldId   String
+  world     World    @relation(fields: [worldId], references: [id])
+  kingdomId String?
+  kingdom   Kingdom? @relation(fields: [kingdomId], references: [id])
+
+  capital                Capital?
+  towns                  Town[]
+  languages              ContinentLanguage[]
+  politics               ContinentPolitics?
+  voyagesFrom            Voyage[]                         @relation("FromContinent")
+  voyagesTo              Voyage[]                         @relation("ToContinent")
+  warsConflicts          WarConflict[]
+  treaties               Treaty[]
+  tradeRoutes            TradeRoute[]
+  creatureTypes          ContinentCreatureType[]
+  raceLocations          RaceContinent[]
+  guilds                 Guild[]
+  legendaryCreatures     LegendaryCreature[]
+  deityRecommendations   DeityRecommendation[]
+  historicalEvents       HistoricalEvent[]
+  professionRestrictions ProfessionContinentRestriction[]
+  factionPresence        FactionContinentPresence[]
+}
+
+model Kingdom {
+  id              String  @id @default(uuid())
+  name            String  @unique
+  description     String? @db.Text
+  surfaceAreaSqMi Int?
+  primaryColor    String?
+  secondaryColor  String?
+  symbol          String?
+  official        Boolean @default(true)
+
+  continents Continent[]
+}
+
+model Capital {
+  id          String @id @default(uuid())
+  name        String
+  location    String
+  description String @db.Text
+
+  continentId String    @unique
+  continent   Continent @relation(fields: [continentId], references: [id])
+  ruler       Ruler?
+}
+
+model Ruler {
+  id             String  @id @default(uuid())
+  name           String
+  race           String?
+  title          String?
+  personality    String? @db.Text
+  rulingStyle    String? @db.Text
+  background     String? @db.Text
+  appearance     String? @db.Text
+  imagePath      String?
+  deityReasoning String? @db.Text
+
+  capitalId String  @unique
+  capital   Capital @relation(fields: [capitalId], references: [id])
+  deityId   String?
+  deity     Deity?  @relation(fields: [deityId], references: [id])
+}
+
+model Town {
+  id          String  @id @default(uuid())
+  name        String
+  slug        String
+  description String  @db.Text
+  location    String?
+  population  Int?
+  official    Boolean @default(true)
+
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+
+  leader                 TownLeader?
+  npcs                   TownNPC[]
+  professionRestrictions ProfessionTownRestriction[]
+  factionBases           FactionBase[]
+
+  @@unique([continentId, slug])
+}
+
+model TownLeader {
+  id          String  @id @default(uuid())
+  name        String
+  title       String?
+  race        String?
+  description String? @db.Text
+  imagePath   String?
+
+  townId String @unique
+  town   Town   @relation(fields: [townId], references: [id])
+}
+
+model Voyage {
+  id            String @id @default(uuid())
+  distanceMi    Int?
+  travelDays    Int?
+  travelHours   Int?
+  travelMinutes Int?
+
+  fromContinentId String
+  fromContinent   Continent @relation("FromContinent", fields: [fromContinentId], references: [id])
+  toContinentId   String
+  toContinent     Continent @relation("ToContinent", fields: [toContinentId], references: [id])
+
+  @@unique([fromContinentId, toContinentId])
+}
+
+model ContinentLanguage {
+  id           String  @id @default(uuid())
+  languageName String
+  prevalence   String? // "Common", "Rare", etc.
+  description  String? @db.Text
+
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+
+  @@unique([continentId, languageName])
+}
+
+model ContinentPolitics {
+  id                  String  @id @default(uuid())
+  governmentType      String?
+  politicalStructure  String? @db.Text
+  majorPoliticalIssue String? @db.Text
+  foreignRelations    String? @db.Text
+
+  continentId String    @unique
+  continent   Continent @relation(fields: [continentId], references: [id])
+}
+
+model WarConflict {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  startCycle  Int?
+  endCycle    Int?
+  outcome     String? @db.Text
+
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+}
+
+model Treaty {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  signedCycle Int?
+  parties     String? @db.Text
+
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+}
+
+model TradeRoute {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  goods       String? @db.Text
+
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+}
+
+// ============================================================================
+// WORLD HISTORY & TIMELINE
+// ============================================================================
+
+model HistoricalPeriod {
+  id           String  @id @default(uuid())
+  name         String  @unique
+  startCycle   Int
+  endCycle     Int?
+  description  String  @db.Text
+  significance String? @db.Text
+  sortOrder    Int     @default(0)
+  official     Boolean @default(true)
+
+  events HistoricalEvent[]
+}
+
+model HistoricalEvent {
+  id          String  @id @default(uuid())
+  name        String
+  cycle       Int
+  description String  @db.Text
+  impact      String? @db.Text
+  sortOrder   Int     @default(0)
+  official    Boolean @default(true)
+
+  periodId    String?
+  period      HistoricalPeriod? @relation(fields: [periodId], references: [id])
+  continentId String?
+  continent   Continent?        @relation(fields: [continentId], references: [id])
+}
+
+// ============================================================================
+// RACES & CLASSES
+// ============================================================================
+
+model Race {
+  id             String  @id @default(uuid())
+  name           String  @unique
+  slug           String  @unique
+  description    String  @db.Text
+  size           String?
+  speed          String?
+  age            String? @db.Text
+  alignment      String? @db.Text
+  heightRange    String?
+  weightRange    String?
+  alabastriaLore String? @db.Text
+  playstyle      String? @db.Text
+  official       Boolean @default(true)
+
+  abilityScoreIncreases RaceAbilityScore[]
+  languages             RaceLanguage[]
+  traits                RaceTrait[]
+  subraces              Subrace[]
+  recommendedClasses    RaceClassRecommendation[]
+  continentLocations    RaceContinent[]
+  deityRecommendations  DeityRecommendation[]     @relation("RaceDeityRecs")
+  characters            Character[]
+  names                 RaceName[]
+  guildStaff            GuildStaff[]
+  guildMembers          GuildMember[]
+}
+
+model RaceAbilityScore {
+  id        String @id @default(uuid())
+  ability   String // "Strength", "Dexterity", etc.
+  modifier  Int
+
+  raceId String
+  race   Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+
+  @@unique([raceId, ability])
+}
+
+model RaceLanguage {
+  id           String @id @default(uuid())
+  languageName String
+
+  raceId String
+  race   Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+
+  @@unique([raceId, languageName])
+}
+
+model RaceTrait {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+
+  raceId String
+  race   Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+}
+
+model RaceName {
+  id     String  @id @default(uuid())
+  name   String
+  gender String? // "male", "female", "neutral"
+
+  raceId String
+  race   Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+}
+
+model RaceContinent {
+  id          String  @id @default(uuid())
+  description String? @db.Text
+
+  raceId      String
+  race        Race      @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+
+  @@unique([raceId, continentId])
+}
+
+model Subrace {
+  id                String  @id @default(uuid())
+  name              String
+  slug              String
+  description       String  @db.Text
+  heightRange       String?
+  weightRange       String?
+  alabastriaContext String? @db.Text
+  playstyle         String? @db.Text
+  official          Boolean @default(true)
+
+  raceId               String
+  race                 Race                  @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  abilityScoreIncreases SubraceAbilityScore[]
+  traits               SubraceTrait[]
+  deityRecommendations DeityRecommendation[] @relation("SubraceDeityRecs")
+  characters           Character[]
+  guildMembers         GuildMember[]
+
+  @@unique([raceId, slug])
+}
+
+model SubraceAbilityScore {
+  id       String @id @default(uuid())
+  ability  String
+  modifier Int
+
+  subraceId String
+  subrace   Subrace @relation(fields: [subraceId], references: [id], onDelete: Cascade)
+
+  @@unique([subraceId, ability])
+}
+
+model SubraceTrait {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+
+  subraceId String
+  subrace   Subrace @relation(fields: [subraceId], references: [id], onDelete: Cascade)
+}
+
+model Class {
+  id                String  @id @default(uuid())
+  name              String  @unique
+  slug              String  @unique
+  description       String  @db.Text
+  role              String?
+  primaryAbility    String?
+  hitDie            String?
+  armorProficiency  String?
+  weaponProficiency String?
+  toolProficiency   String?
+  alabastriaLore    String? @db.Text
+  playstyle         String? @db.Text
+  official          Boolean @default(true)
+
+  savingThrows         ClassSavingThrow[]
+  keyFeatures          ClassFeature[]
+  subclasses           Subclass[]
+  recommendedRaces     RaceClassRecommendation[]
+  playstyleCategories  PlaystyleClassRecommendation[]
+  deityRecommendations DeityRecommendation[]          @relation("ClassDeityRecs")
+  characters           Character[]
+  guildStaff           GuildStaff[]
+  guildMembers         GuildMember[]
+}
+
+model ClassSavingThrow {
+  id      String @id @default(uuid())
+  ability String
+
+  classId String
+  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, ability])
+}
+
+model ClassFeature {
+  id          String  @id @default(uuid())
+  name        String
+  level       Int?
+  description String? @db.Text
+
+  classId String
+  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+}
+
+model Subclass {
+  id                String  @id @default(uuid())
+  name              String
+  slug              String
+  description       String  @db.Text
+  alabastriaContext String? @db.Text
+  playstyle         String? @db.Text
+  official          Boolean @default(true)
+
+  classId              String
+  class                Class                 @relation(fields: [classId], references: [id], onDelete: Cascade)
+  keyFeatures          SubclassFeature[]
+  deityRecommendations DeityRecommendation[] @relation("SubclassDeityRecs")
+  characters           Character[]
+  guildMembers         GuildMember[]
+
+  @@unique([classId, slug])
+}
+
+model SubclassFeature {
+  id          String  @id @default(uuid())
+  name        String
+  level       Int?
+  description String? @db.Text
+
+  subclassId String
+  subclass   Subclass @relation(fields: [subclassId], references: [id], onDelete: Cascade)
+}
+
+model RaceClassRecommendation {
+  id        String  @id @default(uuid())
+  reasoning String? @db.Text
+
+  raceId  String
+  race    Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  classId String
+  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([raceId, classId])
+}
+
+// ============================================================================
+// PANTHEON & DEITIES
+// ============================================================================
+
+model Pantheon {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  slug        String  @unique
+  description String  @db.Text
+  symbol      String?
+  official    Boolean @default(true)
+
+  deities Deity[]
+}
+
+model Deity {
+  id                String  @id @default(uuid())
+  name              String  @unique
+  slug              String  @unique
+  title             String?
+  alignment         String?
+  symbol            String?
+  description       String  @db.Text
+  alabastriaContext String? @db.Text
+  temples           String? @db.Text
+  official          Boolean @default(true)
+
+  pantheonId String
+  pantheon   Pantheon @relation(fields: [pantheonId], references: [id])
+
+  domains   DeityDomain[]
+  followers DeityFollower[]
+  holyDays  DeityHolyDay[]
+  symbols   DeitySymbol[]
+  colors    DeityColor[]
+  history   DeityHistory[]
+
+  alliesFrom    DeityRelationship[] @relation("DeityFrom")
+  alliesTo      DeityRelationship[] @relation("DeityTo")
+
+  recommendations DeityRecommendation[]
+  rulers          Ruler[]
+  guildStaff      GuildStaff[]
+  guildMembers    GuildMember[]
+  characters      Character[]
+}
+
+model DeityDomain {
+  id     String @id @default(uuid())
+  domain String
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+
+  @@unique([deityId, domain])
+}
+
+model DeityFollower {
+  id           String  @id @default(uuid())
+  followerType String
+  description  String? @db.Text
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+model DeityHolyDay {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+model DeitySymbol {
+  id          String  @id @default(uuid())
+  symbol      String
+  description String? @db.Text
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+model DeityColor {
+  id    String @id @default(uuid())
+  color String
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+model DeityHistory {
+  id          String  @id @default(uuid())
+  era         String?
+  description String? @db.Text
+
+  deityId String
+  deity   Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+enum DeityRelationshipCategory {
+  ALLY
+  CONFLICT
+}
+
+model DeityRelationship {
+  id        String                    @id @default(uuid())
+  type      DeityRelationshipCategory
+  reasoning String?                   @db.Text
+
+  deityId        String
+  deity          Deity  @relation("DeityFrom", fields: [deityId], references: [id], onDelete: Cascade)
+  relatedDeityId String
+  relatedDeity   Deity  @relation("DeityTo", fields: [relatedDeityId], references: [id], onDelete: Cascade)
+
+  @@unique([deityId, relatedDeityId, type])
+}
+
+model DeityRecommendation {
+  id        String  @id @default(uuid())
+  isPrimary Boolean @default(true)
+  reasoning String? @db.Text
+
+  deityId     String
+  deity       Deity      @relation(fields: [deityId], references: [id], onDelete: Cascade)
+  raceId      String?
+  race        Race?      @relation("RaceDeityRecs", fields: [raceId], references: [id])
+  subraceId   String?
+  subrace     Subrace?   @relation("SubraceDeityRecs", fields: [subraceId], references: [id])
+  classId     String?
+  class       Class?     @relation("ClassDeityRecs", fields: [classId], references: [id])
+  subclassId  String?
+  subclass    Subclass?  @relation("SubclassDeityRecs", fields: [subclassId], references: [id])
+  continentId String?
+  continent   Continent? @relation(fields: [continentId], references: [id])
+}
+
+// ============================================================================
+// GUILDS & MEMBERS
+// ============================================================================
+
+enum GuildRank {
+  COAL
+  COPPER
+  IRON
+  SILVER
+  GOLD
+  PLATINUM
+  MITHRAL
+}
+
+enum MemberStatus {
+  ACTIVE
+  INACTIVE
+  DECEASED
+  RETIRED
+}
+
+model Guild {
+  id           String  @id @default(uuid())
+  name         String  @unique
+  slug         String  @unique
+  description  String  @db.Text
+  emblemPath   String?
+  foundedCycle Int?
+  official     Boolean @default(true)
+
+  continentId String?
+  continent   Continent? @relation(fields: [continentId], references: [id])
+
+  staff       GuildStaff[]
+  members     GuildMember[]
+  quests      QuestReport[]
+  dms         GuildDM[]
+  memberships GuildMembership[]
+}
+
+model GuildDM {
+  id      String @id @default(uuid())
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guildId String
+  guild   Guild  @relation(fields: [guildId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, guildId])
+}
+
+model GuildMembership {
+  id      String @id @default(uuid())
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guildId String
+  guild   Guild  @relation(fields: [guildId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, guildId])
+}
+
+model GuildStaff {
+  id          String    @id @default(uuid())
+  name        String
+  guildRole   String?
+  rank        GuildRank
+  appearance  String?   @db.Text
+  personality String?   @db.Text
+  faith       String?   @db.Text
+  background  String?   @db.Text
+  imagePath   String?
+  official    Boolean   @default(true)
+
+  raceId  String?
+  race    Race?   @relation(fields: [raceId], references: [id])
+  classId String?
+  class   Class?  @relation(fields: [classId], references: [id])
+  guildId String
+  guild   Guild   @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  deityId String?
+  deity   Deity?  @relation(fields: [deityId], references: [id])
+}
+
+model GuildMember {
+  id                String       @id @default(uuid())
+  name              String
+  rank              GuildRank
+  level             Int?
+  status            MemberStatus @default(ACTIVE)
+  specialization    String?
+  backgroundSummary String?      @db.Text
+  imagePath         String?
+  managedBy         String?
+  official          Boolean      @default(true)
+  deityReasoning    String?      @db.Text
+
+  raceId     String?
+  race       Race?     @relation(fields: [raceId], references: [id])
+  subraceId  String?
+  subrace    Subrace?  @relation(fields: [subraceId], references: [id])
+  classId    String?
+  class      Class?    @relation(fields: [classId], references: [id])
+  subclassId String?
+  subclass   Subclass? @relation(fields: [subclassId], references: [id])
+  guildId    String
+  guild      Guild     @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  deityId    String?
+  deity      Deity?    @relation(fields: [deityId], references: [id])
+
+  tags                GuildMemberTag[]
+  achievements        GuildMemberAchievement[]
+  questParticipations QuestParticipant[]
+  factionMemberships  FactionGuildMemberMembership[]
+
+  // Link to user-created character
+  characterId String?    @unique
+  character   Character? @relation(fields: [characterId], references: [id])
+}
+
+model GuildMemberTag {
+  id  String @id @default(uuid())
+  tag String
+
+  memberId String
+  member   GuildMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([memberId, tag])
+}
+
+model GuildMemberAchievement {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  earnedCycle Int?
+
+  memberId String
+  member   GuildMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+}
+
+// ============================================================================
+// CHARACTERS (User-Created)
+// ============================================================================
+
+model Character {
+  id                String   @id @default(uuid())
+  name              String
+  level             Int      @default(1)
+  backgroundSummary String?  @db.Text
+  imagePath         String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  raceId     String?
+  race       Race?     @relation(fields: [raceId], references: [id])
+  subraceId  String?
+  subrace    Subrace?  @relation(fields: [subraceId], references: [id])
+  classId    String?
+  class      Class?    @relation(fields: [classId], references: [id])
+  subclassId String?
+  subclass   Subclass? @relation(fields: [subclassId], references: [id])
+  deityId    String?
+  deity      Deity?    @relation(fields: [deityId], references: [id])
+
+  guildMember      GuildMember?
+  questReports     QuestMemberReport[]
+  npcRelationships CharacterNPCRelationship[]
+}
+
+// ============================================================================
+// QUEST REPORTS
+// ============================================================================
+
+model QuestReport {
+  id             String    @id @default(uuid())
+  name           String
+  summary        String    @db.Text
+  rank           GuildRank
+  commissionedBy String?
+  date           String?
+  location       String?
+  duration       String?
+  outcome        String?
+  extraNotes     String?   @db.Text
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  official       Boolean   @default(true)
+
+  guildId  String
+  guild    Guild  @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  authorId String?
+  author   User?  @relation("AuthoredBy", fields: [authorId], references: [id])
+
+  participants  QuestParticipant[]
+  enemies       QuestEnemy[]
+  awards        QuestAward[]
+  loot          QuestLoot[]
+  memberReports QuestMemberReport[]
+  fallenMembers QuestFallenMember[]
+}
+
+model QuestParticipant {
+  id         String    @id @default(uuid())
+  rankAtTime GuildRank
+  role       String?
+
+  questId  String
+  quest    QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+  memberId String
+  member   GuildMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([questId, memberId])
+}
+
+model QuestEnemy {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  quantity    Int?
+
+  questId String
+  quest   QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+}
+
+model QuestAward {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+
+  questId String
+  quest   QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+}
+
+model QuestLoot {
+  id          String  @id @default(uuid())
+  name        String
+  description String? @db.Text
+  quantity    Int?
+
+  questId String
+  quest   QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+}
+
+model QuestMemberReport {
+  id         String  @id @default(uuid())
+  report     String  @db.Text
+  memberName String?
+
+  questId     String
+  quest       QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+  characterId String?
+  character   Character?  @relation(fields: [characterId], references: [id])
+}
+
+model QuestFallenMember {
+  id         String  @id @default(uuid())
+  memberName String
+  cause      String? @db.Text
+
+  questId String
+  quest   QuestReport @relation(fields: [questId], references: [id], onDelete: Cascade)
+}
+
+// ============================================================================
+// NPCs & PROFESSIONS
+// ============================================================================
+
+enum ProfessionRestrictionType {
+  UNRESTRICTED
+  CONTINENT
+  TOWN
+}
+
+model NPCProfession {
+  id              String                    @id @default(uuid())
+  name            String                    @unique
+  description     String?                   @db.Text
+  category        String?
+  official        Boolean                   @default(true)
+  restrictionType ProfessionRestrictionType @default(UNRESTRICTED)
+
+  restrictedToContinents ProfessionContinentRestriction[]
+  restrictedToTowns      ProfessionTownRestriction[]
+  npcs                   TownNPC[]
+}
+
+model ProfessionContinentRestriction {
+  id String @id @default(uuid())
+
+  professionId String
+  profession   NPCProfession @relation(fields: [professionId], references: [id], onDelete: Cascade)
+  continentId  String
+  continent    Continent     @relation(fields: [continentId], references: [id], onDelete: Cascade)
+
+  @@unique([professionId, continentId])
+}
+
+model ProfessionTownRestriction {
+  id String @id @default(uuid())
+
+  professionId String
+  profession   NPCProfession @relation(fields: [professionId], references: [id], onDelete: Cascade)
+  townId       String
+  town         Town          @relation(fields: [townId], references: [id], onDelete: Cascade)
+
+  @@unique([professionId, townId])
+}
+
+model TownNPC {
+  id                String  @id @default(uuid())
+  name              String
+  gender            String?
+  age               Int?
+  race              String?
+  subrace           String?
+  classOrProfession String?
+  subclass          String?
+  level             Int?
+
+  // Optional Stats
+  strength     Int?
+  dexterity    Int?
+  constitution Int?
+  intelligence Int?
+  wisdom       Int?
+  charisma     Int?
+  hitPoints    Int?
+  armorClass   Int?
+  speed        Int?
+
+  // Descriptions
+  physicalDescription String? @db.Text
+  personality         String? @db.Text
+  gearLoadout         String? @db.Text
+  backstory           String? @db.Text
+
+  imagePath String?
+  official  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  townId       String
+  town         Town           @relation(fields: [townId], references: [id], onDelete: Cascade)
+  professionId String?
+  profession   NPCProfession? @relation(fields: [professionId], references: [id])
+
+  relationshipsFrom      NPCRelationship[]          @relation("NPCFrom")
+  relationshipsTo        NPCRelationship[]          @relation("NPCTo")
+  characterRelationships CharacterNPCRelationship[]
+  factionMemberships     FactionNPCMembership[]
+}
+
+model NPCRelationshipType {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String?
+  official    Boolean @default(true)
+
+  npcRelationships       NPCRelationship[]
+  characterRelationships CharacterNPCRelationship[]
+}
+
+model NPCRelationship {
+  id          String  @id @default(uuid())
+  description String? @db.Text
+
+  fromNPCId String
+  fromNPC   TownNPC @relation("NPCFrom", fields: [fromNPCId], references: [id], onDelete: Cascade)
+  toNPCId   String
+  toNPC     TownNPC @relation("NPCTo", fields: [toNPCId], references: [id], onDelete: Cascade)
+
+  relationshipTypeId String
+  relationshipType   NPCRelationshipType @relation(fields: [relationshipTypeId], references: [id])
+
+  @@unique([fromNPCId, toNPCId, relationshipTypeId])
+}
+
+model CharacterNPCRelationship {
+  id          String  @id @default(uuid())
+  description String? @db.Text
+
+  characterId String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  npcId       String
+  npc         TownNPC   @relation(fields: [npcId], references: [id], onDelete: Cascade)
+
+  relationshipTypeId String
+  relationshipType   NPCRelationshipType @relation(fields: [relationshipTypeId], references: [id])
+
+  @@unique([characterId, npcId, relationshipTypeId])
+}
+
+// ============================================================================
+// FACTIONS
+// ============================================================================
+
+enum FactionInfluenceLevel {
+  MINOR
+  MODERATE
+  MAJOR
+  DOMINANT
+  HIDDEN
+}
+
+model Faction {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  slug         String   @unique
+  description  String   @db.Text
+  mainPurpose  String   @db.Text
+  emblemPath   String?
+  foundedCycle Int?
+  official     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  continentPresence FactionContinentPresence[]
+  bases             FactionBase[]
+  npcMembers        FactionNPCMembership[]
+  guildMembers      FactionGuildMemberMembership[]
+  relationshipsFrom FactionRelationship[]          @relation("FactionFrom")
+  relationshipsTo   FactionRelationship[]          @relation("FactionTo")
+}
+
+model FactionContinentPresence {
+  id             String                @id @default(uuid())
+  influenceLevel FactionInfluenceLevel
+  description    String?               @db.Text
+
+  factionId   String
+  faction     Faction   @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+
+  @@unique([factionId, continentId])
+}
+
+model FactionBase {
+  id               String  @id @default(uuid())
+  name             String
+  description      String  @db.Text
+  townRelationship String  @db.Text
+  isHeadquarters   Boolean @default(false)
+  isSecret         Boolean @default(false)
+  official         Boolean @default(true)
+
+  factionId String
+  faction   Faction @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  townId    String
+  town      Town    @relation(fields: [townId], references: [id])
+
+  npcMembers   FactionNPCMembership[]
+  guildMembers FactionGuildMemberMembership[]
+
+  @@unique([factionId, townId, name])
+}
+
+model FactionRole {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String? @db.Text
+  rankOrder   Int     @default(0)
+  official    Boolean @default(true)
+
+  npcMemberships   FactionNPCMembership[]
+  guildMemberships FactionGuildMemberMembership[]
+}
+
+model FactionNPCMembership {
+  id          String  @id @default(uuid())
+  joinedCycle Int?
+  notes       String? @db.Text
+  isSecret    Boolean @default(false)
+
+  factionId String
+  faction   Faction     @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  npcId     String
+  npc       TownNPC     @relation(fields: [npcId], references: [id], onDelete: Cascade)
+  roleId    String
+  role      FactionRole @relation(fields: [roleId], references: [id])
+  baseId    String?
+  base      FactionBase? @relation(fields: [baseId], references: [id])
+
+  @@unique([factionId, npcId])
+}
+
+model FactionGuildMemberMembership {
+  id          String  @id @default(uuid())
+  joinedCycle Int?
+  notes       String? @db.Text
+  isSecret    Boolean @default(false)
+
+  factionId     String
+  faction       Faction      @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  guildMemberId String
+  guildMember   GuildMember  @relation(fields: [guildMemberId], references: [id], onDelete: Cascade)
+  roleId        String
+  role          FactionRole  @relation(fields: [roleId], references: [id])
+  baseId        String?
+  base          FactionBase? @relation(fields: [baseId], references: [id])
+
+  @@unique([factionId, guildMemberId])
+}
+
+model FactionRelationshipType {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String? @db.Text
+  official    Boolean @default(true)
+
+  relationships FactionRelationship[]
+}
+
+model FactionRelationship {
+  id          String  @id @default(uuid())
+  description String? @db.Text
+  since       Int?
+
+  fromFactionId String
+  fromFaction   Faction @relation("FactionFrom", fields: [fromFactionId], references: [id], onDelete: Cascade)
+  toFactionId   String
+  toFaction     Faction @relation("FactionTo", fields: [toFactionId], references: [id], onDelete: Cascade)
+
+  relationshipTypeId String
+  relationshipType   FactionRelationshipType @relation(fields: [relationshipTypeId], references: [id])
+
+  @@unique([fromFactionId, toFactionId])
+}
+
+// ============================================================================
+// PLAYSTYLE GUIDE
+// ============================================================================
+
+model PlaystyleCategory {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String  @db.Text
+  official    Boolean @default(true)
+
+  recommendations PlaystyleClassRecommendation[]
+}
+
+model PlaystyleClassRecommendation {
+  id        String  @id @default(uuid())
+  reasoning String? @db.Text
+
+  playstyleId String
+  playstyle   PlaystyleCategory @relation(fields: [playstyleId], references: [id], onDelete: Cascade)
+  classId     String
+  class       Class             @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([playstyleId, classId])
+}
+
+model AbilityScorePriority {
+  id          String  @id @default(uuid())
+  ability     String  @unique
+  description String  @db.Text
+  official    Boolean @default(true)
+
+  bestClasses  AbilityScoreClass[]
+  importantFor AbilityScoreImportance[]
+}
+
+model AbilityScoreClass {
+  id String @id @default(uuid())
+
+  abilityId String
+  ability   AbilityScorePriority @relation(fields: [abilityId], references: [id], onDelete: Cascade)
+  className String
+}
+
+model AbilityScoreImportance {
+  id          String  @id @default(uuid())
+  importance  String
+  description String? @db.Text
+
+  abilityId String
+  ability   AbilityScorePriority @relation(fields: [abilityId], references: [id], onDelete: Cascade)
+}
+
+model RoleDescription {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String  @db.Text
+  official    Boolean @default(true)
+
+  keyAbilities RoleKeyAbility[]
+  bestClasses  RoleBestClass[]
+}
+
+model RoleKeyAbility {
+  id      String @id @default(uuid())
+  ability String
+
+  roleId String
+  role   RoleDescription @relation(fields: [roleId], references: [id], onDelete: Cascade)
+}
+
+model RoleBestClass {
+  id        String @id @default(uuid())
+  className String
+
+  roleId String
+  role   RoleDescription @relation(fields: [roleId], references: [id], onDelete: Cascade)
+}
+
+model ComplexityLevel {
+  id          String  @id @default(uuid())
+  level       String  @unique
+  description String  @db.Text
+  official    Boolean @default(true)
+
+  classes ComplexityClass[]
+}
+
+model ComplexityClass {
+  id        String @id @default(uuid())
+  className String
+
+  complexityId String
+  complexity   ComplexityLevel @relation(fields: [complexityId], references: [id], onDelete: Cascade)
+}
+
+// ============================================================================
+// MONSTER SLAYERS GUIDE (BESTIARY)
+// ============================================================================
+
+model CreatureType {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  slug        String  @unique
+  description String  @db.Text
+  habits      String? @db.Text
+  tactics     String? @db.Text
+  weaknesses  String? @db.Text
+  official    Boolean @default(true)
+
+  continentReasons   ContinentCreatureType[]
+  legendaryCreatures LegendaryCreature[]
+}
+
+model ContinentCreatureType {
+  id      String  @id @default(uuid())
+  reason  String? @db.Text
+
+  continentId    String
+  continent      Continent    @relation(fields: [continentId], references: [id])
+  creatureTypeId String
+  creatureType   CreatureType @relation(fields: [creatureTypeId], references: [id], onDelete: Cascade)
+
+  @@unique([continentId, creatureTypeId])
+}
+
+model LegendaryCreature {
+  id              String  @id @default(uuid())
+  name            String
+  description     String  @db.Text
+  threatLevel     String?
+  questPotential  String? @db.Text
+  isPast          Boolean @default(false)
+  defeatedBy      String?
+  defeatedByTitle String?
+  defeatStory     String? @db.Text
+  legacy          String? @db.Text
+  official        Boolean @default(true)
+
+  creatureTypeId String
+  creatureType   CreatureType @relation(fields: [creatureTypeId], references: [id], onDelete: Cascade)
+  continentId    String?
+  continent      Continent?   @relation(fields: [continentId], references: [id])
+}
+
