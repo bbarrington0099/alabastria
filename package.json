@@ -16,6 +16,7 @@
         "prebuild": "npm run prepare-env",
         "prisma:generate": "npx prisma generate",
         "prisma:migrate": "npx prisma migrate dev --name dev",
+        "prisma:migrate:fresh": "npx prisma migrate reset",
         "prisma:seed": "npx prisma db seed",
         "prisma:update": "npm run prisma:generate && npm run prisma:migrate && npm run prisma:seed",
         "prisma:studio": "npx prisma studio --port 5555 --browser none",

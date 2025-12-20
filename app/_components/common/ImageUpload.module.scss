@@ -1,0 +1,238 @@
+.container {
+    width: 100%;
+}
+
+// Dropzone
+.dropzone {
+    position: relative;
+    width: 100%;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--input-background);
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    &.dragging {
+        border-color: var(--accent);
+        background: rgba(var(--royal-gold-rgb, 201, 162, 39), 0.05);
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &.hasImage {
+        border-style: solid;
+    }
+}
+
+// Aspect Ratios
+.square {
+    aspect-ratio: 1 / 1;
+}
+
+.portrait {
+    aspect-ratio: 3 / 4;
+}
+
+.landscape {
+    aspect-ratio: 16 / 9;
+}
+
+.banner {
+    aspect-ratio: 3 / 1;
+}
+
+// Hidden Input
+.hiddenInput {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+// Upload Area
+.uploadArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: var(--glass-effect);
+    }
+
+    .disabled & {
+        cursor: not-allowed;
+    }
+}
+
+// Placeholder
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.icon {
+    font-size: 2.5rem;
+    opacity: 0.6;
+}
+
+.text {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.hint {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+// Uploading State
+.uploading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem;
+
+    span {
+        font-family: var(--font-ui);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.progressBar {
+    width: 200px;
+    max-width: 100%;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.2s ease;
+}
+
+// Image Preview
+.preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    .preview:hover & {
+        opacity: 1;
+    }
+}
+
+.changeButton,
+.removeButton {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.changeButton {
+    background: var(--button-bg-primary);
+    color: var(--button-text-primary);
+    border: none;
+
+    &:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+}
+
+.removeButton {
+    background: transparent;
+    color: var(--warm-cream);
+    border: 1px solid var(--warm-cream);
+
+    &:hover:not(:disabled) {
+        background: var(--blood-red);
+        border-color: var(--blood-red);
+    }
+}
+
+// Error Message
+.error {
+    margin-top: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--blood-red);
+}
+
+// Avatar Container
+.avatarContainer {
+    .dropzone {
+        border-radius: 50%;
+    }
+
+    .overlay {
+        flex-direction: column;
+    }
+
+    &.small {
+        width: 64px;
+        height: 64px;
+    }
+
+    &.medium {
+        width: 96px;
+        height: 96px;
+    }
+
+    &.large {
+        width: 128px;
+        height: 128px;
+    }
+}

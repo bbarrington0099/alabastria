@@ -1,0 +1,185 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+// Welcome Section
+.welcome {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.title {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+    }
+}
+
+.userName {
+    color: var(--accent);
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.ctaButtons {
+    margin-top: 1.5rem;
+}
+
+.loginCta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--button-bg-primary);
+    color: var(--button-text-primary);
+    border-radius: var(--border-radius);
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+    }
+}
+
+// Section Titles
+.sectionTitle {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+// Quick Links Grid
+.quickLinks {
+    margin-bottom: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+        .cardIcon {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.cardIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.cardTitle {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+// Admin Section
+.adminSection,
+.dmSection {
+    padding-top: 1rem;
+}
+
+.adminGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.adminCard,
+.dmCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--blood-red);
+        background: rgba(139, 0, 0, 0.1);
+    }
+}
+
+.dmCard {
+    &:hover {
+        border-color: var(--ocean-blue);
+        background: rgba(30, 77, 107, 0.1);
+    }
+}
+
+.adminIcon {
+    font-size: 1.5rem;
+}
+
+// User Section
+.userSection {
+    padding-top: 1rem;
+}
+
+.userCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--accent);
+        background: rgba(212, 175, 55, 0.1);
+    }
+}

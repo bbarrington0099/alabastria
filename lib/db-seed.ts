@@ -1,10 +1,10 @@
 /**
  * Database seed helper functions
- * Used to create official/seeded data with consistent patterns
+ * Used to create seeded/seeded data with consistent patterns
  */
 
 import { prisma } from "./prisma";
-import * as Prisma from "@prismagen/client";
+import { Prisma, ContinentLanguagePrevalence, ContinentCreatureRelation } from "@prismagen/client";
 import * as db from "./db";
 import { slugify } from "./utils";
 import type {
@@ -20,81 +20,103 @@ import type {
 // WORLD & GEOGRAPHY
 // ============================================================================
 
-export async function createWorld(data: {
-    name: string;
-    description: string;
-    circumferenceMi?: number;
-    diameterMi?: number;
-    ageCycles?: number;
-    surfaceAreaSqMi?: bigint;
-}) {
-    return prisma.world.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, official: true },
-    });
+export async function createWorld(data: Prisma.WorldCreateInput): Promise<Prisma.WorldGetPayload<{}>> {
+    return await db.createWorld(data, true);
 }
 
-export async function createContinent(data: {
-    worldId: string;
-    name: string;
-    description: string;
-    lengthMi?: number;
-    widthMi?: number;
-    heightMi?: number;
-    surfaceAreaSqMi?: number;
-    primaryColor?: string;
-    secondaryColor?: string;
-    flagSymbol?: string;
-    flagDescription?: string;
-    mapImagePath?: string;
-    flagImagePath?: string;
-}) {
-    const slug = slugify(data.name);
-    return prisma.continent.upsert({
-        where: { slug },
-        update: data,
-        create: { ...data, slug, official: true },
-    });
+export async function createKingdom(data: Prisma.KingdomCreateInput): Promise<Prisma.KingdomGetPayload<{}>> {
+    return await db.createKingdom(data, true);
 }
 
-export async function createTown(data: {
-    continentId: string;
-    name: string;
-    description: string;
-    location?: string;
-    population?: number;
+export async function createContinent(data: Prisma.ContinentCreateInput): Promise<Prisma.ContinentGetPayload<{}>> {
+    return await db.createContinent(data, true);
+}
+
+export async function setKingdomCapital(kingdomId: string, continentId: string): Promise<boolean> {
+    return await db.setKingdomCapital(kingdomId, continentId);
+}
+
+export async function createTown(data: Prisma.TownCreateInput): Promise<Prisma.TownGetPayload<{}>> {
+    return await db.createTown(data, true);
+}
+
+export async function setContinentCapital(continentId: string, townId: string): Promise<boolean> {
+    return await db.setContinentCapital(continentId, townId);
+}
+
+export async function createRegion(data: Prisma.RegionCreateInput): Promise<Prisma.RegionGetPayload<{}>> {
+    return await db.createRegion(data, true);
+}
+
+export async function createVoyage(data: Prisma.VoyageCreateInput): Promise<Prisma.VoyageGetPayload<{}>> {
+    return await db.createVoyage(data, true);
+}
+
+export async function createTradeRoute(data: Prisma.TradeRouteCreateInput): Promise<Prisma.TradeRouteGetPayload<{}>> {
+    return await db.createTradeRoute(data, true);
+}
+
+export async function createLanguage(data: Prisma.LanguageCreateInput): Promise<Prisma.LanguageGetPayload<{}>> {
+    return await db.createLanguage(data, true);
+}
+
+export async function addContinentLanguage(prevalence: ContinentLanguagePrevalence, continentId: string, languageId: string): Promise<boolean> {
+    return await db.addContinentLanguage(prevalence, continentId, languageId);
+}
+
+export async function createWarConflict(data: Prisma.WarConflictCreateInput): Promise<Prisma.WarConflictGetPayload<{}>> {
+    return await db.createWarConflict(data, true);
+}
+
+export async function createTreaty(data: Prisma.TreatyCreateInput): Promise<Prisma.TreatyGetPayload<{}>> {
+    return await db.createTreaty(data, true);
+}
+
+// ============================================================================
+// BESTIARY
+// ============================================================================
+
+export async function createCreatureSize(data: Prisma.CreatureSizeCreateInput): Promise<Prisma.CreatureSizeGetPayload<{}>> {
+    return await db.createCreatureSize(data, true);
+}
+
+export async function createCreatureType(data: Prisma.CreatureTypeCreateInput): Promise<Prisma.CreatureTypeGetPayload<{}>> {
+    return await db.createCreatureType(data, true);
+}
+
+export async function createContinentCreatureType(data: Prisma.ContinentCreatureTypeUncheckedCreateInput): Promise<Prisma.ContinentCreatureTypeGetPayload<{}>> {
+    return await db.createContinentCreatureType(data, true);
+}
+
+export async function createLegendaryCreature(data: Prisma.LegendaryCreatureCreateInput): Promise<Prisma.LegendaryCreatureGetPayload<{}>> {
+    return await db.createLegendaryCreature(data, true);
+}
+
+
+export async function createTrip(data: {
+    fromTownId: string;
+    toTownId: string;
+    distanceMi?: number;
+    travelDays?: number;
+    travelHours?: number;
+    travelMinutes?: number;
 }) {
-    const slug = slugify(data.name);
-    return prisma.town.upsert({
+    return prisma.trip.upsert({
         where: {
-            continentId_slug: {
-                continentId: data.continentId,
-                slug,
+            fromTownId_toTownId: {
+                fromTownId: data.fromTownId,
+                toTownId: data.toTownId,
             },
         },
-        update: data,
-        create: { ...data, slug, official: true },
-    });
-}
-
-export async function createCapital(data: {
-    continentId: string;
-    name: string;
-    location: string;
-    description: string;
-}) {
-    return prisma.capital.upsert({
-        where: { continentId: data.continentId },
         update: data,
         create: data,
     });
 }
 
 export async function createRuler(data: {
-    capitalId: string;
+    continentId: string;
     name: string;
-    race?: string;
+    raceId?: string;
     title?: string;
     personality?: string;
     rulingStyle?: string;
@@ -104,10 +126,34 @@ export async function createRuler(data: {
     deityId?: string;
     deityReasoning?: string;
 }) {
-    return prisma.ruler.upsert({
-        where: { capitalId: data.capitalId },
-        update: data,
-        create: data,
+    // Create the character first (no userId for NPCs)
+    const character = await prisma.character.create({
+        data: {
+            name: data.name,
+            personality: data.personality,
+            appearance: data.appearance,
+            backgroundSummary: data.background,
+            imagePath: data.imagePath,
+            raceId: data.raceId,
+            deityId: data.deityId,
+            deityReasoning: data.deityReasoning,
+        },
+    });
+
+    // Link character to continent as ruler
+    return prisma.characterContinentRuler.upsert({
+        where: { continentId: data.continentId },
+        update: {
+            characterId: character.id,
+            title: data.title,
+            rulingStyle: data.rulingStyle,
+        },
+        create: {
+            characterId: character.id,
+            continentId: data.continentId,
+            title: data.title,
+            rulingStyle: data.rulingStyle,
+        },
     });
 }
 
@@ -131,7 +177,7 @@ export async function createRace(data: {
     return prisma.race.upsert({
         where: { slug },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -153,7 +199,7 @@ export async function createSubrace(data: {
             },
         },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -177,7 +223,7 @@ export async function createClass(data: {
     return prisma.class.upsert({
         where: { slug },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -197,7 +243,7 @@ export async function createSubclass(data: {
             },
         },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -214,7 +260,7 @@ export async function createPantheon(data: {
     return prisma.pantheon.upsert({
         where: { slug },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -224,15 +270,16 @@ export async function createDeity(data: {
     title?: string;
     alignment?: string;
     symbol?: string;
-    description: string;
+    description?: string;
     alabastriaContext?: string;
     temples?: string;
 }) {
     const slug = slugify(data.name);
+    const description = data.description || `${data.name} is a deity of the realm.`;
     return prisma.deity.upsert({
         where: { slug },
-        update: data,
-        create: { ...data, slug, official: true },
+        update: { ...data, description },
+        create: { ...data, description, slug, seeded: true },
     });
 }
 
@@ -270,48 +317,46 @@ export async function createGuild(data: {
     return prisma.guild.upsert({
         where: { slug },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
+    });
+}
+
+export async function createGuildRole(data: {
+    name: string;
+    description?: string;
+}) {
+    return prisma.guildRole.upsert({
+        where: { id: data.name }, // Assuming name is used as id for upsert
+        update: data,
+        create: { ...data, seeded: true, id: data.name }, // Ensure id is passed for create as well
     });
 }
 
 export async function createGuildStaff(data: {
     guildId: string;
-    name: string;
-    guildRole?: string;
+    guildRoleId: string;
     rank: GuildRank;
-    appearance?: string;
-    personality?: string;
-    faith?: string;
-    background?: string;
-    imagePath?: string;
-    raceId?: string;
-    classId?: string;
-    deityId?: string;
+    characterId: string;
 }) {
-    return prisma.guildStaff.create({
-        data: { ...data, official: true },
+    return prisma.guildStaff.upsert({
+        where: { characterId: data.characterId },
+        update: data,
+        create: { ...data, seeded: true },
     });
 }
 
 export async function createGuildMember(data: {
     guildId: string;
-    name: string;
     rank: GuildRank;
-    level?: number;
     status?: MemberStatus;
     specialization?: string;
-    backgroundSummary?: string;
-    imagePath?: string;
-    managedBy?: string;
-    raceId?: string;
-    subraceId?: string;
-    classId?: string;
-    subclassId?: string;
-    deityId?: string;
-    deityReasoning?: string;
+    managedById?: string;
+    characterId: string;
 }) {
-    return prisma.guildMember.create({
-        data: { ...data, official: true },
+    return prisma.guildMember.upsert({
+        where: { characterId: data.characterId },
+        update: data,
+        create: { ...data, seeded: true },
     });
 }
 
@@ -331,8 +376,10 @@ export async function createQuestReport(data: {
     outcome?: string;
     extraNotes?: string;
 }) {
-    return prisma.questReport.create({
-        data: { ...data, official: true },
+    return prisma.questReport.upsert({
+        where: { id: data.guildId },
+        update: data,
+        create: { ...data, seeded: true },
     });
 }
 
@@ -351,7 +398,7 @@ export async function createFaction(data: {
     return prisma.faction.upsert({
         where: { slug },
         update: data,
-        create: { ...data, slug, official: true },
+        create: { ...data, slug, seeded: true },
     });
 }
 
@@ -363,7 +410,7 @@ export async function createFactionRole(data: {
     return prisma.factionRole.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -374,7 +421,7 @@ export async function createFactionRelationshipType(data: {
     return prisma.factionRelationshipType.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -391,7 +438,7 @@ export async function createNPCProfession(data: {
     return prisma.nPCProfession.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -402,7 +449,7 @@ export async function createNPCRelationshipType(data: {
     return prisma.nPCRelationshipType.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -421,7 +468,7 @@ export async function createHistoricalPeriod(data: {
     return prisma.historicalPeriod.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -435,44 +482,7 @@ export async function createHistoricalEvent(data: {
     continentId?: string;
 }) {
     return prisma.historicalEvent.create({
-        data: { ...data, official: true },
-    });
-}
-
-// ============================================================================
-// BESTIARY
-// ============================================================================
-
-export async function createCreatureType(data: {
-    name: string;
-    description: string;
-    habits?: string;
-    tactics?: string;
-    weaknesses?: string;
-}) {
-    const slug = slugify(data.name);
-    return prisma.creatureType.upsert({
-        where: { slug },
-        update: data,
-        create: { ...data, slug, official: true },
-    });
-}
-
-export async function createLegendaryCreature(data: {
-    creatureTypeId: string;
-    name: string;
-    description: string;
-    threatLevel?: string;
-    questPotential?: string;
-    isPast?: boolean;
-    defeatedBy?: string;
-    defeatedByTitle?: string;
-    defeatStory?: string;
-    legacy?: string;
-    continentId?: string;
-}) {
-    return prisma.legendaryCreature.create({
-        data: { ...data, official: true },
+        data: { ...data, seeded: true },
     });
 }
 
@@ -487,7 +497,7 @@ export async function createPlaystyleCategory(data: {
     return prisma.playstyleCategory.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -498,7 +508,7 @@ export async function createRoleDescription(data: {
     return prisma.roleDescription.upsert({
         where: { name: data.name },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -509,7 +519,7 @@ export async function createComplexityLevel(data: {
     return prisma.complexityLevel.upsert({
         where: { level: data.level },
         update: data,
-        create: { ...data, official: true },
+        create: { ...data, seeded: true },
     });
 }
 
@@ -559,9 +569,11 @@ export async function deleteAllOfficialData() {
         prisma.faction,
         prisma.factionRelationshipType,
         prisma.factionRole,
-        prisma.characterNPCRelationship,
-        prisma.nPCRelationship,
-        prisma.townNPC,
+        prisma.characterRelationship,
+        prisma.characterFactionRelationship,
+        prisma.characterTownJob,
+        prisma.characterContinentRuler,
+        prisma.character,
         prisma.professionTownRestriction,
         prisma.professionContinentRestriction,
         prisma.nPCProfession,
@@ -582,7 +594,6 @@ export async function deleteAllOfficialData() {
         prisma.deity,
         prisma.pantheon,
         prisma.legendaryCreature,
-        prisma.continentCreatureType,
         prisma.creatureType,
         prisma.complexityClass,
         prisma.complexityLevel,
@@ -608,19 +619,12 @@ export async function deleteAllOfficialData() {
         prisma.raceName,
         prisma.raceContinent,
         prisma.raceTrait,
-        prisma.raceLanguage,
         prisma.raceAbilityScore,
         prisma.race,
-        prisma.tradeRoute,
         prisma.treaty,
         prisma.warConflict,
-        prisma.continentPolitics,
-        prisma.continentLanguage,
         prisma.voyage,
-        prisma.townLeader,
         prisma.town,
-        prisma.ruler,
-        prisma.capital,
         prisma.continent,
         prisma.kingdom,
         prisma.world,
@@ -628,11 +632,11 @@ export async function deleteAllOfficialData() {
 
     for (const table of tables) {
         try {
-            await (table as unknown as { deleteMany: (args: { where: { official: boolean } }) => Promise<unknown> }).deleteMany({
-                where: { official: true },
+            await (table as unknown as { deleteMany: (args: { where: { seeded: boolean } }) => Promise<unknown> }).deleteMany({
+                where: { seeded: true },
             });
         } catch {
-            // Some tables might not have official field, skip them
+            // Some tables might not have seeded field, skip them
         }
     }
 }

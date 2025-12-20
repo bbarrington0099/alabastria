@@ -1,0 +1,144 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+// Header
+.header {
+    text-align: center;
+    padding: 1rem 0 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+    }
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+// Grid
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+// Cards
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.className {
+    font-family: var(--font-header);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.role {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(var(--ocean-blue-rgb, 30, 77, 107), 0.2);
+    color: var(--ocean-blue);
+    border-radius: 1rem;
+    white-space: nowrap;
+}
+
+.quickInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+}
+
+.hitDie,
+.primaryAbility {
+    color: var(--text-secondary);
+}
+
+.label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.description {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.subclasses {
+    display: flex;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.subclassesLabel {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+// Stats row for skeleton
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.skeletonSpacing {
+    margin-top: 0.5rem;
+}
+
+// Empty State
+.empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}

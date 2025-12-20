@@ -1,0 +1,410 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+// Breadcrumb
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Header
+.header {
+    position: relative;
+    padding: 2rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.headerContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.flagSymbol {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 20px rgba(var(--primary-color), 0.5));
+}
+
+.title {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+    }
+}
+
+.kingdom {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.headerAccent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+// Content Layout
+.content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// Main Content
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+}
+
+.sectionTitle {
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    color: var(--accent);
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.description {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0 0 1rem;
+}
+
+.location {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+// Flag Info
+.flagInfo {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+
+    h3 {
+        font-family: var(--font-ui);
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin: 0 0 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    p {
+        font-family: var(--font-body);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+}
+
+// Ruler
+.ruler {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+
+    h3 {
+        font-family: var(--font-ui);
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin: 0 0 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+.rulerName {
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+}
+
+.rulerDetail {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0.25rem 0;
+}
+
+// Languages
+.languageGroups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.languageGroup {
+    h3 {
+        font-family: var(--font-ui);
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin: 0 0 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.4rem 0.75rem;
+    background: var(--glass-effect);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+// Creatures
+.creatures {
+    display: grid;
+    gap: 1rem;
+}
+
+.creature {
+    padding: 1rem;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+
+    h3 {
+        font-family: var(--font-ui);
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    p {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+    }
+}
+
+// Sidebar
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+        order: -1;
+    }
+}
+
+// Sidebar Cards
+.statsCard,
+.voyagesCard,
+.townsCard,
+.factionsCard {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+
+    h3 {
+        font-family: var(--font-header);
+        font-size: 1rem;
+        color: var(--accent);
+        margin: 0 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    span:first-child {
+        color: var(--text-secondary);
+    }
+
+    span:last-child {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+}
+
+// Voyages
+.voyages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.voyage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: var(--border-color);
+    }
+}
+
+.voyageDistance {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+// Towns
+.towns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.town {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    transition: all 0.2s ease;
+
+    span:first-child {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    &:hover {
+        background: var(--border-color);
+    }
+}
+
+.townLeader {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+// Factions
+.factions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.faction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+
+    span:first-child {
+        color: var(--text-primary);
+    }
+}
+
+.influence {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+
+    &.minor {
+        background: rgba(var(--text-secondary-rgb, 128, 128, 128), 0.2);
+        color: var(--text-secondary);
+    }
+
+    &.moderate {
+        background: rgba(var(--ocean-blue-rgb, 30, 77, 107), 0.2);
+        color: var(--ocean-blue);
+    }
+
+    &.major {
+        background: rgba(var(--royal-gold-rgb, 201, 162, 39), 0.2);
+        color: var(--accent);
+    }
+
+    &.dominant {
+        background: rgba(var(--blood-red-rgb, 139, 0, 0), 0.2);
+        color: var(--blood-red);
+    }
+
+    &.hidden {
+        background: rgba(var(--mystic-purple-rgb, 74, 63, 107), 0.2);
+        color: var(--mystic-purple);
+    }
+}

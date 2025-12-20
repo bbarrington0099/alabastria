@@ -1,0 +1,174 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+// Header
+.header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.headerSkeleton {
+    padding: 2rem 0;
+}
+
+.title {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(var(--royal-gold-rgb, 201, 162, 39), 0.3);
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.description {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.statValue {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.statLabel {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+// Section
+.continents {
+    padding-top: 1rem;
+}
+
+.sectionTitle {
+    font-family: var(--font-header);
+    font-size: 1.75rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+// Grid
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+// Card
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary-color);
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(var(--primary-color), 0.1);
+
+        .cardAccent {
+            opacity: 0.15;
+        }
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.cardIcon {
+    font-size: 2rem;
+}
+
+.cardTitle {
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.cardDescription {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.cardMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.cardAccent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+// Empty State
+.empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}

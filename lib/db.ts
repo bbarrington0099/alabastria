@@ -4,7 +4,7 @@
  */
 
 import { prisma } from "./prisma";
-import * as Prisma from "@prismagen/client";
+import { ContinentLanguagePrevalence, ContinentCreatureRelation, Prisma } from "@prismagen/client";
 import { CACHE_TAGS } from "./constants";
 import { slugify } from "./utils";
 
@@ -15,108 +15,169 @@ export { CACHE_TAGS };
 // WORLD & GEOGRAPHY
 // ============================================================================
 
-export async function getWorld() {
-    return prisma.world.findFirst({
-        include: {
-            continents: {
-                orderBy: { name: "asc" },
-            },
-        },
+export async function createWorld(data: Prisma.WorldCreateInput, seeded: boolean = false): Promise<Prisma.WorldGetPayload<{}>> {
+    return await prisma.world.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-export async function getContinents() {
-    return prisma.continent.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            capital: {
-                include: {
-                    ruler: true,
-                },
-            },
-            kingdom: true,
-        },
+export async function createKingdom(data: Prisma.KingdomCreateInput, seeded: boolean = false): Promise<Prisma.KingdomGetPayload<{}>> {
+    return await prisma.kingdom.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-export async function getContinentBySlug(slug: string) {
-    return prisma.continent.findUnique({
-        where: { slug },
-        include: {
-            capital: {
-                include: {
-                    ruler: {
-                        include: {
-                            deity: true,
-                        },
-                    },
-                },
-            },
-            kingdom: true,
-            towns: {
-                orderBy: { name: "asc" },
-                include: {
-                    leader: true,
-                },
-            },
-            languages: true,
-            politics: true,
-            voyagesFrom: {
-                include: {
-                    toContinent: true,
-                },
-            },
-            warsConflicts: true,
-            treaties: true,
-            tradeRoutes: true,
-            creatureTypes: {
-                include: {
-                    creatureType: true,
-                },
-            },
-            factionPresence: {
-                include: {
-                    faction: true,
-                },
-            },
-        },
+export async function createContinent(data: Prisma.ContinentCreateInput, seeded: boolean = false): Promise<Prisma.ContinentGetPayload<{}>> {
+    return await prisma.continent.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-export async function getTownBySlug(continentSlug: string, townSlug: string) {
-    const continent = await prisma.continent.findUnique({
-        where: { slug: continentSlug },
+export async function setKingdomCapital(kingdomId: string, continentId: string): Promise<boolean> {
+    try {
+        await prisma.kingdom.update({
+            where: { id: kingdomId },
+            data: { capitalContinentId: continentId },
+        });
+    } catch (error) {
+        console.error(`Error setting kingdom capital: ${error}`);
+        return false;
+    }
+    return true;
+}
+
+export async function createTown(data: Prisma.TownCreateInput, seeded: boolean = false): Promise<Prisma.TownGetPayload<{}>> {
+    return await prisma.town.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
+}
 
-    if (!continent) return null;
+export async function setContinentCapital(continentId: string, townId: string): Promise<boolean> {
+    try {
+        await prisma.continent.update({
+            where: { id: continentId },
+            data: { capitalTownId: townId },
+        });
+    } catch (error) {
+        console.error(`Error setting continent capital: ${error}`);
+        return false;
+    }
+    return true;
+}
 
-    return prisma.town.findUnique({
+export async function createRegion(data: Prisma.RegionCreateInput, seeded: boolean = false): Promise<Prisma.RegionGetPayload<{}>> {
+    return await prisma.region.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createVoyage(data: Prisma.VoyageCreateInput, seeded: boolean = false): Promise<Prisma.VoyageGetPayload<{}>> {
+    return await prisma.voyage.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createTradeRoute(data: Prisma.TradeRouteCreateInput, seeded: boolean = false): Promise<Prisma.TradeRouteGetPayload<{}>> {
+    return await prisma.tradeRoute.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createLanguage(data: Prisma.LanguageCreateInput, seeded: boolean = false): Promise<Prisma.LanguageGetPayload<{}>> {
+    return await prisma.language.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+const ContinentLanguagePrevalenceMap: Record<ContinentLanguagePrevalence, string> = {
+    [ContinentLanguagePrevalence.PRIMARY]: "primaryLanguages",
+    [ContinentLanguagePrevalence.SECONDARY]: "secondaryLanguages",
+    [ContinentLanguagePrevalence.RARE]: "rareLanguages",
+} as const;
+
+export async function addContinentLanguage(prevalence: ContinentLanguagePrevalence, continentId: string, languageId: string): Promise<boolean> {
+    try {
+        await prisma.continent.update({
+            where: { id: continentId },
+            data: { [ContinentLanguagePrevalenceMap[prevalence]]: { connect: { id: languageId } } },
+        });
+    } catch (error) {
+        console.error(`Error adding continent language: ${error}`);
+        return false;
+    }
+    return true;
+}
+
+export async function createWarConflict(data: Prisma.WarConflictCreateInput, seeded: boolean = false): Promise<Prisma.WarConflictGetPayload<{}>> {
+    return await prisma.warConflict.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createTreaty(data: Prisma.TreatyCreateInput, seeded: boolean = false): Promise<Prisma.TreatyGetPayload<{}>> {
+    return await prisma.treaty.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+// ============================================================================
+// BESTIARY
+// ============================================================================
+
+export async function createCreatureSize(data: Prisma.CreatureSizeCreateInput, seeded: boolean = false): Promise<Prisma.CreatureSizeGetPayload<{}>> {
+    return await prisma.creatureSize.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createCreatureType(data: Prisma.CreatureTypeCreateInput, seeded: boolean = false): Promise<Prisma.CreatureTypeGetPayload<{}>> {
+    return await prisma.creatureType.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createContinentCreatureType(data: Prisma.ContinentCreatureTypeUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.ContinentCreatureTypeGetPayload<{}>> {
+    return await prisma.continentCreatureType.upsert({
         where: {
-            continentId_slug: {
-                continentId: continent.id,
-                slug: townSlug,
+            continentId_creatureTypeId: {
+                continentId: data.continentId,
+                creatureTypeId: data.creatureTypeId,
             },
         },
-        include: {
-            continent: true,
-            leader: true,
-            npcs: {
-                include: {
-                    profession: true,
-                    factionMemberships: {
-                        include: {
-                            faction: true,
-                            role: true,
-                        },
-                    },
-                },
-            },
-            factionBases: {
-                include: {
-                    faction: true,
-                },
-            },
-        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createLegendaryCreature(data: Prisma.LegendaryCreatureCreateInput, seeded: boolean = false): Promise<Prisma.LegendaryCreatureGetPayload<{}>> {
+    return await prisma.legendaryCreature.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
@@ -403,42 +464,6 @@ export async function getHistoricalPeriods() {
         include: {
             events: {
                 orderBy: { sortOrder: "asc" },
-            },
-        },
-    });
-}
-
-// ============================================================================
-// BESTIARY
-// ============================================================================
-
-export async function getCreatureTypes() {
-    return prisma.creatureType.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            legendaryCreatures: true,
-            continentReasons: {
-                include: {
-                    continent: true,
-                },
-            },
-        },
-    });
-}
-
-export async function getCreatureTypeBySlug(slug: string) {
-    return prisma.creatureType.findUnique({
-        where: { slug },
-        include: {
-            legendaryCreatures: {
-                include: {
-                    continent: true,
-                },
-            },
-            continentReasons: {
-                include: {
-                    continent: true,
-                },
             },
         },
     });

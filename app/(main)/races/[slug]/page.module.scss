@@ -1,0 +1,330 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+// Breadcrumb
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+
+    a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--accent);
+        }
+    }
+
+    span:last-child {
+        color: var(--text-primary);
+    }
+}
+
+.separator {
+    color: var(--text-muted);
+}
+
+// Hero Section
+.hero {
+    padding: 2rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.title {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.quickStats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.statLabel {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statValue {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+// Content Layout
+.content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+// Sections
+.section {
+    padding: 1.5rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.sectionTitle {
+    font-family: var(--font-header);
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.description,
+.lore,
+.playstyle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+// Traits
+.traitsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.trait {
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent);
+}
+
+.traitName {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.traitDescription {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+// Subraces
+.subraceGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.subraceCard {
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.subraceName {
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.subraceAbilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.abilityTag {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    background: rgba(var(--forest-green-rgb, 34, 139, 34), 0.15);
+    color: var(--forest-green);
+    border-radius: 4px;
+}
+
+.subraceDescription {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.subraceTraits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.subraceTraitsLabel {
+    font-family: var(--font-ui);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.subraceTraitName {
+    font-family: var(--font-ui);
+    padding: 0.2rem 0.5rem;
+    background: rgba(var(--accent-rgb, 212, 175, 55), 0.1);
+    color: var(--accent);
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.subraceContext {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 0.75rem;
+    font-style: italic;
+}
+
+// Sidebar
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+.sidebarCard {
+    padding: 1.25rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.sidebarTitle {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detailsList {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    font-size: 0.9rem;
+
+    dt {
+        color: var(--text-muted);
+        font-family: var(--font-ui);
+    }
+
+    dd {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        margin: 0;
+    }
+}
+
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(var(--ocean-blue-rgb, 30, 77, 107), 0.2);
+    color: var(--ocean-blue);
+    border-radius: 1rem;
+}
+
+.recommendationList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.recommendationLink {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(var(--accent-rgb, 212, 175, 55), 0.1);
+        color: var(--accent);
+    }
+}
+
+// Back Link
+.backLink {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+
+    a {
+        font-family: var(--font-ui);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--accent);
+        }
+    }
+}

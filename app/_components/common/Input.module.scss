@@ -1,0 +1,65 @@
+@import "../../variables";
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.label {
+    font-family: $fonts-ui;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    font-family: $fonts-ui;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+        color: var(--text-secondary);
+        opacity: 0.6;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &.hasError {
+        border-color: var(--error-color);
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.15);
+        }
+    }
+}
+
+.error {
+    font-family: $fonts-ui;
+    font-size: 0.75rem;
+    color: var(--error-color);
+}
+
+.helperText {
+    font-family: $fonts-ui;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
