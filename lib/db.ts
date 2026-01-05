@@ -453,6 +453,81 @@ export async function getDeityBySlug(slug: string) {
 }
 
 // ============================================================================
+// RECOMMENDATIONS
+// ============================================================================
+// RaceClassRecommendation, DeityRecommendation, PlaystyleClassRecommendation?, RaceContinent and continent subclasses
+
+export async function createRaceSubclassRecommendation(data: Prisma.RaceSubclassRecommendationUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.RaceSubclassRecommendationGetPayload<{}>> {
+    return await prisma.raceSubclassRecommendation.upsert({
+        where: {
+            raceId_subclassId:
+            {
+                raceId: data.raceId,
+                subclassId: data.subclassId,
+            },
+        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createSubraceSubclassRecommendation(data: Prisma.SubraceSubclassRecommendationUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.SubraceSubclassRecommendationGetPayload<{}>> {
+    return await prisma.subraceSubclassRecommendation.upsert({
+        where: {
+            subraceId_subclassId:
+            {
+                subraceId: data.subraceId,
+                subclassId: data.subclassId,
+            },
+        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createRaceContinent(data: Prisma.RaceContinentUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.RaceContinentGetPayload<{}>> {
+    return await prisma.raceContinent.upsert({
+        where: {
+            raceId_continentId:
+            {
+                raceId: data.raceId,
+                continentId: data.continentId,
+            },
+        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createSubraceContinent(data: Prisma.SubraceContinentUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.SubraceContinentGetPayload<{}>> {
+    return await prisma.subraceContinent.upsert({
+        where: {
+            subraceId_continentId:
+            {
+                subraceId: data.subraceId,
+                continentId: data.continentId,
+            },
+        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createSubclassContinent(data: Prisma.SubclassContinentUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.SubclassContinentGetPayload<{}>> {
+    return await prisma.subclassContinent.upsert({
+        where: {
+            subclassId_continentId:
+            {
+                subclassId: data.subclassId,
+                continentId: data.continentId,
+            },
+        },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+// ============================================================================
 // CHARACTERS
 // ============================================================================
 

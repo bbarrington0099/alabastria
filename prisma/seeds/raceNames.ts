@@ -49,6 +49,7 @@ export interface RaceNames {
     plasmoid: RaceNamePayload;
     reborn: RaceNamePayload;
     satyr: RaceNamePayload;
+    gith: RaceNamePayload;
     simic_hybrid: RaceNamePayload;
     thri_kreen: RaceNamePayload;
 }
@@ -159,6 +160,13 @@ export async function seedRaceNames(): Promise<RaceNames> {
             female: ["Greta", "Helga", "Ingrid", "Katarina", "Petra", "Ursula"],
             unisex: [],
             surname: ["Ironfist", "Steeljaw", "Gunpowder", "Cannonball", "Blunderbuss", "Musket"]
+        }),
+        gith: await db.createRaceName({
+            id: "race-names-gith",
+            male: ["Zarath", "Khalis", "Vareth", "Thalor", "Drazin", "Malek"],
+            female: ["Zaritha", "Khalisa", "Varetha", "Thalora", "Drazina", "Maleka"],
+            unisex: [],
+            surname: ["Mindblade", "Psion", "Dreamwalker", "Thoughtseer", "Mentalist", "Brainstorm"]
         }),
         goblin: await db.createRaceName({
             id: "race-names-goblin",

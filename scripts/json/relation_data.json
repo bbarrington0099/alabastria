@@ -15,7 +15,7 @@
             "continent_reason": "clever inventors in coastal towns"
           },
           {
-            "name": "Deep Gnome",
+            "name": "Svirfneblin",
             "subclass_reason": "underground alchemical expertise",
             "continent": "Maltman of Kamalatman",
             "continent_reason": "underground allies of dwarves"
@@ -436,7 +436,7 @@
           {
             "name": "Orc",
             "subclass_reason": "aggressive combat style and love of battle",
-            "continent": "Kamalatman",
+            "continent": "Katman of Kamalatman",
             "continent_reason": "tribal warriors of the swamps and mountains"
           }
         ],
@@ -473,7 +473,7 @@
           {
             "name": "Goliath",
             "subclass_reason": "giant bloodline and mountain heritage",
-            "continent": "Kamalatman",
+            "continent": "Maltman of Kamalatman",
             "continent_reason": "mountain regions with giant influence"
           }
         ],
@@ -483,7 +483,7 @@
             "reason": "mountain regions where giants once roamed"
           },
           {
-            "continent": "Kamalatman",
+            "continent": "Maltman of Kamalatman",
             "reason": "mountain peaks and ancient giant territories"
           }
         ],
@@ -508,7 +508,7 @@
           {
             "name": "Genasi",
             "subclass_reason": "elemental heritage creates unpredictable magic",
-            "continent": "Kamalatman",
+            "continent": "Alatman of Kamalatman",
             "continent_reason": "elemental planes influence the region"
           },
           {
@@ -4273,7 +4273,7 @@
             "reason": "The political complexity and diverse populations of Skratonia require master strategists to coordinate between different city-states and manage international diplomacy."
           },
           {
-            "continent": "Kamalatman",
+            "continent": "Alatman of Kamalatman",
             "reason": "The ongoing political tensions and resource conflicts in Kamalatman demand strategic minds to navigate the complex web of rebellions and negotiations."
           }
         ],
@@ -4384,7 +4384,7 @@
             "reason": "The militarized society and harsh conditions of Bulsania produce natural war minds who excel at leading in combat."
           },
           {
-            "continent": "Kamalatman",
+            "continent": "Maltman of Kamalatman",
             "reason": "The ongoing conflicts and dangerous terrain of Kamalatman require war minds to lead operations in challenging conditions."
           }
         ],
@@ -4397,7 +4397,7 @@
           },
           {
             "name": "Orc",
-            "continent": "Kamalatman",
+            "continent": "Katman of Kamalatman",
             "continent_reason": "Orcish combat prowess and natural leadership make them excellent war minds in Kamalatman's challenging environment.",
             "subclass_reason": "Orcish strength and combat experience are perfect for leading from the front lines and inspiring allies."
           },

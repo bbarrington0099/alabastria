@@ -25,7 +25,14 @@ export * from './deity';
 export * from './deityHolyDay';
 export * from './deityHistory';
 export * from './deityRelationship';
+export * from './character';
+
 export * from './connections/kingdomCapitals';
 export * from './connections/continentCaptials';
 export * from './connections/continentLanguages';
 export * from './connections/continentCreatureTypes';
+export * from './connections/subracesContinents';
+export * from './connections/racesContinents';
+export * from './connections/racesSubclasses';
+export * from './connections/subclassesContinents';
+export * from './connections/subracesSubclasses';

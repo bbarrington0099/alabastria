@@ -629,7 +629,7 @@
                 "Terran",
                 "Deep Speech"
             ],
-            "description": "The mountain strongholds echo with Dwarvish as the dominant language, while mining operations use Common for trade. Deep Gnome communities speak Undercommon, and ancient draconic runes mark the deepest mines. Kobolds in the depths maintain their Draconic dialect, and the rare Giant tongue echoes from the highest peaks."
+            "description": "The mountain strongholds echo with Dwarvish as the dominant language, while mining operations use Common for trade. Svirfneblin communities speak Undercommon, and ancient draconic runes mark the deepest mines. Kobolds in the depths maintain their Draconic dialect, and the rare Giant tongue echoes from the highest peaks."
         },
         "politics": {
             "kingdoms": [
@@ -641,7 +641,7 @@
             ],
             "dominant_races": [
                 "Dwarves",
-                "Deep Gnomes",
+                "Svirfneblins",
                 "Kobolds"
             ],
             "notes": "Efficient mining operations, part of Kamalatman",

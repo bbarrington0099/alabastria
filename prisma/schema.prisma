@@ -181,7 +181,10 @@ model Continent {
   warsConflicts          WarConflict[]
   treaties               Treaty[]
   tradeRoutes            TradeRoute[]
+  
   raceLocations          RaceContinent[]
+  subraceLocations       SubraceContinent[]
+  subclassLocations      SubclassContinent[]
   guilds                 Guild[]
   creatureTypes          ContinentCreatureType[]
   legendaryCreatures     LegendaryCreature[]
@@ -459,7 +462,7 @@ model Race {
   traits                RaceTrait[]
 
   subraces             Subrace[]
-  recommendedClasses   RaceClassRecommendation[]
+  subclassRecommendations   RaceSubclassRecommendation[]
   continentLocations   RaceContinent[]
   deityRecommendations DeityRecommendation[]     @relation("RaceDeityRecs")
   characters           Character[]
@@ -514,7 +517,8 @@ model RaceName {
 
 model RaceContinent {
   id          String  @id @default(uuid())
-  description String? @db.Text
+  reasoning   String  @db.Text
+  seeded      Boolean @default(false)
 
   raceId      String
   race        Race      @relation(fields: [raceId], references: [id], onDelete: Cascade)
@@ -522,6 +526,31 @@ model RaceContinent {
   continent   Continent @relation(fields: [continentId], references: [id])
 
   @@unique([raceId, continentId])
+}
+
+model SubraceContinent {
+  id          String  @id @default(uuid())
+  reasoning   String  @db.Text
+  seeded      Boolean @default(false)
+
+  subraceId   String
+  subrace     Subrace   @relation(fields: [subraceId], references: [id], onDelete: Cascade)
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+
+  @@unique([subraceId, continentId])
+}
+
+model SubclassContinent {
+  id          String  @id @default(uuid())
+  reasoning   String  @db.Text
+  seeded      Boolean @default(false)
+
+  subclassId  String
+  subclass    Subclass  @relation(fields: [subclassId], references: [id], onDelete: Cascade)
+  continentId String
+  continent   Continent @relation(fields: [continentId], references: [id])
+  @@unique([subclassId, continentId])
 }
 
 model Language {
@@ -562,6 +591,8 @@ model Subrace {
   abilityScoreIncreases RaceAbilityScore[]
   traits                RaceTrait[]
 
+  continentLocations   SubraceContinent[]
+  subclassRecommendations   SubraceSubclassRecommendation[]
   deityRecommendations DeityRecommendation[] @relation("SubraceDeityRecs")
   characters           Character[]
 
@@ -672,7 +703,6 @@ model Class {
   keyFeatures          ClassFeature[]
 
   subclasses           Subclass[]
-  recommendedRaces     RaceClassRecommendation[]
   playstyleCategories  PlaystyleClassRecommendation[]
   deityRecommendations DeityRecommendation[]          @relation("ClassDeityRecs")
   characters           Character[]
@@ -702,22 +732,39 @@ model Subclass {
   class                Class                 @relation(fields: [classId], references: [id], onDelete: Cascade)
   keyFeatures          ClassFeature[]
 
+  raceRecommendations   RaceSubclassRecommendation[]
+  subraceRecommendations SubraceSubclassRecommendation[]
+  contientLocations     SubclassContinent[]
   deityRecommendations DeityRecommendation[] @relation("SubclassDeityRecs")
   characters           Character[]
 
   @@unique([classId, slug])
 }
 
-model RaceClassRecommendation {
+model RaceSubclassRecommendation {
   id        String  @id @default(uuid())
-  reasoning String? @db.Text
+  reasoning String @db.Text
+  seeded    Boolean @default(false)
 
   raceId  String
   race    Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
-  classId String
-  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subclassId String
+  subclass   Subclass  @relation(fields: [subclassId], references: [id], onDelete: Cascade)
 
-  @@unique([raceId, classId])
+  @@unique([raceId, subclassId])
+}
+
+model SubraceSubclassRecommendation {
+  id        String  @id @default(uuid())
+  reasoning String @db.Text
+  seeded    Boolean @default(false)
+
+  subraceId  String
+  subrace    Subrace   @relation(fields: [subraceId], references: [id], onDelete: Cascade)
+  subclassId String
+  subclass   Subclass  @relation(fields: [subclassId], references: [id], onDelete: Cascade)
+
+  @@unique([subraceId, subclassId])
 }
 
 // ============================================================================

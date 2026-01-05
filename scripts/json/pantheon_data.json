@@ -5,6 +5,60 @@
         "symbol": "fas fa-crown",
         "deities": [
             {
+                "name": "Cyric",
+                "title": "Prince of Lies",
+                "domains": [
+                    "Trickery",
+                    "Death",
+                    "Madness",
+                    "Intrigue"
+                ],
+                "alignment": "Chaotic Evil",
+                "symbol": "fas fa-sun-plant-wilt",
+                "description": "The god of lies, deception, madness, and murder. Cyric embodies betrayal, falsehood, and the destructive power of unrestrained ambition, delighting in the downfall of gods and mortals alike.",
+                "alabastria_context": "Since The Bringing, Cyric’s presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.",
+                "followers": [
+                    "Assassins",
+                    "Liars and deceivers",
+                    "Mad prophets",
+                    "Cultists",
+                    "Political conspirators"
+                ],
+                "holy_days": [
+                    "The Black Sun",
+                    "Night of Shattered Truths"
+                ],
+                "temples": "Hidden shrines, underground chambers, and abandoned ruins",
+                "allies": [
+                    "Shar",
+                    "Talona"
+                ],
+                "conflicts": [
+                    "Mystra",
+                    "Kelemvor",
+                    "Tempus",
+                    "Lathander"
+                ],
+                "symbols": [
+                    "Black sun with a purple core",
+                    "Broken halo",
+                    "Bloodstained dagger",
+                    "Cracked skull"
+                ],
+                "colors": [
+                    "Black",
+                    "Deep purple",
+                    "Blood red",
+                    "Ash gray"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "The Bringing weakened Cyric’s divine coherence, amplifying his madness. His early cults splintered, many turning violently on one another as conflicting visions spread.",
+                    "100-300_cycles": "Cyricite sects began infiltrating courts and guilds, engineering assassinations and civil unrest. Several short-lived theocracies collapsed due to internal betrayal.",
+                    "300-600_cycles": "A period known as the Fractured Dogma saw Cyric’s followers war against each other over contradictory revelations. Despite this, his influence grew through fear and chaos rather than devotion.",
+                    "600-800_cycles": "In the current age, Cyric is worshiped primarily in secret. His cults are blamed for several major political collapses and the rise of the Veiled Knives, an infamous assassin network operating across continents."
+                }
+            },
+            {
                 "name": "Tempus",
                 "title": "Lord of Battles",
                 "domains": [
@@ -271,6 +325,437 @@
                     "Deep blue",
                     "Silver"
                 ]
+            },
+            {
+                "name": "Oghma",
+                "title": "The Binder of What Is Known",
+                "domains": [
+                    "Knowledge",
+                    "Inspiration",
+                    "Lore",
+                    "Communication"
+                ],
+                "alignment": "Neutral",
+                "symbol": "fas fa-book-open",
+                "description": "The god of knowledge, inspiration, and invention. Oghma embodies the preservation and sharing of all information, believing that truth and creativity should flow freely to enlighten the world.",
+                "alabastria_context": "Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.",
+                "followers": [
+                    "Scholars",
+                    "Bards",
+                    "Historians",
+                    "Scribes",
+                    "Inventors"
+                ],
+                "holy_days": [
+                    "The Day of Unbound Pages",
+                    "Festival of First Words"
+                ],
+                "temples": "Libraries, archives, universities, and scriptoria",
+                "allies": [
+                    "Mystra",
+                    "Deneir",
+                    "Lathander"
+                ],
+                "conflicts": [
+                    "Cyric",
+                    "Shar",
+                    "Talona"
+                ],
+                "symbols": [
+                    "Open book with a blank page",
+                    "Quill crossed with a scroll",
+                    "Knot of knowledge",
+                    "Seven-pointed star of lore"
+                ],
+                "colors": [
+                    "White",
+                    "Sky blue",
+                    "Gold",
+                    "Soft gray"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "In the aftermath of The Bringing, Oghma’s faithful focused on salvaging texts, oral histories, and lost languages. Many risked their lives to preserve fragments of the old world’s knowledge.",
+                    "100-300_cycles": "Oghman libraries became centers of learning and diplomacy. The first Great Concord of Scholars was signed under his auspices, standardizing languages and historical records.",
+                    "300-600_cycles": "A golden age of invention and exploration emerged, driven by Oghma’s clergy encouraging experimentation and free exchange of ideas across continents.",
+                    "600-800_cycles": "In the present age, Oghma’s temples stand as neutral sanctuaries. His followers are instrumental in educating the masses and safeguarding truth against manipulation and deliberate falsehoods."
+                }
+            },
+            {
+                "name": "Deneir",
+                "title": "The First Scribe",
+                "domains": [
+                    "Knowledge",
+                    "Writing",
+                    "Glyphs",
+                    "Literature"
+                ],
+                "alignment": "Neutral Good",
+                "symbol": "fas fa-feather-pointed",
+                "description": "The god of writing, glyphs, and recorded knowledge. Deneir is the patron of scribes and chroniclers, devoted to the accurate preservation of truth through the written word.",
+                "alabastria_context": "Since The Bringing, Deneir’s followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.",
+                "followers": [
+                    "Scribes",
+                    "Librarians",
+                    "Archivists",
+                    "Chroniclers",
+                    "Rune scholars"
+                ],
+                "holy_days": [
+                    "The First Inscription",
+                    "Inkbound Vigil"
+                ],
+                "temples": "Scriptoria, record halls, rune libraries, and monasteries",
+                "allies": [
+                    "Oghma",
+                    "Mystra",
+                    "Lathander"
+                ],
+                "conflicts": [
+                    "Cyric",
+                    "Shar",
+                    "Mask"
+                ],
+                "symbols": [
+                    "Lit candle above an open book",
+                    "Runed quill",
+                    "Glyph-inscribed scroll",
+                    "Eye within a page"
+                ],
+                "colors": [
+                    "Ivory",
+                    "Ink black",
+                    "Gold",
+                    "Deep blue"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "Following The Bringing, Deneir’s clergy raced to document events as they unfolded, believing that accurate records would prevent future chaos born of forgotten truth.",
+                    "100-300_cycles": "Deneirite monasteries became centers of law and record-keeping. Many early Alabastrian legal codes were penned under his guidance.",
+                    "300-600_cycles": "A surge in rune magic and glyph-based spellcraft elevated Deneir’s status among mages and artificers, solidifying his role as guardian of written magic.",
+                    "600-800_cycles": "In the current age, Deneir’s followers act as trusted neutral recorders of treaties, histories, and magical research, often serving as arbiters when truth is disputed."
+                }
+            },
+            {
+                "name": "Mask",
+                "title": "The Lord of Shadows",
+                "domains": [
+                    "Trickery",
+                    "Shadows",
+                    "Thievery",
+                    "Intrigue"
+                ],
+                "alignment": "Chaotic Neutral",
+                "symbol": "fas fa-masks-theater",
+                "description": "The god of shadows, thieves, and intrigue. Mask represents stealth, cleverness, and the art of taking what is forbidden, valuing wit and subtlety over brute force.",
+                "alabastria_context": "Since The Bringing, Mask has flourished in Alabastria’s expanding cities and trade hubs. His worship is strongest among thieves’ guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.",
+                "followers": [
+                    "Thieves",
+                    "Rogues",
+                    "Spies",
+                    "Smugglers",
+                    "Information brokers"
+                ],
+                "holy_days": [
+                    "The Long Shadow",
+                    "Night of Vanishing Coin"
+                ],
+                "temples": "Hidden guild halls, back-alley shrines, and shadowed catacombs",
+                "allies": [
+                    "Cyric",
+                    "Shar"
+                ],
+                "conflicts": [
+                    "Tyr",
+                    "Deneir",
+                    "Helm"
+                ],
+                "symbols": [
+                    "Black mask",
+                    "Shadowed dagger",
+                    "Coin with a hole",
+                    "Cloaked figure"
+                ],
+                "colors": [
+                    "Black",
+                    "Midnight blue",
+                    "Silver",
+                    "Smoke gray"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "In the uncertain days after The Bringing, Mask’s faithful became essential scouts, smugglers, and information gatherers. Many cities quietly relied on them despite public condemnation.",
+                    "100-300_cycles": "Thieves’ guilds formally organized under Mask’s loose patronage, creating networks that spanned continents and traded in secrets as readily as coin.",
+                    "300-600_cycles": "A golden age of espionage elevated Mask’s influence. Shadow wars between rival states were often decided by Maskan agents before armies ever marched.",
+                    "600-800_cycles": "In the present era, Mask is regarded with wary tolerance. His worship persists wherever laws are rigid, borders are tight, and secrets are valuable."
+                }
+            },
+            {
+                "name": "Helm",
+                "title": "The Vigilant One",
+                "domains": [
+                    "Protection",
+                    "Guardianship",
+                    "Duty",
+                    "Law"
+                ],
+                "alignment": "Lawful Neutral",
+                "symbol": "fas fa-shield-halved",
+                "description": "The god of guardians, protection, and vigilance. Helm embodies duty, steadfastness, and the unwavering defense of law and order against chaos and threats.",
+                "alabastria_context": "Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.",
+                "followers": [
+                    "Guards",
+                    "Soldiers",
+                    "Watchmen",
+                    "Paladins",
+                    "Lawful magistrates"
+                ],
+                "holy_days": [
+                    "The Vigil",
+                    "Day of the Watchtower"
+                ],
+                "temples": "Fortified temples, watchtowers, barracks, and city walls",
+                "allies": [
+                    "Tyr",
+                    "Lathander",
+                    "Oghma"
+                ],
+                "conflicts": [
+                    "Cyric",
+                    "Mask",
+                    "Talona"
+                ],
+                "symbols": [
+                    "Closed helm",
+                    "Shield with an eye",
+                    "Watchtower",
+                    "Gauntleted fist"
+                ],
+                "colors": [
+                    "Steel gray",
+                    "Silver",
+                    "White",
+                    "Dark blue"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "After The Bringing, Helm’s followers focused on restoring order amidst widespread chaos. His priests advised leaders on maintaining law and discipline in vulnerable cities.",
+                    "100-300_cycles": "Helm’s influence expanded with the rise of city-states and organized militias. Watchtowers and fortified temples were constructed to safeguard urban centers.",
+                    "300-600_cycles": "Helm’s clergy became a respected force in law enforcement, mediating disputes and training guards. Many paladins and knights pledged service to him during regional conflicts.",
+                    "600-800_cycles": "In the present age, Helm’s faithful continue to safeguard Alabastria. His temples act as centers of civic defense, and his doctrines of vigilance and duty guide soldiers, guards, and lawkeepers across the land."
+                }
+            },
+            {
+                "name": "Tyr",
+                "title": "The Even-Handed",
+                "domains": [
+                    "Justice",
+                    "Law",
+                    "Honor",
+                    "Duty"
+                ],
+                "alignment": "Lawful Good",
+                "symbol": "fas fa-scale-balanced",
+                "description": "The god of justice, law, and righteous duty. Tyr embodies fairness, honor, and the pursuit of justice, ensuring that the innocent are protected and the guilty are held accountable.",
+                "alabastria_context": "Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.",
+                "followers": [
+                    "Judges",
+                    "Paladins",
+                    "Lawyers",
+                    "City officials",
+                    "Soldiers upholding justice"
+                ],
+                "holy_days": [
+                    "Day of the Scales",
+                    "Judgment’s Dawn"
+                ],
+                "temples": "Courthouses, fortified temples, and halls of justice",
+                "allies": [
+                    "Helm",
+                    "Lathander",
+                    "Oghma"
+                ],
+                "conflicts": [
+                    "Cyric",
+                    "Mask",
+                    "Talona"
+                ],
+                "symbols": [
+                    "Balanced scales",
+                    "Sword over scales",
+                    "Blindfolded hand holding scales",
+                    "Gauntlet holding a sword"
+                ],
+                "colors": [
+                    "White",
+                    "Gold",
+                    "Silver",
+                    "Crimson"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "Following The Bringing, Tyr’s faithful worked to stabilize cities and regions, establishing courts and promoting impartial justice in a chaotic world.",
+                    "100-300_cycles": "Tyr’s influence expanded as legal codes were formalized across Alabastria. Paladins of Tyr acted as judges, mediators, and protectors of law.",
+                    "300-600_cycles": "Tyr’s clergy gained recognition as moral arbiters, intervening in disputes between rulers and kingdoms. His doctrines of fairness became a cornerstone of governance.",
+                    "600-800_cycles": "In the current era, Tyr’s temples serve as centers of law and justice. His followers continue to uphold fairness, mediate conflicts, and punish wrongdoing, ensuring that Tyr’s ideals remain a guiding light in Alabastria."
+                }
+            },
+            {
+                "name": "Chauntea",
+                "title": "The Great Mother",
+                "domains": [
+                    "Agriculture",
+                    "Harvest",
+                    "Nature",
+                    "Life"
+                ],
+                "alignment": "Neutral Good",
+                "symbol": "fas fa-seedling",
+                "description": "The goddess of agriculture, fertility, and the nurturing of life. Chauntea embodies the growth of crops, the cycles of nature, and the sustenance of communities through careful stewardship of the land.",
+                "alabastria_context": "Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.",
+                "followers": [
+                    "Farmers",
+                    "Gardeners",
+                    "Rangers",
+                    "Druids",
+                    "Herbalists"
+                ],
+                "holy_days": [
+                    "Planting Day",
+                    "Harvest Home"
+                ],
+                "temples": "Granaries, farm shrines, garden temples, and rural sanctuaries",
+                "allies": [
+                    "Lathander",
+                    "Tyr",
+                    "Oghma"
+                ],
+                "conflicts": [
+                    "Talona",
+                    "Cyric",
+                    "Bane"
+                ],
+                "symbols": [
+                    "Sheaf of wheat",
+                    "Blooming flower",
+                    "Cornucopia",
+                    "Tree with deep roots"
+                ],
+                "colors": [
+                    "Green",
+                    "Earth brown",
+                    "Golden yellow",
+                    "Sky blue"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "After The Bringing, Chauntea’s clergy focused on restoring agricultural systems disrupted by chaos. Seeds were planted anew, and knowledge of irrigation and crop rotation was shared widely.",
+                    "100-300_cycles": "Rural communities grew in size and stability under her guidance. Festivals celebrating planting and harvest became widespread, reinforcing social cohesion.",
+                    "300-600_cycles": "Her influence extended into urban centers as granaries, gardens, and public farms were established to feed growing populations. Druidic orders allied with her for land stewardship.",
+                    "600-800_cycles": "In the present era, Chauntea’s followers continue to ensure food security, protect farmland, and celebrate the cycles of growth and harvest. Her teachings influence both peasants and rulers who value the prosperity of the land."
+                }
+            },
+            {
+                "name": "Ilmater",
+                "title": "The Crying God",
+                "domains": [
+                    "Endurance",
+                    "Suffering",
+                    "Compassion",
+                    "Healing"
+                ],
+                "alignment": "Lawful Good",
+                "symbol": "fas fa-hand-holding-heart",
+                "description": "The god of endurance, suffering, and compassion. Ilmater embodies patience, selflessness, and the relief of pain, inspiring his followers to comfort the oppressed and aid those in distress.",
+                "alabastria_context": "Since The Bringing, Ilmater’s worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.",
+                "followers": [
+                    "Healers",
+                    "Clerics",
+                    "Monks",
+                    "Caregivers",
+                    "Refugees and the oppressed"
+                ],
+                "holy_days": [
+                    "Day of Tears",
+                    "Night of Quiet Vigil"
+                ],
+                "temples": "Hospitals, shelters, monasteries, and quiet sanctuaries",
+                "allies": [
+                    "Lathander",
+                    "Tyr",
+                    "Chauntea"
+                ],
+                "conflicts": [
+                    "Talona",
+                    "Bane",
+                    "Cyric"
+                ],
+                "symbols": [
+                    "Pair of hands bound with a red cord",
+                    "Weeping face",
+                    "Broken chain",
+                    "Heart encircled by flame"
+                ],
+                "colors": [
+                    "White",
+                    "Crimson red",
+                    "Pale blue",
+                    "Silver"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "After The Bringing, Ilmater’s followers focused on aiding those devastated by upheaval. Temples acted as emergency relief centers for the displaced and wounded.",
+                    "100-300_cycles": "Ilmaterite charities and hospitals were formalized, and orders of compassionate monks and clerics spread throughout Alabastria.",
+                    "300-600_cycles": "His clergy became mediators and healers in war-torn regions. Pilgrimages to sites of past tragedies grew as acts of penance and service.",
+                    "600-800_cycles": "In the present era, Ilmater’s temples are vital centers for social welfare. His followers continue to alleviate suffering, provide refuge, and advocate for endurance, patience, and hope in the face of adversity."
+                }
+            },
+            {
+                "name": "Talona",
+                "title": "Lady of Poison",
+                "domains": [
+                    "Poison",
+                    "Disease",
+                    "Decay",
+                    "Suffering"
+                ],
+                "alignment": "Chaotic Evil",
+                "symbol": "fas fa-skull-crossbones",
+                "description": "The goddess of poison, disease, and decay. Talona embodies silent death and lingering suffering, reveling in plagues, toxins, and the slow corruption of body and land.",
+                "alabastria_context": "Since The Bringing, Talona’s worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.",
+                "followers": [
+                    "Poisoners",
+                    "Plague cultists",
+                    "Assassins",
+                    "Alchemists",
+                    "Desperate commoners"
+                ],
+                "holy_days": [
+                    "The Weeping Blight",
+                    "Night of Bitter Breath"
+                ],
+                "temples": "Hidden shrines, plague pits, ruined hospitals, and alchemical dens",
+                "allies": [
+                    "Cyric",
+                    "Shar"
+                ],
+                "conflicts": [
+                    "Lathander",
+                    "Chauntea",
+                    "Ilmater",
+                    "Tempus"
+                ],
+                "symbols": [
+                    "Three teardrops falling from a skull",
+                    "Poisoned chalice",
+                    "Green-black serpent",
+                    "Withered flower"
+                ],
+                "colors": [
+                    "Sickly green",
+                    "Black",
+                    "Venom yellow",
+                    "Dark brown"
+                ],
+                "history_800_years": {
+                    "0-100_cycles": "In the chaos following The Bringing, Talona’s influence spread rapidly through uncontrolled disease and spoiled food supplies. Early cultists flourished among refugees and the dying.",
+                    "100-300_cycles": "Several devastating plagues were attributed to Talona’s favor or wrath. Her worship became deeply feared, and many cities outlawed even speaking her name.",
+                    "300-600_cycles": "Talona’s followers refined poisons and diseases into weapons, selling their services to criminals and rival states. Her cults became more organized and secretive.",
+                    "600-800_cycles": "In the current era, Talona is placated through forbidden rites rather than openly praised. Her cults are blamed for recent outbreaks collectively known as the Ashen Cough and the Black Bloom."
+                }
             },
             {
                 "name": "Tymora",

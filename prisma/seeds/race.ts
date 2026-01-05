@@ -52,6 +52,7 @@ export interface Races {
     satyr: RacePayload;
     simic_hybrid: RacePayload;
     thri_kreen: RacePayload;
+    gith: RacePayload;
 }
 
 interface SeedRacesParams {
@@ -550,7 +551,7 @@ export async function seedRaces(params: SeedRacesParams): Promise<Races> {
                 "Intelligent spellcasters and inventors who excel at problem-solving and magical research. Perfect for players who enjoy creative solutions and magical experimentation.",
             defaultCreatureSizeId: creatureSizes.small.id,
             languages: {
-                connect: [{ id: languages.common.id }, { id: languages.gnomish.id }],
+                connect: [{ id: languages.common.id }, { id: languages.gnomish.id }, { id: languages.common_sign_language.id }, { id: languages.undercommon.id }],
         },
             traits: {
                 connect: [
@@ -1794,6 +1795,43 @@ export async function seedRaces(params: SeedRacesParams): Promise<Races> {
                 ],
             },
             namesId: raceNames.yuan_ti.id,
+        }),
+        gith: await db.createRace({
+            id: "race-gith",
+            name: "Gith",
+            slug: "gith",
+            description:
+                "Ancient warriors who freed themselves from mind flayer slavery through sheer will and martial prowess. The gith are a proud people divided into two distinct cultures, each following their own path to ensure they never fall into bondage again.",
+            speed: "30 feet",
+            age: "Gith reach adulthood in their late teens and live to be around 100 years old.",
+            alignment:
+                "Gith alignment varies by culture. Githyanki tend toward lawful evil, while githzerai lean toward lawful neutral. Individual gith may be of any alignment.",
+            heightRange: "5'5\" to 6'5\"",
+            weightRange: "120 to 180 lbs",
+            alabastriaLore:
+                "Gith are rare in Alabastria, as most reside in the Astral Plane or remote monasteries across the planes. Those who do appear are often planar travelers, seeking ancient knowledge or hunting mind flayers. Some serve as mercenaries or advisors to those who understand the value of their combat expertise and psionic abilities.",
+            playstyle:
+                "Warrior-philosophers with psionic powers and a martial heritage. Perfect for players who want disciplined combatants with a mysterious planar origin and innate mental abilities.",
+            defaultCreatureSizeId: creatureSizes.medium.id,
+            languages: {
+                connect: [
+                    { id: languages.common.id },
+                    { id: languages.gith.id },
+                ],
+            },
+            traits: {
+                connect: [
+                    { id: raceTraits.gith_psionics.id },
+                    { id: raceTraits.mental_discipline.id },
+                    { id: raceTraits.planar_knowledge.id },
+                ],
+            },
+            abilityScoreIncreases: {
+                connect: [
+                    { id: raceAbilityScores.int_one.id },
+                ],
+            },
+            namesId: raceNames.gith.id,
         }),
     }
 }

@@ -19,12 +19,14 @@ export interface Subraces {
     elf_sea_elf: SubracePayload;
     elf_eladrin: SubracePayload;
     elf_shadar_kai: SubracePayload;
+    elf_pallid_elf: SubracePayload;
     genasi_air_genasi: SubracePayload;
     genasi_earth_genasi: SubracePayload;
     genasi_fire_genasi: SubracePayload;
     genasi_water_genasi: SubracePayload;
     gnome_forest_gnome: SubracePayload;
     gnome_rock_gnome: SubracePayload;
+    gnome_svirfneblin: SubracePayload;
     half_elf_aquatic_half_elf: SubracePayload;
     half_elf_drow_half_elf: SubracePayload;
     half_elf_high_half_elf: SubracePayload;
@@ -52,6 +54,8 @@ export interface Subraces {
     tiefling_mephistopheles_tiefling: SubracePayload;
     tiefling_zariel_tiefling: SubracePayload;
     yuan_ti_pureblood_yuan_ti: SubracePayload;
+    gith_githyanki: SubracePayload;
+    gith_githzerai: SubracePayload;
 }
 
 interface SeedSubracesParams {
@@ -80,6 +84,47 @@ export async function seedSubraces(params: SeedSubracesParams): Promise<Subraces
                 ]
             },
             raceId: races.aasimar.id
+        }),
+        gith_githyanki: await db.createSubrace({
+            id: "subrace-gith-githyanki",
+            name: "Githyanki",
+            slug: "githyanki",
+            description: "Githyanki are fierce warriors who dwell in the Astral Plane, raiding across the multiverse aboard their astral ships. They are militant and aggressive, believing that strength and discipline will prevent them from ever being enslaved again.",
+            alabastriaContext: "Githyanki who appear in Alabastria are typically planar raiders or exiles seeking power and conquest. Some serve as mercenaries in Kamalatman's military forces, where their martial prowess and silver swords are highly valued. Their astral knowledge makes them dangerous opponents and valuable allies.",
+            playstyle: "Aggressive martial warriors with psionic mobility and weapon proficiency. Perfect for players who want disciplined soldiers with teleportation and silver sword mastery.",
+            abilityScoreIncreases: {
+                connect: [
+                    { id: raceAbilityScores.str_two.id },
+                ]
+            },
+            traits: {
+                connect: [
+                    { id: raceTraits.decadent_mastery_githyanki.id },
+                    { id: raceTraits.martial_prodigy_githyanki.id },
+                    { id: raceTraits.githyanki_psionics.id },
+                ]
+            },
+            raceId: races.gith.id
+        }),
+        gith_githzerai: await db.createSubrace({
+            id: "subrace-gith-githzerai",
+            name: "Githzerai",
+            slug: "githzerai",
+            description: "Githzerai are disciplined monks who dwell in the ever-shifting chaos of Limbo, using their mental focus to impose order on their surroundings. They pursue lives of contemplation and self-perfection, channeling their psionic power through rigorous mental discipline.",
+            alabastriaContext: "Githzerai rarely leave their monasteries, but those who visit Alabastria often seek the mountain temples of Skratonia or the quiet libraries of scholarly cities. They share wisdom about mental discipline and planar travel, and sometimes hunt mind flayers that threaten the Material Plane.",
+            playstyle: "Defensive monks with psionic shields and mental fortitude. Perfect for players who want philosophical warriors focused on self-mastery and psychic defense.",
+            abilityScoreIncreases: {
+                connect: [
+                    { id: raceAbilityScores.wis_two.id },
+                ]
+            },
+            traits: {
+                connect: [
+                    { id: raceTraits.mental_discipline_githzerai.id },
+                    { id: raceTraits.githzerai_psionics.id },
+                ]
+            },
+            raceId: races.gith.id
         }),
         aasimar_scourge_aasimar: await db.createSubrace({
             id: "subrace-aasimar-scourge-aasimar",
@@ -263,6 +308,26 @@ export async function seedSubraces(params: SeedSubracesParams): Promise<Subraces
                 ]
             },
             weightRangeOverride: "100 to 140 lbs",
+            raceId: races.elf.id
+        }),
+        elf_pallid_elf: await db.createSubrace({
+            id: "subrace-elf-pallid-elf",
+            name: "Pallid Elf",
+            slug: "pallid-elf",
+            description: "Pallid elves are mysterious denizens of the Underdark who have adapted to lightless depths. Their pale skin and innate psychic abilities set them apart from other elves, and they possess unique mental powers granted by their subterranean existence.",
+            alabastriaContext: "Pallid Elves are rare in Alabastria, dwelling in the deepest caverns beneath Kamalatman or in isolated underground sanctuaries. Those who emerge into the surface world often serve as spies, scholars of forbidden lore, or seekers of ancient knowledge. Their psychic abilities make them valuable to organizations that deal with aberrations and planar threats.",
+            playstyle: "Psychic elves with mental powers and Underdark adaptation. Perfect for players who want mysterious elves with unique psionic abilities and stealth.",
+            abilityScoreIncreases: {
+                connect: [
+                    { id: raceAbilityScores.wis_one.id },
+                ]
+            },
+            traits: {
+                connect: [
+                    { id: raceTraits.incisive_sense_elf_pallid_elf.id },
+                    { id: raceTraits.blessing_of_the_moon_weaver_elf_pallid_elf.id },
+                ]
+            },
             raceId: races.elf.id
         }),
         elf_dark_elf_drow: await db.createSubrace({
@@ -473,6 +538,26 @@ export async function seedSubraces(params: SeedSubracesParams): Promise<Subraces
                 connect: [
                     { id: raceTraits.artificers_lore_gnome_rock_gnome.id },
                     { id: raceTraits.tinker_gnome_rock_gnome.id },
+                ]
+            },
+            raceId: races.gnome.id
+        }),
+        gnome_svirfneblin: await db.createSubrace({
+            id: "subrace-gnome-svirfneblin",
+            name: "Svirfneblin",
+            slug: "svirfneblin",
+            description: "Svirfneblin, or deep gnomes, are gnomes who live in the Underdark and have adapted to its harsh environment.",
+            alabastriaContext: "Svirfneblin in Alabastria are found in the Underdark regions of Maltman and Alatman, where their stealth and magical abilities make them excellent spies and scouts in the dangerous underground world.",
+            playstyle: "Stealthy and magical gnomes who excel at surviving in the Underdark and using illusion magic.",
+            abilityScoreIncreases: {
+                connect: [
+                    { id: raceAbilityScores.dex_one.id },
+                ]
+            },
+            traits: {
+                connect: [
+                    { id: raceTraits.darkvision_gnome_svirfneblin.id },
+                    { id: raceTraits.stone_camouflage_gnome_svirfneblin.id },
                 ]
             },
             raceId: races.gnome.id

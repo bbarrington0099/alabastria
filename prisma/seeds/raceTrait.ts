@@ -254,10 +254,67 @@ export interface RaceTraits {
     chromatic_ancestry_dragonborn: RaceTraitPayload;
     metallic_ancestry_dragonborn: RaceTraitPayload;
     gem_ancestry_dragonborn: RaceTraitPayload;
+    gith_psionics: RaceTraitPayload;
+    mental_discipline: RaceTraitPayload;
+    planar_knowledge: RaceTraitPayload;
+    darkvision_gnome_svirfneblin: RaceTraitPayload;
+    stone_camouflage_gnome_svirfneblin: RaceTraitPayload;
+    decadent_mastery_githyanki: RaceTraitPayload;
+    martial_prodigy_githyanki: RaceTraitPayload;
+    githyanki_psionics: RaceTraitPayload;
+    mental_discipline_githzerai: RaceTraitPayload;
+    githzerai_psionics: RaceTraitPayload;
+    incisive_sense_elf_pallid_elf: RaceTraitPayload;
+    blessing_of_the_moon_weaver_elf_pallid_elf: RaceTraitPayload;
 }
 
 export async function seedRaceTraits(): Promise<RaceTraits> {
     return {
+        incisive_sense_elf_pallid_elf: await db.createRaceTrait({
+            id: "race-trait-incisive-sense-elf-pallid-elf",
+            name: "Incisive Sense",
+            description: "You have proficiency in the Insight skill.",
+        }),
+        blessing_of_the_moon_weaver_elf_pallid_elf: await db.createRaceTrait({
+            id: "race-trait-blessing-of-the-moon-weaver-elf-pallid-elf",
+            name: "Blessing of the Moon Weaver",
+            description: "You can cast the Faerie Fire spell once with this trait and regain the ability to do so when you finish a long rest. Wisdom is your spellcasting ability for this spell.",
+        }),
+        decadent_mastery_githyanki: await db.createRaceTrait({
+            id: "race-trait-decadent-mastery-githyanki",
+            name: "Decadent Mastery",
+            description: "You gain proficiency in two skills or one skill and one tool of your choice.",
+        }),
+        martial_prodigy_githyanki: await db.createRaceTrait({
+            id: "race-trait-martial-prodigy-githyanki",
+            name: "Martial Prodigy",
+            description: "You are proficient with light and medium armor and with the shortsword, longsword, and greatsword.",
+        }),
+        githyanki_psionics: await db.createRaceTrait({
+            id: "race-trait-githyanki-psionics",
+            name: "Githyanki Psionics",
+            description: "You can cast the Mage Hand cantrip. When you reach 3rd level, you can cast the Jump spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Misty Step spell once with this trait and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells.",
+        }),
+        mental_discipline_githzerai: await db.createRaceTrait({
+            id: "race-trait-mental-discipline-githzerai",
+            name: "Mental Discipline",
+            description: "You have advantage on saving throws against being charmed and frightened.",
+        }),
+        githzerai_psionics: await db.createRaceTrait({
+            id: "race-trait-githzerai-psionics",
+            name: "Githzerai Psionics",
+            description: "You can cast the Mage Hand cantrip. When you reach 3rd level, you can cast the Shield spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Detect Thoughts spell once with this trait and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells.",
+        }),
+        darkvision_gnome_svirfneblin: await db.createRaceTrait({
+            id: "race-trait-darkvision-gnome-svirfneblin",
+            name: "Darkvision",
+            description: "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+        }),
+        stone_camouflage_gnome_svirfneblin: await db.createRaceTrait({
+            id: "race-trait-stone-camouflage-gnome-svirfneblin",
+            name: "Stone Camouflage",
+            description: "You have advantage on Dexterity (Stealth) checks made to hide in rocky terrain.",
+        }),
         flight_aarakocra: await db.createRaceTrait({
             id: "race-trait-flight-aarakocra",
             name: "Flight",
@@ -322,6 +379,21 @@ export async function seedRaceTraits(): Promise<RaceTraits> {
             id: "race-trait-darkvision-bugbear",
             name: "Darkvision",
             description: "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+        }),
+        gith_psionics: await db.createRaceTrait({
+            id: "race-trait-gith-psionics",
+            name: "Gith Psionics",
+            description: "You can cast the Mage Hand cantrip. When you reach 3rd level, you can cast the Jump spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Misty Step spell once with this trait and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells.",
+        }),
+        mental_discipline: await db.createRaceTrait({
+            id: "race-trait-mental-discipline",
+            name: "Mental Discipline",
+            description: "You have advantage on saving throws against being charmed and frightened.",
+        }),
+        planar_knowledge: await db.createRaceTrait({
+            id: "race-trait-planar-knowledge",
+            name: "Planar Knowledge",
+            description: "You have proficiency in the Arcana skill.",
         }),
         long_limbed_bugbear: await db.createRaceTrait({
             id: "race-trait-long-limbed-bugbear",

@@ -242,6 +242,186 @@ export interface ClassFeatures {
     tactician_war_mind_combat_analysis: ClassFeaturePayload;
     tactician_war_mind_battlefield_presence: ClassFeaturePayload;
     tactician_war_mind_war_leader: ClassFeaturePayload;
+    cleric_arcana_domain_arcane_initiate: ClassFeaturePayload;
+    cleric_arcana_domain_spell_breaker: ClassFeaturePayload;
+    cleric_arcana_domain_arcane_mastery: ClassFeaturePayload;
+    cleric_death_domain_reaper: ClassFeaturePayload;
+    cleric_death_domain_touch_of_death: ClassFeaturePayload;
+    cleric_death_domain_divinity_of_death: ClassFeaturePayload;
+    cleric_grave_domain_circle_of_mortality: ClassFeaturePayload;
+    cleric_grave_domain_path_to_the_grave: ClassFeaturePayload;
+    cleric_grave_domain_sentinel_at_deaths_door: ClassFeaturePayload;
+    cleric_knowledge_domain_blessings_of_knowledge: ClassFeaturePayload;
+    cleric_knowledge_domain_knowledge_of_the_ages: ClassFeaturePayload;
+    cleric_knowledge_domain_visions_of_the_past: ClassFeaturePayload;
+    cleric_order_domain_orders_demand: ClassFeaturePayload;
+    cleric_order_domain_orders_wrath: ClassFeaturePayload;
+    cleric_order_domain_embodiment_of_the_law: ClassFeaturePayload;
+    cleric_peace_domain_emboldening_bond: ClassFeaturePayload;
+    cleric_peace_domain_shield_of_serenity: ClassFeaturePayload;
+    cleric_peace_domain_protective_bond: ClassFeaturePayload;
+    cleric_twilight_domain_vigilant_blessing: ClassFeaturePayload;
+    cleric_twilight_domain_twilight_sanctuary: ClassFeaturePayload;
+    cleric_twilight_domain_divinity_of_twilight: ClassFeaturePayload;
+    druid_circle_of_dreams_balm_of_the_summer_court: ClassFeaturePayload;
+    druid_circle_of_dreams_hearth_of_moonlight: ClassFeaturePayload;
+    druid_circle_of_dreams_hidden_paths: ClassFeaturePayload;
+    druid_circle_of_the_shepherd_speech_of_the_woods: ClassFeaturePayload;
+    druid_circle_of_the_shepherd_spirit_totem: ClassFeaturePayload;
+    druid_circle_of_the_shepherd_faithful_summons: ClassFeaturePayload;
+    druid_circle_of_spores_halo_of_spores: ClassFeaturePayload;
+    druid_circle_of_spores_symbiotic_entity: ClassFeaturePayload;
+    druid_circle_of_spores_fungal_infestation: ClassFeaturePayload;
+    druid_circle_of_stars_starry_form: ClassFeaturePayload;
+    druid_circle_of_stars_cosmic_omen: ClassFeaturePayload;
+    druid_circle_of_stars_full_of_stars: ClassFeaturePayload;
+    fighter_arcane_archer_arcane_archer_lore: ClassFeaturePayload;
+    fighter_arcane_archer_arcane_shot: ClassFeaturePayload;
+    fighter_arcane_archer_magic_arrow: ClassFeaturePayload;
+    fighter_cavalier_born_to_the_saddle: ClassFeaturePayload;
+    fighter_cavalier_unwavering_mark: ClassFeaturePayload;
+    fighter_cavalier_hold_the_line: ClassFeaturePayload;
+    fighter_echo_knight_manifest_echo: ClassFeaturePayload;
+    fighter_echo_knight_unleash_incarnation: ClassFeaturePayload;
+    fighter_echo_knight_echo_avatar: ClassFeaturePayload;
+    fighter_psi_warrior_psi_energy_blade: ClassFeaturePayload;
+    fighter_psi_warrior_psychic_shove: ClassFeaturePayload;
+    fighter_psi_warrior_telekinetic_strike: ClassFeaturePayload;
+    fighter_rune_knight_rune_carver: ClassFeaturePayload;
+    fighter_rune_knight_giants_might: ClassFeaturePayload;
+    fighter_rune_knight_runic_shield: ClassFeaturePayload;
+    fighter_samurai_fighting_spirit: ClassFeaturePayload;
+    fighter_samurai_elegant_courtier: ClassFeaturePayload;
+    fighter_samurai_rapid_strike: ClassFeaturePayload;
+    monk_way_of_the_astral_self_arms_of_the_astral_self: ClassFeaturePayload;
+    monk_way_of_the_astral_self_visage_of_the_astral_self: ClassFeaturePayload;
+    monk_way_of_the_astral_self_body_of_the_astral_self: ClassFeaturePayload;
+    monk_way_of_the_ascendant_dragon_dragons_breath: ClassFeaturePayload;
+    monk_way_of_the_ascendant_dragon_draconic_presence: ClassFeaturePayload;
+    monk_way_of_the_ascendant_dragon_breath_of_the_dragon: ClassFeaturePayload;
+    monk_way_of_the_drunken_master_drunken_technique: ClassFeaturePayload;
+    monk_way_of_the_drunken_master_tipsy_sway: ClassFeaturePayload;
+    monk_way_of_the_drunken_master_intoxicated_frenzy: ClassFeaturePayload;
+    monk_way_of_the_kensei_path_of_the_kensei: ClassFeaturePayload;
+    monk_way_of_the_kensei_agile_parry: ClassFeaturePayload;
+    monk_way_of_the_kensei_one_with_the_blade: ClassFeaturePayload;
+    monk_way_of_the_long_death_touch_of_death: ClassFeaturePayload;
+    monk_way_of_the_long_death_hour_of_reaping: ClassFeaturePayload;
+    monk_way_of_the_long_death_mastery_of_death: ClassFeaturePayload;
+    monk_way_of_mercy_hand_of_healing: ClassFeaturePayload;
+    monk_way_of_mercy_physicians_touch: ClassFeaturePayload;
+    monk_way_of_mercy_hand_of_ultimate_mercy: ClassFeaturePayload;
+    monk_way_of_the_sun_soul_radiant_sun_bolt: ClassFeaturePayload;
+    monk_way_of_the_sun_soul_searing_arc_strike: ClassFeaturePayload;
+    monk_way_of_the_sun_soul_searing_sunburst: ClassFeaturePayload;
+    paladin_oath_of_conquest_conquering_presence: ClassFeaturePayload;
+    paladin_oath_of_conquest_guided_strike: ClassFeaturePayload;
+    paladin_oath_of_conquest_scornful_rebuke: ClassFeaturePayload;
+    paladin_oath_of_glory_inspiring_smite: ClassFeaturePayload;
+    paladin_oath_of_glory_peerless_athlete: ClassFeaturePayload;
+    paladin_oath_of_glory_glorious_defense: ClassFeaturePayload;
+    paladin_oath_of_redemption_emissary_of_peace: ClassFeaturePayload;
+    paladin_oath_of_redemption_rebuke_the_violent: ClassFeaturePayload;
+    paladin_oath_of_redemption_protective_spirit: ClassFeaturePayload;
+    paladin_oath_of_the_watchers_watchers_will: ClassFeaturePayload;
+    paladin_oath_of_the_watchers_vigilant_rebuke: ClassFeaturePayload;
+    paladin_oath_of_the_watchers_aura_of_the_sentinel: ClassFeaturePayload;
+    ranger_drakewarden_drake_companion: ClassFeaturePayload;
+    ranger_drakewarden_draconic_might: ClassFeaturePayload;
+    ranger_drakewarden_draconic_crescent: ClassFeaturePayload;
+    ranger_fey_wanderer_additional_march: ClassFeaturePayload;
+    ranger_fey_wanderer_dreadful_glare: ClassFeaturePayload;
+    ranger_fey_wanderer_beguiling_twist: ClassFeaturePayload;
+    ranger_horizon_walker_detect_portal: ClassFeaturePayload;
+    ranger_horizon_walker_ethereal_step: ClassFeaturePayload;
+    ranger_horizon_walker_step_the_planes: ClassFeaturePayload;
+    ranger_monster_slayer_slayers_eye: ClassFeaturePayload;
+    ranger_monster_slayer_slayers_prey: ClassFeaturePayload;
+    ranger_monster_slayer_supernatural_defense: ClassFeaturePayload;
+    ranger_swarmkeeper_gathered_swarm: ClassFeaturePayload;
+    ranger_swarmkeeper_writhing_tide: ClassFeaturePayload;
+    ranger_swarmkeeper_swarmkeepers_fury: ClassFeaturePayload;
+    rogue_inquisitive_ear_for_deceit: ClassFeaturePayload;
+    rogue_inquisitive_eye_for_detail: ClassFeaturePayload;
+    rogue_inquisitive_unerring_eye: ClassFeaturePayload;
+    rogue_mastermind_master_of_intrigue: ClassFeaturePayload;
+    rogue_mastermind_master_of_tactics: ClassFeaturePayload;
+    rogue_mastermind_soul_of_deceit: ClassFeaturePayload;
+    rogue_phantom_wails_from_the_grave: ClassFeaturePayload;
+    rogue_phantom_tokens_of_the_departed: ClassFeaturePayload;
+    rogue_phantom_ghost_walk: ClassFeaturePayload;
+    rogue_scout_skirmisher: ClassFeaturePayload;
+    rogue_scout_survivalist: ClassFeaturePayload;
+    rogue_scout_sudden_strike: ClassFeaturePayload;
+    rogue_soulknife_psychic_blades: ClassFeaturePayload;
+    rogue_soulknife_psychic_whispers: ClassFeaturePayload;
+    rogue_soulknife_soul_knife: ClassFeaturePayload;
+    rogue_swashbuckler_fancy_footwork: ClassFeaturePayload;
+    rogue_swashbuckler_rakish_audacity: ClassFeaturePayload;
+    rogue_swashbuckler_panache: ClassFeaturePayload;
+    sorcerer_aberrant_mind_psionic_spells: ClassFeaturePayload;
+    sorcerer_aberrant_mind_mind_thrust: ClassFeaturePayload;
+    sorcerer_aberrant_mind_bend_mind: ClassFeaturePayload;
+    sorcerer_clockwork_soul_clockwork_magic: ClassFeaturePayload;
+    sorcerer_clockwork_soul_restore_balance: ClassFeaturePayload;
+    sorcerer_clockwork_soul_trance_of_order: ClassFeaturePayload;
+    sorcerer_lunar_sorcery_moonfire: ClassFeaturePayload;
+    sorcerer_lunar_sorcery_lunar_magic: ClassFeaturePayload;
+    sorcerer_lunar_sorcery_diffusing_evasion: ClassFeaturePayload;
+    sorcerer_shadow_magic_eyes_of_the_dark: ClassFeaturePayload;
+    sorcerer_shadow_magic_strength_of_the_grave: ClassFeaturePayload;
+    sorcerer_shadow_magic_shadow_walk: ClassFeaturePayload;
+    sorcerer_storm_sorcery_tempestuous_magic: ClassFeaturePayload;
+    sorcerer_storm_sorcery_heart_of_the_storm: ClassFeaturePayload;
+    sorcerer_storm_sorcery_storms_fury: ClassFeaturePayload;
+    warlock_the_celestial_bonus_cantrips: ClassFeaturePayload;
+    warlock_the_celestial_healing_light: ClassFeaturePayload;
+    warlock_the_celestial_radiant_soul: ClassFeaturePayload;
+    warlock_the_fathomless_tentacle_of_the_deeps: ClassFeaturePayload;
+    warlock_the_fathomless_gift_of_the_sea: ClassFeaturePayload;
+    warlock_the_fathomless_guardian_coil: ClassFeaturePayload;
+    warlock_the_genie_genies_vessel: ClassFeaturePayload;
+    warlock_the_genie_elemental_gift: ClassFeaturePayload;
+    warlock_the_genie_protective_benefaction: ClassFeaturePayload;
+    warlock_the_hexblade_hex_warrior: ClassFeaturePayload;
+    warlock_the_hexblade_hexblades_curse: ClassFeaturePayload;
+    warlock_the_hexblade_accursed_specter: ClassFeaturePayload;
+    warlock_the_undead_form_of_dread: ClassFeaturePayload;
+    warlock_the_undead_ghostly_gaze: ClassFeaturePayload;
+    warlock_the_undead_defy_death: ClassFeaturePayload;
+    warlock_the_undying_among_the_dead: ClassFeaturePayload;
+    warlock_the_undying_defy_death: ClassFeaturePayload;
+    warlock_the_undying_undying_nature: ClassFeaturePayload;
+    wizard_school_of_abjuration_arcane_ward: ClassFeaturePayload;
+    wizard_school_of_abjuration_projected_ward: ClassFeaturePayload;
+    wizard_school_of_abjuration_improved_abjuration: ClassFeaturePayload;
+    wizard_school_of_bladesinging_training_in_war_and_song: ClassFeaturePayload;
+    wizard_school_of_bladesinging_bladesong: ClassFeaturePayload;
+    wizard_school_of_bladesinging_extra_attack: ClassFeaturePayload;
+    wizard_school_of_chronurgy_chronal_shift: ClassFeaturePayload;
+    wizard_school_of_chronurgy_momentary_stasis: ClassFeaturePayload;
+    wizard_school_of_chronurgy_convergent_future: ClassFeaturePayload;
+    wizard_school_of_conjuration_minor_conjuration: ClassFeaturePayload;
+    wizard_school_of_conjuration_benign_transposition: ClassFeaturePayload;
+    wizard_school_of_conjuration_focused_conjuration: ClassFeaturePayload;
+    wizard_school_of_enchantment_hypnotic_gaze: ClassFeaturePayload;
+    wizard_school_of_enchantment_instinctive_charm: ClassFeaturePayload;
+    wizard_school_of_enchantment_split_enchantment: ClassFeaturePayload;
+    wizard_school_of_graviturgy_adjust_density: ClassFeaturePayload;
+    wizard_school_of_graviturgy_gravity_well: ClassFeaturePayload;
+    wizard_school_of_graviturgy_mighty_leap: ClassFeaturePayload;
+    wizard_school_of_necromancy_grim_harvest: ClassFeaturePayload;
+    wizard_school_of_necromancy_undead_thralls: ClassFeaturePayload;
+    wizard_school_of_necromancy_inured_to_undeath: ClassFeaturePayload;
+    wizard_order_of_scribes_wizardly_quill: ClassFeaturePayload;
+    wizard_order_of_scribes_awakened_spellbook: ClassFeaturePayload;
+    wizard_order_of_scribes_manifest_mind: ClassFeaturePayload;
+    wizard_school_of_transmutation_minor_alchemy: ClassFeaturePayload;
+    wizard_school_of_transmutation_transmuters_stone: ClassFeaturePayload;
+    wizard_school_of_transmutation_shapechanger: ClassFeaturePayload;
+    wizard_war_magic_arcane_deflection: ClassFeaturePayload;
+    wizard_war_magic_tactical_wit: ClassFeaturePayload;
+    wizard_war_magic_power_surge: ClassFeaturePayload;
 }
 
 export async function seedClassFeatures(): Promise<ClassFeatures> {
@@ -1680,5 +1860,1085 @@ export async function seedClassFeatures(): Promise<ClassFeatures> {
             level: 10,
             description: "Lead by example, gaining powerful combat abilities when fighting alongside allies",
         }),
+        cleric_arcana_domain_arcane_initiate: await db.createClassFeature({
+            id: "class-feature-cleric-arcana-domain-arcane-initiate",
+            name: "Arcane Initiate",
+            level: 3,
+            description: "Arcane Initiate description."
+        }),
+        cleric_arcana_domain_spell_breaker: await db.createClassFeature({
+            id: "class-feature-cleric-arcana-domain-spell-breaker",
+            name: "Spell Breaker",
+            level: 3,
+            description: "Spell Breaker description."
+        }),
+        cleric_arcana_domain_arcane_mastery: await db.createClassFeature({
+            id: "class-feature-cleric-arcana-domain-arcane-mastery",
+            name: "Arcane Mastery",
+            level: 3,
+            description: "Arcane Mastery description."
+        }),
+        cleric_death_domain_reaper: await db.createClassFeature({
+            id: "class-feature-cleric-death-domain-reaper",
+            name: "Reaper",
+            level: 3,
+            description: "Reaper description."
+        }),
+        cleric_death_domain_touch_of_death: await db.createClassFeature({
+            id: "class-feature-cleric-death-domain-touch-of-death",
+            name: "Touch of Death",
+            level: 3,
+            description: "Touch of Death description."
+        }),
+        cleric_death_domain_divinity_of_death: await db.createClassFeature({
+            id: "class-feature-cleric-death-domain-divinity-of-death",
+            name: "Divinity of Death",
+            level: 3,
+            description: "Divinity of Death description."
+        }),
+        cleric_grave_domain_circle_of_mortality: await db.createClassFeature({
+            id: "class-feature-cleric-grave-domain-circle-of-mortality",
+            name: "Circle of Mortality",
+            level: 3,
+            description: "Circle of Mortality description."
+        }),
+        cleric_grave_domain_path_to_the_grave: await db.createClassFeature({
+            id: "class-feature-cleric-grave-domain-path-to-the-grave",
+            name: "Path to the Grave",
+            level: 3,
+            description: "Path to the Grave description."
+        }),
+        cleric_grave_domain_sentinel_at_deaths_door: await db.createClassFeature({
+            id: "class-feature-cleric-grave-domain-sentinel-at-deaths-door",
+            name: "Sentinel at Death's Door",
+            level: 3,
+            description: "Sentinel at Death's Door description."
+        }),
+        cleric_knowledge_domain_blessings_of_knowledge: await db.createClassFeature({
+            id: "class-feature-cleric-knowledge-domain-blessings-of-knowledge",
+            name: "Blessings of Knowledge",
+            level: 3,
+            description: "Blessings of Knowledge description."
+        }),
+        cleric_knowledge_domain_knowledge_of_the_ages: await db.createClassFeature({
+            id: "class-feature-cleric-knowledge-domain-knowledge-of-the-ages",
+            name: "Knowledge of the Ages",
+            level: 3,
+            description: "Knowledge of the Ages description."
+        }),
+        cleric_knowledge_domain_visions_of_the_past: await db.createClassFeature({
+            id: "class-feature-cleric-knowledge-domain-visions-of-the-past",
+            name: "Visions of the Past",
+            level: 3,
+            description: "Visions of the Past description."
+        }),
+        cleric_order_domain_orders_demand: await db.createClassFeature({
+            id: "class-feature-cleric-order-domain-orders-demand",
+            name: "Order's Demand",
+            level: 3,
+            description: "Order's Demand description."
+        }),
+        cleric_order_domain_orders_wrath: await db.createClassFeature({
+            id: "class-feature-cleric-order-domain-orders-wrath",
+            name: "Order's Wrath",
+            level: 3,
+            description: "Order's Wrath description."
+        }),
+        cleric_order_domain_embodiment_of_the_law: await db.createClassFeature({
+            id: "class-feature-cleric-order-domain-embodiment-of-the-law",
+            name: "Embodiment of the Law",
+            level: 3,
+            description: "Embodiment of the Law description."
+        }),
+        cleric_peace_domain_emboldening_bond: await db.createClassFeature({
+            id: "class-feature-cleric-peace-domain-emboldening-bond",
+            name: "Emboldening Bond",
+            level: 3,
+            description: "Emboldening Bond description."
+        }),
+        cleric_peace_domain_shield_of_serenity: await db.createClassFeature({
+            id: "class-feature-cleric-peace-domain-shield-of-serenity",
+            name: "Shield of Serenity",
+            level: 3,
+            description: "Shield of Serenity description."
+        }),
+        cleric_peace_domain_protective_bond: await db.createClassFeature({
+            id: "class-feature-cleric-peace-domain-protective-bond",
+            name: "Protective Bond",
+            level: 3,
+            description: "Protective Bond description."
+        }),
+        cleric_twilight_domain_vigilant_blessing: await db.createClassFeature({
+            id: "class-feature-cleric-twilight-domain-vigilant-blessing",
+            name: "Vigilant Blessing",
+            level: 3,
+            description: "Vigilant Blessing description."
+        }),
+        cleric_twilight_domain_twilight_sanctuary: await db.createClassFeature({
+            id: "class-feature-cleric-twilight-domain-twilight-sanctuary",
+            name: "Twilight Sanctuary",
+            level: 3,
+            description: "Twilight Sanctuary description."
+        }),
+        cleric_twilight_domain_divinity_of_twilight: await db.createClassFeature({
+            id: "class-feature-cleric-twilight-domain-divinity-of-twilight",
+            name: "Divinity of Twilight",
+            level: 3,
+            description: "Divinity of Twilight description."
+        }),
+        druid_circle_of_dreams_balm_of_the_summer_court: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-dreams-balm-of-the-summer-court",
+            name: "Balm of the Summer Court",
+            level: 3,
+            description: "Balm of the Summer Court description."
+        }),
+        druid_circle_of_dreams_hearth_of_moonlight: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-dreams-hearth-of-moonlight",
+            name: "Hearth of Moonlight",
+            level: 3,
+            description: "Hearth of Moonlight description."
+        }),
+        druid_circle_of_dreams_hidden_paths: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-dreams-hidden-paths",
+            name: "Hidden Paths",
+            level: 3,
+            description: "Hidden Paths description."
+        }),
+        druid_circle_of_the_shepherd_speech_of_the_woods: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-the-shepherd-speech-of-the-woods",
+            name: "Speech of the Woods",
+            level: 3,
+            description: "Speech of the Woods description."
+        }),
+        druid_circle_of_the_shepherd_spirit_totem: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-the-shepherd-spirit-totem",
+            name: "Spirit Totem",
+            level: 3,
+            description: "Spirit Totem description."
+        }),
+        druid_circle_of_the_shepherd_faithful_summons: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-the-shepherd-faithful-summons",
+            name: "Faithful Summons",
+            level: 3,
+            description: "Faithful Summons description."
+        }),
+        druid_circle_of_spores_halo_of_spores: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-spores-halo-of-spores",
+            name: "Halo of Spores",
+            level: 3,
+            description: "Halo of Spores description."
+        }),
+        druid_circle_of_spores_symbiotic_entity: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-spores-symbiotic-entity",
+            name: "Symbiotic Entity",
+            level: 3,
+            description: "Symbiotic Entity description."
+        }),
+        druid_circle_of_spores_fungal_infestation: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-spores-fungal-infestation",
+            name: "Fungal Infestation",
+            level: 3,
+            description: "Fungal Infestation description."
+        }),
+        druid_circle_of_stars_starry_form: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-stars-starry-form",
+            name: "Starry Form",
+            level: 3,
+            description: "Starry Form description."
+        }),
+        druid_circle_of_stars_cosmic_omen: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-stars-cosmic-omen",
+            name: "Cosmic Omen",
+            level: 3,
+            description: "Cosmic Omen description."
+        }),
+        druid_circle_of_stars_full_of_stars: await db.createClassFeature({
+            id: "class-feature-druid-circle-of-stars-full-of-stars",
+            name: "Full of Stars",
+            level: 3,
+            description: "Full of Stars description."
+        }),
+        fighter_arcane_archer_arcane_archer_lore: await db.createClassFeature({
+            id: "class-feature-fighter-arcane-archer-arcane-archer-lore",
+            name: "Arcane Archer Lore",
+            level: 3,
+            description: "Arcane Archer Lore description."
+        }),
+        fighter_arcane_archer_arcane_shot: await db.createClassFeature({
+            id: "class-feature-fighter-arcane-archer-arcane-shot",
+            name: "Arcane Shot",
+            level: 3,
+            description: "Arcane Shot description."
+        }),
+        fighter_arcane_archer_magic_arrow: await db.createClassFeature({
+            id: "class-feature-fighter-arcane-archer-magic-arrow",
+            name: "Magic Arrow",
+            level: 3,
+            description: "Magic Arrow description."
+        }),
+        fighter_cavalier_born_to_the_saddle: await db.createClassFeature({
+            id: "class-feature-fighter-cavalier-born-to-the-saddle",
+            name: "Born to the Saddle",
+            level: 3,
+            description: "Born to the Saddle description."
+        }),
+        fighter_cavalier_unwavering_mark: await db.createClassFeature({
+            id: "class-feature-fighter-cavalier-unwavering-mark",
+            name: "Unwavering Mark",
+            level: 3,
+            description: "Unwavering Mark description."
+        }),
+        fighter_cavalier_hold_the_line: await db.createClassFeature({
+            id: "class-feature-fighter-cavalier-hold-the-line",
+            name: "Hold the Line",
+            level: 3,
+            description: "Hold the Line description."
+        }),
+        fighter_echo_knight_manifest_echo: await db.createClassFeature({
+            id: "class-feature-fighter-echo-knight-manifest-echo",
+            name: "Manifest Echo",
+            level: 3,
+            description: "Manifest Echo description."
+        }),
+        fighter_echo_knight_unleash_incarnation: await db.createClassFeature({
+            id: "class-feature-fighter-echo-knight-unleash-incarnation",
+            name: "Unleash Incarnation",
+            level: 3,
+            description: "Unleash Incarnation description."
+        }),
+        fighter_echo_knight_echo_avatar: await db.createClassFeature({
+            id: "class-feature-fighter-echo-knight-echo-avatar",
+            name: "Echo Avatar",
+            level: 3,
+            description: "Echo Avatar description."
+        }),
+        fighter_psi_warrior_psi_energy_blade: await db.createClassFeature({
+            id: "class-feature-fighter-psi-warrior-psi-energy-blade",
+            name: "Psi Energy Blade",
+            level: 3,
+            description: "Psi Energy Blade description."
+        }),
+        fighter_psi_warrior_psychic_shove: await db.createClassFeature({
+            id: "class-feature-fighter-psi-warrior-psychic-shove",
+            name: "Psychic Shove",
+            level: 3,
+            description: "Psychic Shove description."
+        }),
+        fighter_psi_warrior_telekinetic_strike: await db.createClassFeature({
+            id: "class-feature-fighter-psi-warrior-telekinetic-strike",
+            name: "Telekinetic Strike",
+            level: 3,
+            description: "Telekinetic Strike description."
+        }),
+        fighter_rune_knight_rune_carver: await db.createClassFeature({
+            id: "class-feature-fighter-rune-knight-rune-carver",
+            name: "Rune Carver",
+            level: 3,
+            description: "Rune Carver description."
+        }),
+        fighter_rune_knight_giants_might: await db.createClassFeature({
+            id: "class-feature-fighter-rune-knight-giants-might",
+            name: "Giant's Might",
+            level: 3,
+            description: "Giant's Might description."
+        }),
+        fighter_rune_knight_runic_shield: await db.createClassFeature({
+            id: "class-feature-fighter-rune-knight-runic-shield",
+            name: "Runic Shield",
+            level: 3,
+            description: "Runic Shield description."
+        }),
+        fighter_samurai_fighting_spirit: await db.createClassFeature({
+            id: "class-feature-fighter-samurai-fighting-spirit",
+            name: "Fighting Spirit",
+            level: 3,
+            description: "Fighting Spirit description."
+        }),
+        fighter_samurai_elegant_courtier: await db.createClassFeature({
+            id: "class-feature-fighter-samurai-elegant-courtier",
+            name: "Elegant Courtier",
+            level: 3,
+            description: "Elegant Courtier description."
+        }),
+        fighter_samurai_rapid_strike: await db.createClassFeature({
+            id: "class-feature-fighter-samurai-rapid-strike",
+            name: "Rapid Strike",
+            level: 3,
+            description: "Rapid Strike description."
+        }),
+        monk_way_of_the_astral_self_arms_of_the_astral_self: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-astral-self-arms-of-the-astral-self",
+            name: "Arms of the Astral Self",
+            level: 3,
+            description: "Arms of the Astral Self description."
+        }),
+        monk_way_of_the_astral_self_visage_of_the_astral_self: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-astral-self-visage-of-the-astral-self",
+            name: "Visage of the Astral Self",
+            level: 3,
+            description: "Visage of the Astral Self description."
+        }),
+        monk_way_of_the_astral_self_body_of_the_astral_self: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-astral-self-body-of-the-astral-self",
+            name: "Body of the Astral Self",
+            level: 3,
+            description: "Body of the Astral Self description."
+        }),
+        monk_way_of_the_ascendant_dragon_dragons_breath: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-ascendant-dragon-dragons-breath",
+            name: "Dragon's Breath",
+            level: 3,
+            description: "Dragon's Breath description."
+        }),
+        monk_way_of_the_ascendant_dragon_draconic_presence: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-ascendant-dragon-draconic-presence",
+            name: "Draconic Presence",
+            level: 3,
+            description: "Draconic Presence description."
+        }),
+        monk_way_of_the_ascendant_dragon_breath_of_the_dragon: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-ascendant-dragon-breath-of-the-dragon",
+            name: "Breath of the Dragon",
+            level: 3,
+            description: "Breath of the Dragon description."
+        }),
+        monk_way_of_the_drunken_master_drunken_technique: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-drunken-master-drunken-technique",
+            name: "Drunken Technique",
+            level: 3,
+            description: "Drunken Technique description."
+        }),
+        monk_way_of_the_drunken_master_tipsy_sway: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-drunken-master-tipsy-sway",
+            name: "Tipsy Sway",
+            level: 3,
+            description: "Tipsy Sway description."
+        }),
+        monk_way_of_the_drunken_master_intoxicated_frenzy: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-drunken-master-intoxicated-frenzy",
+            name: "Intoxicated Frenzy",
+            level: 3,
+            description: "Intoxicated Frenzy description."
+        }),
+        monk_way_of_the_kensei_path_of_the_kensei: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-kensei-path-of-the-kensei",
+            name: "Path of the Kensei",
+            level: 3,
+            description: "Path of the Kensei description."
+        }),
+        monk_way_of_the_kensei_agile_parry: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-kensei-agile-parry",
+            name: "Agile Parry",
+            level: 3,
+            description: "Agile Parry description."
+        }),
+        monk_way_of_the_kensei_one_with_the_blade: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-kensei-one-with-the-blade",
+            name: "One with the Blade",
+            level: 3,
+            description: "One with the Blade description."
+        }),
+        monk_way_of_the_long_death_touch_of_death: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-long-death-touch-of-death",
+            name: "Touch of Death",
+            level: 3,
+            description: "Touch of Death description."
+        }),
+        monk_way_of_the_long_death_hour_of_reaping: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-long-death-hour-of-reaping",
+            name: "Hour of Reaping",
+            level: 3,
+            description: "Hour of Reaping description."
+        }),
+        monk_way_of_the_long_death_mastery_of_death: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-long-death-mastery-of-death",
+            name: "Mastery of Death",
+            level: 3,
+            description: "Mastery of Death description."
+        }),
+        monk_way_of_mercy_hand_of_healing: await db.createClassFeature({
+            id: "class-feature-monk-way-of-mercy-hand-of-healing",
+            name: "Hand of Healing",
+            level: 3,
+            description: "Hand of Healing description."
+        }),
+        monk_way_of_mercy_physicians_touch: await db.createClassFeature({
+            id: "class-feature-monk-way-of-mercy-physicians-touch",
+            name: "Physician's Touch",
+            level: 3,
+            description: "Physician's Touch description."
+        }),
+        monk_way_of_mercy_hand_of_ultimate_mercy: await db.createClassFeature({
+            id: "class-feature-monk-way-of-mercy-hand-of-ultimate-mercy",
+            name: "Hand of Ultimate Mercy",
+            level: 3,
+            description: "Hand of Ultimate Mercy description."
+        }),
+        monk_way_of_the_sun_soul_radiant_sun_bolt: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-sun-soul-radiant-sun-bolt",
+            name: "Radiant Sun Bolt",
+            level: 3,
+            description: "Radiant Sun Bolt description."
+        }),
+        monk_way_of_the_sun_soul_searing_arc_strike: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-sun-soul-searing-arc-strike",
+            name: "Searing Arc Strike",
+            level: 3,
+            description: "Searing Arc Strike description."
+        }),
+        monk_way_of_the_sun_soul_searing_sunburst: await db.createClassFeature({
+            id: "class-feature-monk-way-of-the-sun-soul-searing-sunburst",
+            name: "Searing Sunburst",
+            level: 3,
+            description: "Searing Sunburst description."
+        }),
+        paladin_oath_of_conquest_conquering_presence: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-conquest-conquering-presence",
+            name: "Conquering Presence",
+            level: 3,
+            description: "Conquering Presence description."
+        }),
+        paladin_oath_of_conquest_guided_strike: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-conquest-guided-strike",
+            name: "Guided Strike",
+            level: 3,
+            description: "Guided Strike description."
+        }),
+        paladin_oath_of_conquest_scornful_rebuke: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-conquest-scornful-rebuke",
+            name: "Scornful Rebuke",
+            level: 3,
+            description: "Scornful Rebuke description."
+        }),
+        paladin_oath_of_glory_inspiring_smite: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-glory-inspiring-smite",
+            name: "Inspiring Smite",
+            level: 3,
+            description: "Inspiring Smite description."
+        }),
+        paladin_oath_of_glory_peerless_athlete: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-glory-peerless-athlete",
+            name: "Peerless Athlete",
+            level: 3,
+            description: "Peerless Athlete description."
+        }),
+        paladin_oath_of_glory_glorious_defense: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-glory-glorious-defense",
+            name: "Glorious Defense",
+            level: 3,
+            description: "Glorious Defense description."
+        }),
+        paladin_oath_of_redemption_emissary_of_peace: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-redemption-emissary-of-peace",
+            name: "Emissary of Peace",
+            level: 3,
+            description: "Emissary of Peace description."
+        }),
+        paladin_oath_of_redemption_rebuke_the_violent: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-redemption-rebuke-the-violent",
+            name: "Rebuke the Violent",
+            level: 3,
+            description: "Rebuke the Violent description."
+        }),
+        paladin_oath_of_redemption_protective_spirit: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-redemption-protective-spirit",
+            name: "Protective Spirit",
+            level: 3,
+            description: "Protective Spirit description."
+        }),
+        paladin_oath_of_the_watchers_watchers_will: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-the-watchers-watchers-will",
+            name: "Watcher's Will",
+            level: 3,
+            description: "Watcher's Will description."
+        }),
+        paladin_oath_of_the_watchers_vigilant_rebuke: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-the-watchers-vigilant-rebuke",
+            name: "Vigilant Rebuke",
+            level: 3,
+            description: "Vigilant Rebuke description."
+        }),
+        paladin_oath_of_the_watchers_aura_of_the_sentinel: await db.createClassFeature({
+            id: "class-feature-paladin-oath-of-the-watchers-aura-of-the-sentinel",
+            name: "Aura of the Sentinel",
+            level: 3,
+            description: "Aura of the Sentinel description."
+        }),
+        ranger_drakewarden_drake_companion: await db.createClassFeature({
+            id: "class-feature-ranger-drakewarden-drake-companion",
+            name: "Drake Companion",
+            level: 3,
+            description: "Drake Companion description."
+        }),
+        ranger_drakewarden_draconic_might: await db.createClassFeature({
+            id: "class-feature-ranger-drakewarden-draconic-might",
+            name: "Draconic Might",
+            level: 3,
+            description: "Draconic Might description."
+        }),
+        ranger_drakewarden_draconic_crescent: await db.createClassFeature({
+            id: "class-feature-ranger-drakewarden-draconic-crescent",
+            name: "Draconic Crescent",
+            level: 3,
+            description: "Draconic Crescent description."
+        }),
+        ranger_fey_wanderer_additional_march: await db.createClassFeature({
+            id: "class-feature-ranger-fey-wanderer-additional-march",
+            name: "Additional March",
+            level: 3,
+            description: "Additional March description."
+        }),
+        ranger_fey_wanderer_dreadful_glare: await db.createClassFeature({
+            id: "class-feature-ranger-fey-wanderer-dreadful-glare",
+            name: "Dreadful Glare",
+            level: 3,
+            description: "Dreadful Glare description."
+        }),
+        ranger_fey_wanderer_beguiling_twist: await db.createClassFeature({
+            id: "class-feature-ranger-fey-wanderer-beguiling-twist",
+            name: "Beguiling Twist",
+            level: 3,
+            description: "Beguiling Twist description."
+        }),
+        ranger_horizon_walker_detect_portal: await db.createClassFeature({
+            id: "class-feature-ranger-horizon-walker-detect-portal",
+            name: "Detect Portal",
+            level: 3,
+            description: "Detect Portal description."
+        }),
+        ranger_horizon_walker_ethereal_step: await db.createClassFeature({
+            id: "class-feature-ranger-horizon-walker-ethereal-step",
+            name: "Ethereal Step",
+            level: 3,
+            description: "Ethereal Step description."
+        }),
+        ranger_horizon_walker_step_the_planes: await db.createClassFeature({
+            id: "class-feature-ranger-horizon-walker-step-the-planes",
+            name: "Step the Planes",
+            level: 3,
+            description: "Step the Planes description."
+        }),
+        ranger_monster_slayer_slayers_eye: await db.createClassFeature({
+            id: "class-feature-ranger-monster-slayer-slayers-eye",
+            name: "Slayer's Eye",
+            level: 3,
+            description: "Slayer's Eye description."
+        }),
+        ranger_monster_slayer_slayers_prey: await db.createClassFeature({
+            id: "class-feature-ranger-monster-slayer-slayers-prey",
+            name: "Slayer's Prey",
+            level: 3,
+            description: "Slayer's Prey description."
+        }),
+        ranger_monster_slayer_supernatural_defense: await db.createClassFeature({
+            id: "class-feature-ranger-monster-slayer-supernatural-defense",
+            name: "Supernatural Defense",
+            level: 3,
+            description: "Supernatural Defense description."
+        }),
+        ranger_swarmkeeper_gathered_swarm: await db.createClassFeature({
+            id: "class-feature-ranger-swarmkeeper-gathered-swarm",
+            name: "Gathered Swarm",
+            level: 3,
+            description: "Gathered Swarm description."
+        }),
+        ranger_swarmkeeper_writhing_tide: await db.createClassFeature({
+            id: "class-feature-ranger-swarmkeeper-writhing-tide",
+            name: "Writhing Tide",
+            level: 3,
+            description: "Writhing Tide description."
+        }),
+        ranger_swarmkeeper_swarmkeepers_fury: await db.createClassFeature({
+            id: "class-feature-ranger-swarmkeeper-swarmkeepers-fury",
+            name: "Swarmkeeper's Fury",
+            level: 3,
+            description: "Swarmkeeper's Fury description."
+        }),
+        rogue_inquisitive_ear_for_deceit: await db.createClassFeature({
+            id: "class-feature-rogue-inquisitive-ear-for-deceit",
+            name: "Ear for Deceit",
+            level: 3,
+            description: "Ear for Deceit description."
+        }),
+        rogue_inquisitive_eye_for_detail: await db.createClassFeature({
+            id: "class-feature-rogue-inquisitive-eye-for-detail",
+            name: "Eye for Detail",
+            level: 3,
+            description: "Eye for Detail description."
+        }),
+        rogue_inquisitive_unerring_eye: await db.createClassFeature({
+            id: "class-feature-rogue-inquisitive-unerring-eye",
+            name: "Unerring Eye",
+            level: 3,
+            description: "Unerring Eye description."
+        }),
+        rogue_mastermind_master_of_intrigue: await db.createClassFeature({
+            id: "class-feature-rogue-mastermind-master-of-intrigue",
+            name: "Master of Intrigue",
+            level: 3,
+            description: "Master of Intrigue description."
+        }),
+        rogue_mastermind_master_of_tactics: await db.createClassFeature({
+            id: "class-feature-rogue-mastermind-master-of-tactics",
+            name: "Master of Tactics",
+            level: 3,
+            description: "Master of Tactics description."
+        }),
+        rogue_mastermind_soul_of_deceit: await db.createClassFeature({
+            id: "class-feature-rogue-mastermind-soul-of-deceit",
+            name: "Soul of Deceit",
+            level: 3,
+            description: "Soul of Deceit description."
+        }),
+        rogue_phantom_wails_from_the_grave: await db.createClassFeature({
+            id: "class-feature-rogue-phantom-wails-from-the-grave",
+            name: "Wails from the Grave",
+            level: 3,
+            description: "Wails from the Grave description."
+        }),
+        rogue_phantom_tokens_of_the_departed: await db.createClassFeature({
+            id: "class-feature-rogue-phantom-tokens-of-the-departed",
+            name: "Tokens of the Departed",
+            level: 3,
+            description: "Tokens of the Departed description."
+        }),
+        rogue_phantom_ghost_walk: await db.createClassFeature({
+            id: "class-feature-rogue-phantom-ghost-walk",
+            name: "Ghost Walk",
+            level: 3,
+            description: "Ghost Walk description."
+        }),
+        rogue_scout_skirmisher: await db.createClassFeature({
+            id: "class-feature-rogue-scout-skirmisher",
+            name: "Skirmisher",
+            level: 3,
+            description: "Skirmisher description."
+        }),
+        rogue_scout_survivalist: await db.createClassFeature({
+            id: "class-feature-rogue-scout-survivalist",
+            name: "Survivalist",
+            level: 3,
+            description: "Survivalist description."
+        }),
+        rogue_scout_sudden_strike: await db.createClassFeature({
+            id: "class-feature-rogue-scout-sudden-strike",
+            name: "Sudden Strike",
+            level: 3,
+            description: "Sudden Strike description."
+        }),
+        rogue_soulknife_psychic_blades: await db.createClassFeature({
+            id: "class-feature-rogue-soulknife-psychic-blades",
+            name: "Psychic Blades",
+            level: 3,
+            description: "Psychic Blades description."
+        }),
+        rogue_soulknife_psychic_whispers: await db.createClassFeature({
+            id: "class-feature-rogue-soulknife-psychic-whispers",
+            name: "Psychic Whispers",
+            level: 3,
+            description: "Psychic Whispers description."
+        }),
+        rogue_soulknife_soul_knife: await db.createClassFeature({
+            id: "class-feature-rogue-soulknife-soul-knife",
+            name: "Soul Knife",
+            level: 3,
+            description: "Soul Knife description."
+        }),
+        rogue_swashbuckler_fancy_footwork: await db.createClassFeature({
+            id: "class-feature-rogue-swashbuckler-fancy-footwork",
+            name: "Fancy Footwork",
+            level: 3,
+            description: "Fancy Footwork description."
+        }),
+        rogue_swashbuckler_rakish_audacity: await db.createClassFeature({
+            id: "class-feature-rogue-swashbuckler-rakish-audacity",
+            name: "Rakish Audacity",
+            level: 3,
+            description: "Rakish Audacity description."
+        }),
+        rogue_swashbuckler_panache: await db.createClassFeature({
+            id: "class-feature-rogue-swashbuckler-panache",
+            name: "Panache",
+            level: 3,
+            description: "Panache description."
+        }),
+        sorcerer_aberrant_mind_psionic_spells: await db.createClassFeature({
+            id: "class-feature-sorcerer-aberrant-mind-psionic-spells",
+            name: "Psionic Spells",
+            level: 3,
+            description: "Psionic Spells description."
+        }),
+        sorcerer_aberrant_mind_mind_thrust: await db.createClassFeature({
+            id: "class-feature-sorcerer-aberrant-mind-mind-thrust",
+            name: "Mind Thrust",
+            level: 3,
+            description: "Mind Thrust description."
+        }),
+        sorcerer_aberrant_mind_bend_mind: await db.createClassFeature({
+            id: "class-feature-sorcerer-aberrant-mind-bend-mind",
+            name: "Bend Mind",
+            level: 3,
+            description: "Bend Mind description."
+        }),
+        sorcerer_clockwork_soul_clockwork_magic: await db.createClassFeature({
+            id: "class-feature-sorcerer-clockwork-soul-clockwork-magic",
+            name: "Clockwork Magic",
+            level: 3,
+            description: "Clockwork Magic description."
+        }),
+        sorcerer_clockwork_soul_restore_balance: await db.createClassFeature({
+            id: "class-feature-sorcerer-clockwork-soul-restore-balance",
+            name: "Restore Balance",
+            level: 3,
+            description: "Restore Balance description."
+        }),
+        sorcerer_clockwork_soul_trance_of_order: await db.createClassFeature({
+            id: "class-feature-sorcerer-clockwork-soul-trance-of-order",
+            name: "Trance of Order",
+            level: 3,
+            description: "Trance of Order description."
+        }),
+        sorcerer_lunar_sorcery_moonfire: await db.createClassFeature({
+            id: "class-feature-sorcerer-lunar-sorcery-moonfire",
+            name: "Moonfire",
+            level: 3,
+            description: "Moonfire description."
+        }),
+        sorcerer_lunar_sorcery_lunar_magic: await db.createClassFeature({
+            id: "class-feature-sorcerer-lunar-sorcery-lunar-magic",
+            name: "Lunar Magic",
+            level: 3,
+            description: "Lunar Magic description."
+        }),
+        sorcerer_lunar_sorcery_diffusing_evasion: await db.createClassFeature({
+            id: "class-feature-sorcerer-lunar-sorcery-diffusing-evasion",
+            name: "Diffusing Evasion",
+            level: 3,
+            description: "Diffusing Evasion description."
+        }),
+        sorcerer_shadow_magic_eyes_of_the_dark: await db.createClassFeature({
+            id: "class-feature-sorcerer-shadow-magic-eyes-of-the-dark",
+            name: "Eyes of the Dark",
+            level: 3,
+            description: "Eyes of the Dark description."
+        }),
+        sorcerer_shadow_magic_strength_of_the_grave: await db.createClassFeature({
+            id: "class-feature-sorcerer-shadow-magic-strength-of-the-grave",
+            name: "Strength of the Grave",
+            level: 3,
+            description: "Strength of the Grave description."
+        }),
+        sorcerer_shadow_magic_shadow_walk: await db.createClassFeature({
+            id: "class-feature-sorcerer-shadow-magic-shadow-walk",
+            name: "Shadow Walk",
+            level: 3,
+            description: "Shadow Walk description."
+        }),
+        sorcerer_storm_sorcery_tempestuous_magic: await db.createClassFeature({
+            id: "class-feature-sorcerer-storm-sorcery-tempestuous-magic",
+            name: "Tempestuous Magic",
+            level: 3,
+            description: "Tempestuous Magic description."
+        }),
+        sorcerer_storm_sorcery_heart_of_the_storm: await db.createClassFeature({
+            id: "class-feature-sorcerer-storm-sorcery-heart-of-the-storm",
+            name: "Heart of the Storm",
+            level: 3,
+            description: "Heart of the Storm description."
+        }),
+        sorcerer_storm_sorcery_storms_fury: await db.createClassFeature({
+            id: "class-feature-sorcerer-storm-sorcery-storms-fury",
+            name: "Storm's Fury",
+            level: 3,
+            description: "Storm's Fury description."
+        }),
+        warlock_the_celestial_bonus_cantrips: await db.createClassFeature({
+            id: "class-feature-warlock-the-celestial-bonus-cantrips",
+            name: "Bonus Cantrips",
+            level: 3,
+            description: "Bonus Cantrips description."
+        }),
+        warlock_the_celestial_healing_light: await db.createClassFeature({
+            id: "class-feature-warlock-the-celestial-healing-light",
+            name: "Healing Light",
+            level: 3,
+            description: "Healing Light description."
+        }),
+        warlock_the_celestial_radiant_soul: await db.createClassFeature({
+            id: "class-feature-warlock-the-celestial-radiant-soul",
+            name: "Radiant Soul",
+            level: 3,
+            description: "Radiant Soul description."
+        }),
+        warlock_the_fathomless_tentacle_of_the_deeps: await db.createClassFeature({
+            id: "class-feature-warlock-the-fathomless-tentacle-of-the-deeps",
+            name: "Tentacle of the Deeps",
+            level: 3,
+            description: "Tentacle of the Deeps description."
+        }),
+        warlock_the_fathomless_gift_of_the_sea: await db.createClassFeature({
+            id: "class-feature-warlock-the-fathomless-gift-of-the-sea",
+            name: "Gift of the Sea",
+            level: 3,
+            description: "Gift of the Sea description."
+        }),
+        warlock_the_fathomless_guardian_coil: await db.createClassFeature({
+            id: "class-feature-warlock-the-fathomless-guardian-coil",
+            name: "Guardian Coil",
+            level: 3,
+            description: "Guardian Coil description."
+        }),
+        warlock_the_genie_genies_vessel: await db.createClassFeature({
+            id: "class-feature-warlock-the-genie-genies-vessel",
+            name: "Genie's Vessel",
+            level: 3,
+            description: "Genie's Vessel description."
+        }),
+        warlock_the_genie_elemental_gift: await db.createClassFeature({
+            id: "class-feature-warlock-the-genie-elemental-gift",
+            name: "Elemental Gift",
+            level: 3,
+            description: "Elemental Gift description."
+        }),
+        warlock_the_genie_protective_benefaction: await db.createClassFeature({
+            id: "class-feature-warlock-the-genie-protective-benefaction",
+            name: "Protective Benefaction",
+            level: 3,
+            description: "Protective Benefaction description."
+        }),
+        warlock_the_hexblade_hex_warrior: await db.createClassFeature({
+            id: "class-feature-warlock-the-hexblade-hex-warrior",
+            name: "Hex Warrior",
+            level: 3,
+            description: "Hex Warrior description."
+        }),
+        warlock_the_hexblade_hexblades_curse: await db.createClassFeature({
+            id: "class-feature-warlock-the-hexblade-hexblades-curse",
+            name: "Hexblade's Curse",
+            level: 3,
+            description: "Hexblade's Curse description."
+        }),
+        warlock_the_hexblade_accursed_specter: await db.createClassFeature({
+            id: "class-feature-warlock-the-hexblade-accursed-specter",
+            name: "Accursed Specter",
+            level: 3,
+            description: "Accursed Specter description."
+        }),
+        warlock_the_undead_form_of_dread: await db.createClassFeature({
+            id: "class-feature-warlock-the-undead-form-of-dread",
+            name: "Form of Dread",
+            level: 3,
+            description: "Form of Dread description."
+        }),
+        warlock_the_undead_ghostly_gaze: await db.createClassFeature({
+            id: "class-feature-warlock-the-undead-ghostly-gaze",
+            name: "Ghostly Gaze",
+            level: 3,
+            description: "Ghostly Gaze description."
+        }),
+        warlock_the_undead_defy_death: await db.createClassFeature({
+            id: "class-feature-warlock-the-undead-defy-death",
+            name: "Defy Death",
+            level: 3,
+            description: "Defy Death description."
+        }),
+        warlock_the_undying_among_the_dead: await db.createClassFeature({
+            id: "class-feature-warlock-the-undying-among-the-dead",
+            name: "Among the Dead",
+            level: 3,
+            description: "Among the Dead description."
+        }),
+        warlock_the_undying_defy_death: await db.createClassFeature({
+            id: "class-feature-warlock-the-undying-defy-death",
+            name: "Defy Death",
+            level: 3,
+            description: "Defy Death description."
+        }),
+        warlock_the_undying_undying_nature: await db.createClassFeature({
+            id: "class-feature-warlock-the-undying-undying-nature",
+            name: "Undying Nature",
+            level: 3,
+            description: "Undying Nature description."
+        }),
+        wizard_school_of_abjuration_arcane_ward: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-abjuration-arcane-ward",
+            name: "Arcane Ward",
+            level: 3,
+            description: "Arcane Ward description."
+        }),
+        wizard_school_of_abjuration_projected_ward: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-abjuration-projected-ward",
+            name: "Projected Ward",
+            level: 3,
+            description: "Projected Ward description."
+        }),
+        wizard_school_of_abjuration_improved_abjuration: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-abjuration-improved-abjuration",
+            name: "Improved Abjuration",
+            level: 3,
+            description: "Improved Abjuration description."
+        }),
+        wizard_school_of_bladesinging_training_in_war_and_song: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-bladesinging-training-in-war-and-song",
+            name: "Training in War and Song",
+            level: 3,
+            description: "Training in War and Song description."
+        }),
+        wizard_school_of_bladesinging_bladesong: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-bladesinging-bladesong",
+            name: "Bladesong",
+            level: 3,
+            description: "Bladesong description."
+        }),
+        wizard_school_of_bladesinging_extra_attack: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-bladesinging-extra-attack",
+            name: "Extra Attack",
+            level: 3,
+            description: "Extra Attack description."
+        }),
+        wizard_school_of_chronurgy_chronal_shift: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-chronurgy-chronal-shift",
+            name: "Chronal Shift",
+            level: 3,
+            description: "Chronal Shift description."
+        }),
+        wizard_school_of_chronurgy_momentary_stasis: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-chronurgy-momentary-stasis",
+            name: "Momentary Stasis",
+            level: 3,
+            description: "Momentary Stasis description."
+        }),
+        wizard_school_of_chronurgy_convergent_future: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-chronurgy-convergent-future",
+            name: "Convergent Future",
+            level: 3,
+            description: "Convergent Future description."
+        }),
+        wizard_school_of_conjuration_minor_conjuration: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-conjuration-minor-conjuration",
+            name: "Minor Conjuration",
+            level: 3,
+            description: "Minor Conjuration description."
+        }),
+        wizard_school_of_conjuration_benign_transposition: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-conjuration-benign-transposition",
+            name: "Benign Transposition",
+            level: 3,
+            description: "Benign Transposition description."
+        }),
+        wizard_school_of_conjuration_focused_conjuration: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-conjuration-focused-conjuration",
+            name: "Focused Conjuration",
+            level: 3,
+            description: "Focused Conjuration description."
+        }),
+        wizard_school_of_enchantment_hypnotic_gaze: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-enchantment-hypnotic-gaze",
+            name: "Hypnotic Gaze",
+            level: 3,
+            description: "Hypnotic Gaze description."
+        }),
+        wizard_school_of_enchantment_instinctive_charm: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-enchantment-instinctive-charm",
+            name: "Instinctive Charm",
+            level: 3,
+            description: "Instinctive Charm description."
+        }),
+        wizard_school_of_enchantment_split_enchantment: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-enchantment-split-enchantment",
+            name: "Split Enchantment",
+            level: 3,
+            description: "Split Enchantment description."
+        }),
+        wizard_school_of_graviturgy_adjust_density: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-graviturgy-adjust-density",
+            name: "Adjust Density",
+            level: 3,
+            description: "Adjust Density description."
+        }),
+        wizard_school_of_graviturgy_gravity_well: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-graviturgy-gravity-well",
+            name: "Gravity Well",
+            level: 3,
+            description: "Gravity Well description."
+        }),
+        wizard_school_of_graviturgy_mighty_leap: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-graviturgy-mighty-leap",
+            name: "Mighty Leap",
+            level: 3,
+            description: "Mighty Leap description."
+        }),
+        wizard_school_of_necromancy_grim_harvest: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-necromancy-grim-harvest",
+            name: "Grim Harvest",
+            level: 3,
+            description: "Grim Harvest description."
+        }),
+        wizard_school_of_necromancy_undead_thralls: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-necromancy-undead-thralls",
+            name: "Undead Thralls",
+            level: 3,
+            description: "Undead Thralls description."
+        }),
+        wizard_school_of_necromancy_inured_to_undeath: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-necromancy-inured-to-undeath",
+            name: "Inured to Undeath",
+            level: 3,
+            description: "Inured to Undeath description."
+        }),
+        wizard_order_of_scribes_wizardly_quill: await db.createClassFeature({
+            id: "class-feature-wizard-order-of-scribes-wizardly-quill",
+            name: "Wizardly Quill",
+            level: 3,
+            description: "Wizardly Quill description."
+        }),
+        wizard_order_of_scribes_awakened_spellbook: await db.createClassFeature({
+            id: "class-feature-wizard-order-of-scribes-awakened-spellbook",
+            name: "Awakened Spellbook",
+            level: 3,
+            description: "Awakened Spellbook description."
+        }),
+        wizard_order_of_scribes_manifest_mind: await db.createClassFeature({
+            id: "class-feature-wizard-order-of-scribes-manifest-mind",
+            name: "Manifest Mind",
+            level: 3,
+            description: "Manifest Mind description."
+        }),
+        wizard_school_of_transmutation_minor_alchemy: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-transmutation-minor-alchemy",
+            name: "Minor Alchemy",
+            level: 3,
+            description: "Minor Alchemy description."
+        }),
+        wizard_school_of_transmutation_transmuters_stone: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-transmutation-transmuters-stone",
+            name: "Transmuter's Stone",
+            level: 3,
+            description: "Transmuter's Stone description."
+        }),
+        wizard_school_of_transmutation_shapechanger: await db.createClassFeature({
+            id: "class-feature-wizard-school-of-transmutation-shapechanger",
+            name: "Shapechanger",
+            level: 3,
+            description: "Shapechanger description."
+        }),
+        wizard_war_magic_arcane_deflection: await db.createClassFeature({
+            id: "class-feature-wizard-war-magic-arcane-deflection",
+            name: "Arcane Deflection",
+            level: 3,
+            description: "Arcane Deflection description."
+        }),
+        wizard_war_magic_tactical_wit: await db.createClassFeature({
+            id: "class-feature-wizard-war-magic-tactical-wit",
+            name: "Tactical Wit",
+            level: 3,
+            description: "Tactical Wit description."
+        }),
+        wizard_war_magic_power_surge: await db.createClassFeature({
+            id: "class-feature-wizard-war-magic-power-surge",
+            name: "Power Surge",
+            level: 3,
+            description: "Power Surge description."
+        })
     }
 }

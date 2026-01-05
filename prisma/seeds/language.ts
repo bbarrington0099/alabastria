@@ -41,6 +41,7 @@ export interface Languages {
     tabaxi: LanguagePayload;
     thri_kreen: LanguagePayload;
     vedalken: LanguagePayload;
+    gith: LanguagePayload;
     unknown_dialects: LanguagePayload;
     any_one: LanguagePayload;
     any_two: LanguagePayload;
@@ -69,6 +70,11 @@ export async function seedLanguages(): Promise<Languages> {
             id: "language-gnomish-alabastria",
             name: "Gnomish",
             description: "A quirky, singsong chattering; precise and stilted, with a playful lilt and a cadence that makes even harsh consonants sound unusually cheerful."
+        }),
+        gith: await db.createLanguage({
+            id: "language-gith-alabastria",
+            name: "Gith",
+            description: "A sharp, staccato tongue; filled with clipped consonants and abrupt stops, reflecting the disciplined and militaristic culture of the Gith people."
         }),
         draconic: await db.createLanguage({
             id: "language-draconic-alabastria",

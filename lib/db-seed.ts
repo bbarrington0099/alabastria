@@ -161,6 +161,30 @@ export async function createDeityRelationship(data: Prisma.DeityRelationshipUnch
 }
 
 // ============================================================================
+// RECOMMENDATIONS
+// ============================================================================
+
+export async function createRaceSubclassRecommendation(data: Prisma.RaceSubclassRecommendationUncheckedCreateInput): Promise<Prisma.RaceSubclassRecommendationGetPayload<{}>> {
+    return db.createRaceSubclassRecommendation(data, true);
+}
+
+export async function createSubraceSubclassRecommendation(data: Prisma.SubraceSubclassRecommendationUncheckedCreateInput): Promise<Prisma.SubraceSubclassRecommendationGetPayload<{}>> {
+    return db.createSubraceSubclassRecommendation(data, true);
+}
+
+export async function createRaceContinent(data: Prisma.RaceContinentUncheckedCreateInput): Promise<Prisma.RaceContinentGetPayload<{}>> {
+    return db.createRaceContinent(data, true);
+}
+
+export async function createSubraceContinent(data: Prisma.SubraceContinentUncheckedCreateInput): Promise<Prisma.SubraceContinentGetPayload<{}>> {
+    return db.createSubraceContinent(data, true);
+}
+
+export async function createSubclassContinent(data: Prisma.SubclassContinentUncheckedCreateInput): Promise<Prisma.SubclassContinentGetPayload<{}>> {
+    return db.createSubclassContinent(data, true);
+}
+
+// ============================================================================
 // CHARACTERS
 // ============================================================================
 

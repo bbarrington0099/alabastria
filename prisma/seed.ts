@@ -244,6 +244,15 @@ async function main() {
     const deityHolyDays: seed.DeityHolyDays = await seed.seedDeityHolyDays({ deities });
     const deityHistories: seed.DeityHistories = await seed.seedDeityHistories({ deities });
     const deityRelationships: seed.DeityRelationships = await seed.seedDeityRelationships({ deities });
+    // Recommendations
+    const racesContinents: seed.RacesContinents = await seed.setRacesContinents({ races, continents });
+    const subracesContinents: seed.SubracesContinents = await seed.setSubracesContinents({ subraces, continents });
+    const racesSubclasses: seed.RacesSubclasses = await seed.setRacesSubclasses({ races, subclasses });
+    const subclassesContinents: seed.SubclassesContinents = await seed.setSubclassesContinents({ subclasses, continents });
+    const subracesSubclasses: seed.SubracesSubclasses = await seed.setSubracesSubclasses({ subraces, subclasses });
+
+    // Characters
+    const characters: seed.Characters = await seed.seedCharacters({ races, subraces, classes, subclasses, languages, deities, continents, towns, creatureSizes, creatureTypes });
 
     console.log("   ✓ Migrated legacy data\n");
 
