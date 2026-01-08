@@ -8,9 +8,9 @@ services:
       - "3000:3000"
       - "5555:5555"
     volumes:
-      - .:/alabastria
-      - /alabastria/node_modules
-      - uploads_data:/alabastria/uploads
+      - .:/worldseed
+      - /worldseed/node_modules
+      - uploads_data:/worldseed/uploads
     env_file:
       - .env.docker.development
     environment:
