@@ -179,11 +179,12 @@ async function main() {
         const seasons: seed.Seasons = await seed.seedSeasons();
         const months: seed.Months = await seed.seedMonths({ seasons });
         const worlds: seed.Worlds = await seed.seedWorlds();
+        const colors: seed.Colors = await seed.seedColors();
         await seed.setWorldsMonths({ worlds, months });
         const weekDays: seed.WeekDays = await seed.seedWeekDays();
         console.log('🏛️  Seeding Geographical Information...');
-        const kingdoms: seed.Kingdoms = await seed.seedKingdoms({ worlds });
-        const continents: seed.Continents = await seed.seedContinents({ worlds, kingdoms });
+        const kingdoms: seed.Kingdoms = await seed.seedKingdoms({ worlds, colors });
+        const continents: seed.Continents = await seed.seedContinents({ worlds, kingdoms, colors });
         await seed.setKingdomsCapitals({ kingdoms, continents });
         const towns: seed.Towns = await seed.seedTowns({ continents });
         await seed.setContinentCapitals({ continents, towns });
@@ -209,7 +210,7 @@ async function main() {
         const subclasses: seed.Subclasses = await seed.seedSubclasses({ classes });
         console.log('⛪ Seeding Deity Information...');
         const pantheons: seed.Pantheons = await seed.seedPantheons();
-        const deities: seed.Deities = await seed.seedDeities({ pantheons });
+        const deities: seed.Deities = await seed.seedDeities({ pantheons, colors });
         const deityHolyDays: seed.DeityHolyDays = await seed.seedDeityHolyDays({ deities });
         const deityHistories: seed.DeityHistories = await seed.seedDeityHistories({ deities, historicalPeriods });
         const deityRelationships: seed.DeityRelationships = await seed.seedDeityRelationships({ deities });
@@ -225,7 +226,7 @@ async function main() {
         console.error(`   ❌ Error seeding data:`, error);
         process.exit(1);
     }
-    console.log("✨ Database seed complete!\n");
+    console.log("\n✨ Database seed complete!");
 }
 
 main()

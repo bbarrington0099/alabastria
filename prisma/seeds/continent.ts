@@ -1,6 +1,6 @@
 import { Prisma, GovernmentType } from "@prismagen/client";
 import * as db from "@lib/db-seed";
-import { Worlds, Kingdoms } from './index';
+import { Worlds, Kingdoms, Colors } from './index';
 
 type ContinentPayload = Prisma.ContinentGetPayload<{}>;
 export interface Continents {
@@ -16,21 +16,21 @@ export interface Continents {
 interface SeedContinentsParams {
     worlds: Worlds;
     kingdoms: Kingdoms;
+    colors: Colors;
 }
 export async function seedContinents(params: SeedContinentsParams): Promise<Continents> {
-    const { worlds, kingdoms } = params;
+    const { worlds, kingdoms, colors } = params;
     return {
         kuriguer: await db.createContinent({
             id: "kuriguer-alabastria", 
-            //slug: "kuriguer-alabastria",
             world: { connect: { id: worlds.alabastria.id } }, 
             name: "Kuriguer", 
             description: "Here is the land of magic, far from a fairytale sense. With the establishment of two fine towns along the coast and smaller settlements leading South, the rest of this land is shrouded beyond a forest not typically kind to strangers.", 
             heightMi: 2200, 
             widthMi: 1400, 
             surfaceAreaSqMi: BigInt(2300000), 
-            primaryColor: "Purple", 
-            secondaryColor: "Silver", 
+            primaryColor: { connect: { id: colors.purple.id } },
+            secondaryColor: { connect: { id: colors.silver.id } },
             flagSymbol: "Mystical Tree", 
             flagDescription: "A silver tree with purple leaves representing the magical forests and elven coastal settlements, symbolizing the balance between nature and arcane knowledge.",
             languageReasoning: "The magical nature of Kuriguer has attracted diverse races. Elvish dominates the forests, Sylvan echoes in fey-touched areas, while Primordial resonates with elemental magic. The coastal towns use Common for trade, and magical research brings scholars speaking Draconic and even rarer planar languages.",
@@ -41,7 +41,6 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         katman: await db.createContinent({
             id: "katman-kamalatman-alabastria",
-            //slug: "katman-kamalatman-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             kingdom: { connect: { id: kingdoms.kamalatman.id } },
             name: "Katman",
@@ -49,8 +48,8 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
             heightMi: 1100,
             widthMi: 800,
             surfaceAreaSqMi: BigInt(700000),
-            primaryColor: "Pink",
-            secondaryColor: "Brown",
+            primaryColor: { connect: { id: colors.pink.id } },
+            secondaryColor: { connect: { id: colors.brown.id } },
             flagSymbol: "Swamp Lily",
             flagDescription: "A pink swamp lily on a brown background, representing the swampy marshlands and the royal capital that governs the three Kamalatman continents.",
             languageReasoning: "The swamplands echo with Orcish war-cries from the tribal strongholds, while Common serves the kingdom's administration on the plains. Lizardfolk communities maintain their ancient reptilian tongue, and the secretive Yuan-ti speak their serpentine language in hidden enclaves. Draconic marks ancient ruins, while Aquan flows with the wetland waters and Druidic whispers through the marsh grasses.",
@@ -61,7 +60,6 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         alatman: await db.createContinent({
             id: "alatman-kamalatman-alabastria",
-            //slug: "alatman-kamalatman-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             kingdom: { connect: { id: kingdoms.kamalatman.id } },
             name: "Alatman",
@@ -69,8 +67,8 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
             heightMi: 600,
             widthMi: 900,
             surfaceAreaSqMi: BigInt(430000),
-            primaryColor: "Orange",
-            secondaryColor: "Yellow",
+            primaryColor: { connect: { id: colors.orange.id } },
+            secondaryColor: { connect: { id: colors.yellow.id } },
             flagSymbol: "Volcanic Crown",
             flagDescription: "A golden crown with orange flames rising from it, representing the volcanic nature and the royal family's control over the natural riches of the land.",
             languageReasoning: "The volcanic forges and construct workshops of Alatman attract Warforged and Autognomes, making Draconic common for magical crafting. The dangerous forests harbor darker creatures, bringing Infernal and Abyssal whispers. Primordial echoes from the volcanic activity, while Common serves the mining expeditions.",
@@ -81,7 +79,6 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         maltman: await db.createContinent({
             id: "maltman-kamalatman-alabastria",
-            //slug: "maltman-kamalatman-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             kingdom: { connect: { id: kingdoms.kamalatman.id } },
             name: "Maltman",
@@ -89,8 +86,8 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
             heightMi: 1400,
             widthMi: 900,
             surfaceAreaSqMi: BigInt(1000000),
-            primaryColor: "Steel gray",
-            secondaryColor: "Blue",
+            primaryColor: { connect: { id: colors.steelGray.id } },
+            secondaryColor: { connect: { id: colors.blue.id } },
             flagSymbol: "Mountain Pickaxe",
             flagDescription: "A steel pickaxe crossed with a blue mountain peak, symbolizing the mining industry and the mountainous terrain that defines this continent's economy.",
             languageReasoning: "The mountain strongholds echo with Dwarvish as the dominant language, while mining operations use Common for trade. Svirfneblin communities speak Undercommon, and ancient draconic runes mark the deepest mines. Kobolds in the depths maintain their Draconic dialect, and the rare Giant tongue echoes from the highest peaks.",
@@ -101,15 +98,14 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         skratonia: await db.createContinent({
             id: "skratonia-alabastria",
-            //slug: "skratonia-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             name: "Skratonia",
             description: "While other worlds would likely consider this a desert wasteland, in Alabastria, Skratonia is the most populated land due to its' many open planes, and moderate temperate compared to much of the commoner welcome options or the swampy marshlands of the triontinental Kingdom of Kamalatman, allowing the growth of decent crops, leading to a very diverse mix of people of small settlements connected through major towns.",
             heightMi: 1800,
             widthMi: 1300,
             surfaceAreaSqMi: BigInt(1800000),
-            primaryColor: "Green",
-            secondaryColor: "Gold",
+            primaryColor: { connect: { id: colors.green.id } },
+            secondaryColor: { connect: { id: colors.gold.id } },
             flagSymbol: "Golden Wheat Sheaf",
             flagDescription: "A golden sheaf of wheat on a green field, representing the agricultural prosperity and the fertile plains that make this the most populated continent.",
             languageReasoning: "As the most diverse and populated continent, Skratonia is dominated by Common as the trade language. Halfling communities maintain their pastoral tongue, while the many Tieflings bring Infernal influences. Aasimar populations contribute Celestial phrases, and the scholarly cities preserve Draconic texts. The plains-dwelling Centaurs and Leonin add their own linguistic flavors.",
@@ -120,15 +116,14 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         bulsania: await db.createContinent({
             id: "bulsania-alabastria",
-            //slug: "bulsania-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             name: "Bulsania",
             description: "The resident continent of ice and tough inhabitants holds few settlements on its' West coast before reaching a group of mountain ranges including the cloud towering Noxious Mountain, leading into a frozen land left to giants and titans. The wastes are prowled by mercenary companies like the Frostmarch Company, who make their living as hired blades and monster hunters in this unforgiving landscape where survival itself is a form of warfare.",
             heightMi: 500,
             widthMi: 800,
             surfaceAreaSqMi: BigInt(320000),
-            primaryColor: "Light blue",
-            secondaryColor: "White",
+            primaryColor: { connect: { id: colors.lightBlue.id } },
+            secondaryColor: { connect: { id: colors.white.id } },
             flagSymbol: "Frozen Mountain",
             flagDescription: "A white mountain peak against a light blue sky, representing the frozen Noxious Mountain and the icy landscape that defines this harsh northern continent.",
             languageReasoning: "The harsh frozen landscape is dominated by Giant, spoken by the titans and giants that rule the interior. Draconic echoes from the militarized Dragonborn settlements, while Aarakocra calls ring from the mountain peaks. The few coastal settlements use Common for trade, and Primordial whispers through the eternal storms. Goliath tribal dialects blend elements of Giant and Common. Mercenary clans like the Frostmarch Company often speak a mix of Goblin and Common for their operations.",
@@ -139,15 +134,14 @@ export async function seedContinents(params: SeedContinentsParams): Promise<Cont
         }),
         kantra: await db.createContinent({
             id: "kantra-alabastria",
-            //slug: "kantra-alabastria",
             world: { connect: { id: worlds.alabastria.id } },
             name: "Kantra",
             description: "A counter to Bulsania, this land of fiery cracking earth and ash filled sky is home to creatures not known by the lands around it as no attempted explorations have returned, leading to quite the rumors of this hellish region. (No map as the land is uncharted)",
             heightMi: 600,
             widthMi: 400,
             surfaceAreaSqMi: BigInt(190000),
-            primaryColor: "Crimson",
-            secondaryColor: "Dark",
+            primaryColor: { connect: { id: colors.crimson.id } },
+            secondaryColor: { connect: { id: colors.dark.id } },
             flagSymbol: "Burning Skull",
             flagDescription: "A crimson skull wreathed in dark flames, representing the dangerous and uncharted nature of this hellish region where no explorers have returned.",
             languageReasoning: "The uncharted hellish landscape of Kantra is shrouded in mystery, but the few whispered reports speak of Infernal and Abyssal tongues echoing across the burning plains. Ignan, the language of fire elementals, crackles through the volcanic air, while Primordial resonates with the raw elemental chaos. Unknown dialects of creatures that have never been catalogued may exist in this forbidden land.",

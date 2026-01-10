@@ -1,5 +1,6 @@
 export * from './userRole';
 export * from './user';
+export * from './color';
 export * from './season';
 export * from './month';
 export * from './weekDay';

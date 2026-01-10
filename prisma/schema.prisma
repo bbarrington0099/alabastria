@@ -152,6 +152,7 @@ model World {
   months             Month[]
   weekDays           WeekDay[]
   familyTrees        FamilyTree[]
+  colors             Color[]
 
   ownerId              String
   owner                User     @relation(fields: [ownerId], references: [id])
@@ -174,12 +175,14 @@ model Continent {
   languageReasoning String? @db.Text
 
   // Flag/Colors
-  primaryColor    String?
-  secondaryColor  String?
-  flagSymbol      String?
-  flagDescription String? @db.Text
-  mapImagePath    String?
-  flagImagePath   String?
+  primaryColorId   String?
+  primaryColor     Color?  @relation("primaryColor", fields: [primaryColorId], references: [id])
+  secondaryColorId String?
+  secondaryColor   Color?  @relation("secondaryColor", fields: [secondaryColorId], references: [id])
+  flagSymbol       String?
+  flagDescription  String? @db.Text
+  mapImagePath     String?
+  flagImagePath    String?
 
   // Politics
   governmentType      GovernmentType
@@ -250,15 +253,17 @@ enum ContinentLanguagePrevalence {
 }
 
 model Kingdom {
-  id              String  @id @default(uuid())
-  seeded          Boolean @default(false)
-  name            String  @unique
-  description     String? @db.Text
-  surfaceAreaSqMi BigInt?
-  primaryColor    String?
-  secondaryColor  String?
-  flagSymbol      String?
-  flagDescription String? @db.Text
+  id               String  @id @default(uuid())
+  seeded           Boolean @default(false)
+  name             String  @unique
+  description      String? @db.Text
+  surfaceAreaSqMi  BigInt?
+  primaryColorId   String?
+  primaryColor     Color?  @relation("primaryColor", fields: [primaryColorId], references: [id])
+  secondaryColorId String?
+  secondaryColor   Color?  @relation("secondaryColor", fields: [secondaryColorId], references: [id])
+  flagSymbol       String?
+  flagDescription  String? @db.Text
 
   additionalProperties Json?
 
@@ -553,6 +558,24 @@ model HistoricalEvent {
 // RACES & CLASSES
 // ============================================================================
 
+model Color {
+  id                      String      @id @default(uuid())
+  seeded                  Boolean     @default(false)
+  name                    String      
+  hexValue                String
+  additionalProperties    Json?
+  continentPrimaryColor   Continent[] @relation("primaryColor")
+  continentSecondaryColor Continent[] @relation("secondaryColor")
+  kingdomPrimaryColor     Kingdom[]   @relation("primaryColor")
+  kingdomSecondaryColor   Kingdom[]   @relation("secondaryColor")
+  raceSkinTones           Race[]      @relation("RaceSkinTones")
+  raceHairColors          Race[]      @relation("RaceHairColors")
+  subraceSkinTones        Subrace[]   @relation("SubraceSkinTones")
+  subraceHairColors       Subrace[]   @relation("SubraceHairColors")
+  deities                 Deity[]     @relation("DeityColors")
+  worlds                  World[]
+}
+
 model Race {
   id           String  @id @default(uuid())
   seeded       Boolean @default(false)
@@ -565,10 +588,10 @@ model Race {
   heightRangeHigh Float
   weightRangeLow  Int
   weightRangeHigh Int
-  skinTexture     String?  @db.Text
-  skinTones       String[]
-  hairTexture     String?  @db.Text
-  hairColors      String[]
+  skinTexture     String? @db.Text
+  skinTones       Color[] @relation("RaceSkinTones")
+  hairTexture     String? @db.Text
+  hairColors      Color[] @relation("RaceHairColors")
 
   playstyle String? @db.Text
 
@@ -673,10 +696,12 @@ model Subrace {
   heightRangeLowOverride   Float?
   weightRangeHighOverride  Int?
   weightRangeLowOverride   Int?
-  skinTonesOverrideAppend  Boolean  @default(false)
-  skinTonesOverride        String[]
-  hairColorsOverrideAppend Boolean  @default(false)
-  hairColorsOverride       String[]
+  skinTonesOverrideAppend  Boolean @default(false)
+  skinTonesOverride        Color[] @relation("SubraceSkinTones")
+  skinTextureOverride      String? @db.Text
+  hairColorsOverrideAppend Boolean @default(false)
+  hairColorsOverride       Color[] @relation("SubraceHairColors")
+  hairTextureOverride      String? @db.Text
 
   namesOverrideAppend  Boolean   @default(false)
   namesIdOverride      String?   @unique
@@ -792,7 +817,7 @@ model Deity {
   followers            String[]
   holyDays             DeityHolyDay[]
   symbols              String[]
-  colors               String[]
+  colors               Color[]        @relation("DeityColors")
   history              DeityHistory[]
 
   alliesFrom DeityRelationship[] @relation("DeityFrom")

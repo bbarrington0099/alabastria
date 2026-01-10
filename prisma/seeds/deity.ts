@@ -1,6 +1,6 @@
 import { Prisma } from "@prismagen/client";
 import * as db from "@lib/db-seed";
-import { Pantheons } from "./index";
+import { Pantheons, Colors } from "./index";
 
 type DeityPayload = Prisma.DeityGetPayload<{}>;
 export interface Deities {
@@ -75,16 +75,17 @@ export interface Deities {
 
 interface SeedDeitiesParams {
     pantheons: Pantheons;
+    colors: Colors;
 }
 export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
-    const { pantheons } = params;
+    const { pantheons, colors } = params;
     return {
         cyric: await db.createDeity({
             id: "cyric",
             name: "Cyric",
             title: "Prince of Lies",
             symbol: "fas fa-sun-plant-wilt",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Since The Bringing, Cyric’s presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.",
             },
@@ -94,14 +95,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Assassins", "Liars and deceivers", "Mad prophets", "Cultists", "Political conspirators"],
             temples: "Hidden shrines, underground chambers, and abandoned ruins",
             symbols: ["Black sun with a purple core", "Broken halo", "Bloodstained dagger", "Cracked skull"],
-            colors: ["Black", "Deep purple", "Blood red", "Ash gray"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.deepPurple.id },
+                    { id: colors.bloodRed.id },
+                    { id: colors.ashGray.id },
+                ]
+            },
         }),
         tempus: await db.createDeity({
             id: "tempus",
             name: "Tempus",
             title: "Lord of Battles",
             symbol: "fas fa-pen-fancy",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral",
                 alabastriaContext: "Since The Bringing, Tempus has gained many followers among the Huntbound Order and military forces across all continents. His influence is strongest in Skratonia where organized warfare is most common.",
             },
@@ -111,14 +119,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Warriors", "Soldiers", "Strategists", "Huntbound Order"],
             temples: "Fortresses and training grounds",
             symbols: ["Crossed swords", "Burning sword", "War banner", "Shield with lightning bolt", "Sword and shield"],
-            colors: ["Crimson red", "Gold", "Silver", "Steel gray"],
+            colors: {
+                connect: [
+                    { id: colors.crimsonRed.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                    { id: colors.steelGray.id },
+                ]
+            },
         }),
         mystra: await db.createDeity({
             id: "mystra",
             name: "Mystra",
             title: "Goddess of Magic",
             symbol: "fas fa-magic",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Mystra's influence is strongest in Kuriguer where magical anomalies and research institutions are concentrated. Her followers have been instrumental in understanding the magical properties of Alabastria.",
             },
@@ -128,14 +143,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Wizards", "Sorcerers", "Arcane Researchers", "Magic Scholars"],
             temples: "Libraries and magical academies",
             symbols: ["Seven-pointed star", "Weave pattern", "Mystra's symbol", "Arcane circle", "Magic staff"],
-            colors: ["Deep blue", "Silver", "White", "Purple"],
+            colors: {
+                connect: [
+                    { id: colors.deepBlue.id },
+                    { id: colors.silver.id },
+                    { id: colors.white.id },
+                    { id: colors.purple.id },
+                ]
+            },
         }),
         lathander: await db.createDeity({
             id: "lathander",
             name: "Lathander",
             title: "Morninglord",
             symbol: "fas fa-sun",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Lathander's influence is strongest in Skratonia where his temples serve as centers of healing and renewal. His followers are often found among healers and those seeking new beginnings.",
             },
@@ -145,14 +167,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Healers", "Paladins", "Farmers", "Those Seeking Renewal"],
             temples: "Healing centers and agricultural communities",
             symbols: ["Rising sun", "Golden disk", "Dawn's light", "Spring flower", "Sunburst"],
-            colors: ["Gold", "Yellow", "White", "Light blue"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.yellow.id },
+                    { id: colors.white.id },
+                    { id: colors.lightBlue.id },
+                ]
+            },
         }),
         selune: await db.createDeity({
             id: "selune",
             name: "Selûne",
             title: "Our Lady of Silver",
             symbol: "fas fa-moon",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Selûne's influence is strongest among coastal communities and travelers. Her followers are often found among sailors, rangers, and those who explore the unknown.",
             },
@@ -162,14 +191,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Sailors", "Rangers", "Travelers", "Explorers"],
             temples: "Lighthouses and coastal shrines",
             symbols: ["Crescent moon", "Silver disk", "Star cluster", "Compass rose", "Moon and stars"],
-            colors: ["Silver", "White", "Light blue", "Pale gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.white.id },
+                    { id: colors.lightBlue.id },
+                    { id: colors.paleGold.id },
+                ]
+            },
         }),
         shar: await db.createDeity({
             id: "shar",
             name: "Shar",
             title: "Mistress of the Night",
             symbol: "fas fa-eye-slash",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Evil",
                 alabastriaContext: "Shar's influence is strongest in the darker corners of society and among those who deal in secrets. Her followers are often found among rogues, spies, and those who have lost much.",
             },
@@ -179,14 +215,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Rogues", "Spies", "Those Who Have Lost", "Shadow Workers"],
             temples: "Hidden shrines and secret meeting places",
             symbols: ["Black disk", "Shadow veil", "Dark moon", "Mystery symbol", "Eclipse"],
-            colors: ["Black", "Dark purple", "Deep blue", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.darkPurple.id },
+                    { id: colors.deepBlue.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         oghma: await db.createDeity({
             id: "oghma",
             name: "Oghma",
             title: "The Binder of What Is Known",
             symbol: "fas fa-book-open",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral",
                 alabastriaContext: "Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.",
             },
@@ -196,14 +239,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Scholars", "Bards", "Historians", "Scribes", "Inventors"],
             temples: "Libraries, archives, universities, and scriptoria",
             symbols: ["Open book with a blank page", "Quill crossed with a scroll", "Knot of knowledge", "Seven-pointed star of lore"],
-            colors: ["White", "Sky blue", "Gold", "Soft gray"],
+            colors: {
+                connect: [
+                    { id: colors.white.id },
+                    { id: colors.skyBlue.id },
+                    { id: colors.gold.id },
+                    { id: colors.softGray.id },
+                ]
+            },
         }),
         deneir: await db.createDeity({
             id: "deneir",
             name: "Deneir",
             title: "The First Scribe",
             symbol: "fas fa-feather-pointed",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Since The Bringing, Deneir’s followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.",
             },
@@ -213,14 +263,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Scribes", "Librarians", "Archivists", "Chroniclers", "Rune scholars"],
             temples: "Scriptoria, record halls, rune libraries, and monasteries",
             symbols: ["Lit candle above an open book", "Runed quill", "Glyph-inscribed scroll", "Eye within a page"],
-            colors: ["Ivory", "Ink black", "Gold", "Deep blue"],
+            colors: {
+                connect: [
+                    { id: colors.ivory.id },
+                    { id: colors.inkBlack.id },
+                    { id: colors.gold.id },
+                    { id: colors.deepBlue.id },
+                ]
+            },
         }),
         mask: await db.createDeity({
             id: "mask",
             name: "Mask",
             title: "The Lord of Shadows",
             symbol: "fas fa-masks-theater",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Neutral",
                 alabastriaContext: "Since The Bringing, Mask has flourished in Alabastria’s expanding cities and trade hubs. His worship is strongest among thieves’ guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.",
             },
@@ -230,14 +287,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Thieves", "Rogues", "Spies", "Smugglers", "Information brokers"],
             temples: "Hidden guild halls, back-alley shrines, and shadowed catacombs",
             symbols: ["Black mask", "Shadowed dagger", "Coin with a hole", "Cloaked figure"],
-            colors: ["Black", "Midnight blue", "Silver", "Smoke gray"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.midnightBlue.id },
+                    { id: colors.silver.id },
+                    { id: colors.smokeGray.id },
+                ]
+            },
         }),
         helm: await db.createDeity({
             id: "helm",
             name: "Helm",
             title: "The Vigilant One",
             symbol: "fas fa-shield-halved",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.",
             },
@@ -247,14 +311,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Guards", "Soldiers", "Watchmen", "Paladins", "Lawful magistrates"],
             temples: "Fortified temples, watchtowers, barracks, and city walls",
             symbols: ["Closed helm", "Shield with an eye", "Watchtower", "Gauntleted fist"],
-            colors: ["Steel gray", "Silver", "White", "Dark blue"],
+            colors: {
+                connect: [
+                    { id: colors.steelGray.id },
+                    { id: colors.silver.id },
+                    { id: colors.white.id },
+                    { id: colors.darkBlue.id },
+                ]
+            },
         }),
         tyr: await db.createDeity({
             id: "tyr",
             name: "Tyr",
             title: "The Even-Handed",
             symbol: "fas fa-scale-balanced",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.",
             },
@@ -264,14 +335,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Judges", "Paladins", "Lawyers", "City officials", "Soldiers upholding justice"],
             temples: "Courthouses, fortified temples, and halls of justice",
             symbols: ["Balanced scales", "Sword over scales", "Blindfolded hand holding scales", "Gauntlet holding a sword"],
-            colors: ["White", "Gold", "Silver", "Crimson"],
+            colors: {
+                connect: [
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                    { id: colors.crimson.id },
+                ]
+            },
         }),
         chauntea: await db.createDeity({
             id: "chauntea",
             name: "Chauntea",
             title: "The Great Mother",
             symbol: "fas fa-seedling",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.",
             },
@@ -281,14 +359,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Farmers", "Gardeners", "Rangers", "Druids", "Herbalists"],
             temples: "Granaries, farm shrines, garden temples, and rural sanctuaries",
             symbols: ["Sheaf of wheat", "Blooming flower", "Cornucopia", "Tree with deep roots"],
-            colors: ["Green", "Earth brown", "Golden yellow", "Sky blue"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.earthBrown.id },
+                    { id: colors.goldenYellow.id },
+                    { id: colors.skyBlue.id },
+                ]
+            },
         }),
         ilmater: await db.createDeity({
             id: "ilmater",
             name: "Ilmater",
             title: "The Crying God",
             symbol: "fas fa-hand-holding-heart",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Since The Bringing, Ilmater’s worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.",
             },
@@ -298,14 +383,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Healers", "Clerics", "Monks", "Caregivers", "Refugees and the oppressed"],
             temples: "Hospitals, shelters, monasteries, and quiet sanctuaries",
             symbols: ["Pair of hands bound with a red cord", "Weeping face", "Broken chain", "Heart encircled by flame"],
-            colors: ["White", "Crimson red", "Pale blue", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.white.id },
+                    { id: colors.crimsonRed.id },
+                    { id: colors.paleBlue.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         talona: await db.createDeity({
             id: "talona",
             name: "Talona",
             title: "Lady of Poison",
             symbol: "fas fa-skull-crossbones",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Since The Bringing, Talona’s worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.",
             },
@@ -315,14 +407,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Poisoners", "Plague cultists", "Assassins", "Alchemists", "Desperate commoners"],
             temples: "Hidden shrines, plague pits, ruined hospitals, and alchemical dens",
             symbols: ["Three teardrops falling from a skull", "Poisoned chalice", "Green-black serpent", "Withered flower"],
-            colors: ["Sickly green", "Black", "Venom yellow", "Dark brown"],
+            colors: {
+                connect: [
+                    { id: colors.sicklyGreen.id },
+                    { id: colors.black.id },
+                    { id: colors.venomYellow.id },
+                    { id: colors.darkBrown.id },
+                ]
+            },
         }),
         tymora: await db.createDeity({
             id: "tymora",
             name: "Tymora",
             title: "Lady Luck",
             symbol: "fas fa-dice",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Tymora's influence is strongest among adventurers, gamblers, and those who take risks. Her followers are often found among the Huntbound Order and other adventuring groups.",
             },
@@ -332,14 +431,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Adventurers", "Gamblers", "Risk Takers", "Huntbound Order"],
             temples: "Taverns and gambling halls",
             symbols: ["Gold coin", "Lucky clover", "Dice", "Fortune wheel", "Four-leaf clover"],
-            colors: ["Gold", "Green", "White", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.green.id },
+                    { id: colors.white.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         beshaba: await db.createDeity({
             id: "beshaba",
             name: "Beshaba",
             title: "Lady Doom",
             symbol: "fas fa-skull",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Beshaba's influence is strongest among those who have suffered great misfortune or who deal in curses and hexes. Her followers are often found among those who have been wronged.",
             },
@@ -349,14 +455,20 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Those Who Have Suffered", "Cursed Individuals", "Hex Workers", "Victims of Misfortune"],
             temples: "Cursed places and accident sites",
             symbols: ["Black Antlers", "Broken mirror", "Wilted flower", "Skull and crossbones"],
-            colors: ["Black", "Mauve", "Purple"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.mauve.id },
+                    { id: colors.purple.id },
+                ]
+            },
         }),
         kelemvor: await db.createDeity({
             id: "kelemvor",
             name: "Kelemvor",
             title: "Lord of the Dead",
             symbol: "fas fa-balance-scale",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "Kelemvor's influence is strongest among those who deal with death and the dead. His followers are often found among clerics, undertakers, and those who seek justice.",
             },
@@ -366,14 +478,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Clerics", "Undertakers", "Judges", "Those Seeking Justice"],
             temples: "Cemeteries and courthouses",
             symbols: ["Skeleton", "Scale", "Sword", "Death symbol", "Scales of justice"],
-            colors: ["Black", "White", "Silver", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.white.id },
+                    { id: colors.silver.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         bane: await db.createDeity({
             id: "bane",
             name: "Bane",
             title: "The Black Hand",
             symbol: "fas fa-fist-raised",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Bane's influence is strongest among tyrants, conquerors, and those who seek to control others through fear. His followers are often found among the ruling classes and military leaders.",
             },
@@ -383,14 +502,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Tyrants", "Conquerors", "Military Leaders", "Those Seeking Power"],
             temples: "Fortresses and military bases",
             symbols: ["Clenched fist", "Black gauntlet", "Tyranny symbol", "Iron crown", "Fist of Bane"],
-            colors: ["Black", "Red", "Dark gray", "Crimson"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.red.id },
+                    { id: colors.darkGray.id },
+                    { id: colors.crimson.id },
+                ]
+            },
         }),
         myrkul: await db.createDeity({
             id: "myrkul",
             name: "Myrkul",
             title: "Lord of Bones",
             symbol: "fas fa-skull-crossbones",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Evil",
                 alabastriaContext: "Myrkul's influence is strongest among necromancers, undead, and those who deal with death magic. His followers are often found among the undead and those who seek to cheat death.",
             },
@@ -400,14 +526,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Necromancers", "Undead", "Those Seeking Immortality", "Death Magic Users"],
             temples: "Necropolises and undead lairs",
             symbols: ["White Human skull", "Bone", "Death symbol", "Skull and crossbones", "Grim Reaper"],
-            colors: ["Black", "Bone-white"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.boneWhite.id },
+                ]
+            },
         }),
         jergal: await db.createDeity({
             id: "jergal",
             name: "Jergal",
             title: "Scribe of the Dead",
             symbol: "fas fa-book-skull",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "True Neutral",
                 alabastriaContext: "Jergal's influence is strongest among scribes, historians, and those who deal with records and knowledge. His followers are often found among scholars and record keepers.",
             },
@@ -417,14 +548,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Scribes", "Historians", "Record Keepers", "Scholars"],
             temples: "Libraries and record halls",
             symbols: ["A skull biting a scroll", "Quill and ledger", "Hourglass with wings", "Book of the dead"],
-            colors: ["Gray", "Brown"],
+            colors: {
+                connect: [
+                    { id: colors.gray.id },
+                    { id: colors.brown.id },
+                ]
+            },
         }),
         moradin: await db.createDeity({
             id: "moradin",
             name: "Moradin",
             title: "Soul Forger",
             symbol: "fas fa-hammer",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Moradin's influence is strongest among dwarven communities and craftsmen. His followers are often found among blacksmiths, miners, and those who work with metal.",
             },
@@ -434,14 +570,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dwarves", "Blacksmiths", "Miners", "Craftsmen"],
             temples: "Forges and workshops",
             symbols: ["Hammer and anvil", "Mountain", "Forge", "Dwarven rune", "Hammer of Moradin"],
-            colors: ["Brown", "Gold", "Orange", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.gold.id },
+                    { id: colors.orange.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         berronar_truesilver: await db.createDeity({
             id: "berronar-truesilver",
             name: "Berronar Truesilver",
             title: "The Shield Mother",
             symbol: "fas fa-shield-alt",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Berronar's influence is strongest among dwarven families and those who seek to protect their homes. Her followers are often found among mothers, protectors, and those who maintain homes.",
             },
@@ -451,14 +594,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dwarven Mothers", "Protectors", "Home Keepers", "Family Members"],
             temples: "Homes and family shrines",
             symbols: ["Shield", "Hammer", "Dwarven symbol", "Protection symbol", "Shield of truth"],
-            colors: ["Silver", "Blue", "White", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         clangeddin_silverbeard: await db.createDeity({
             id: "clangeddin-silverbeard",
             name: "Clangeddin Silverbeard",
             title: "The Battle Lord",
             symbol: "fas fa-tents",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Clangeddin's influence is strongest among dwarven warriors and those who fight for honor. His followers are often found among soldiers, paladins, and those who seek justice through combat.",
             },
@@ -468,14 +618,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dwarven Warriors", "Soldiers", "Paladins", "Honor Seekers"],
             temples: "Barracks and training grounds",
             symbols: ["War camp", "Battle axe", "Dwarven symbol", "Shield", "Axe of war"],
-            colors: ["Silver", "Blue", "White", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         dugmaren_brightmantle: await db.createDeity({
             id: "dugmaren-brightmantle",
             name: "Dugmaren Brightmantle",
             title: "The Gleam in the Eye",
             symbol: "fas fa-lightbulb",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Dugmaren's influence is strongest among dwarven inventors and those who seek new knowledge. His followers are often found among engineers, researchers, and those who create new things.",
             },
@@ -485,14 +642,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dwarven Inventors", "Engineers", "Researchers", "Innovators"],
             temples: "Libraries and workshops",
             symbols: ["Light bulb", "Book", "Gnome symbol", "Innovation symbol", "Bright mantle"],
-            colors: ["Gold", "Blue", "White", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         vergadain: await db.createDeity({
             id: "vergadain",
             name: "Vergadain",
             title: "The Merchant King",
             symbol: "fas fa-coins",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral",
                 alabastriaContext: "Vergadain's influence is strongest among dwarven merchants and those who deal in trade. His followers are often found among traders, merchants, and those who seek wealth.",
             },
@@ -502,14 +666,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dwarven Merchants", "Traders", "Wealth Seekers", "Entrepreneurs"],
             temples: "Markets and trading posts",
             symbols: ["Gold coin with the face of a dwarf", "Bag of coins", "Merchant symbol", "Trade symbol", "Laughing dwarf"],
-            colors: ["Deep Purple", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.deepPurple.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         corellon_larethian: await db.createDeity({
             id: "corellon-larethian",
             name: "Corellon Larethian",
             title: "Creator of the Elves",
             symbol: "fas fa-palette",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Corellon's influence is strongest among elven communities and artists. His followers are often found among bards, wizards, and those who create beautiful things.",
             },
@@ -519,14 +688,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Elves", "Artists", "Bards", "Wizards", "Creators"],
             temples: "Art galleries and magical academies",
             symbols: ["Silver crescent", "Artistic brush", "Musical note", "Crescent moon"],
-            colors: ["Silver", "Blue", "White", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         sehanine_moonbow: await db.createDeity({
             id: "sehanine-moonbow",
             name: "Sehanine Moonbow",
             title: "Goddess of Dreams",
             symbol: "fas fa-moon",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Sehanine's influence is strongest among elven rangers and those who journey. Her followers are often found among rangers, druids, and those who explore the unknown.",
             },
@@ -536,14 +712,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Elven Rangers", "Druids", "Explorers", "Dreamers"],
             temples: "Forest shrines and journey markers",
             symbols: ["Full moon", "Moonbow", "Crescent moon", "Moon and stars"],
-            colors: ["Silver", "White"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.white.id },
+                ]
+            },
         }),
         hanali_celanil: await db.createDeity({
             id: "hanali-celanil",
             name: "Hanali Celanil",
             title: "Goddess of Love",
             symbol: "fas fa-heart",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Hanali's influence is strongest among elven communities and those who appreciate beauty. Her followers are often found among artists, lovers, and those who seek beauty.",
             },
@@ -553,14 +734,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Elven Artists", "Lovers", "Beauty Seekers", "Romantics"],
             temples: "Gardens and art galleries",
             symbols: ["Golden heart", "Rose", "Heart with wings", "Flower"],
-            colors: ["Gold", "Pink"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.pink.id },
+                ]
+            },
         }),
         labelas_enoreth: await db.createDeity({
             id: "labelas-enoreth",
             name: "Labelas Enoreth",
             title: "God of Time",
             symbol: "fas fa-clock",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Labelas's influence is strongest among elven scholars and those who study history. His followers are often found among historians, scholars, and those who seek wisdom.",
             },
@@ -570,14 +756,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Elven Scholars", "Historians", "Wisdom Seekers", "Memory Keepers"],
             temples: "Libraries and historical sites",
             symbols: ["Setting sun", "Hourglass", "Clock face"],
-            colors: ["Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         solonor_thelandira: await db.createDeity({
             id: "solonor-thelandira",
             name: "Solonor Thelandira",
             title: "God of Archery",
             symbol: "fas fa-arrows-up-to-line",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Solonor's influence is strongest among elven rangers and hunters. His followers are often found among rangers, hunters, and those who live in the wilderness.",
             },
@@ -587,14 +778,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Elven Rangers", "Hunters", "Wilderness Dwellers", "Archers"],
             temples: "Forest shrines and hunting lodges",
             symbols: ["Silver arrow", "Bow and arrow", "Arrowhead"],
-            colors: ["Green", "Brown"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.brown.id },
+                ]
+            },
         }),
         lolth: await db.createDeity({
             id: "lolth",
             name: "Lolth",
             title: "Spider Queen",
             symbol: "fas fa-spider",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Lolth's influence is strongest among dark elves and those who seek power through deception. Her followers are often found among drow, rogues, and those who deal in lies.",
             },
@@ -604,14 +800,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Drow", "Rogues", "Deceivers", "Power Seekers"],
             temples: "Underground shrines and dark places",
             symbols: ["Spider", "Web", "Eight-pointed star", "Spider web"],
-            colors: ["Black", "Purple", "Silver", "Red"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.purple.id },
+                    { id: colors.silver.id },
+                    { id: colors.red.id },
+                ]
+            },
         }),
         vhaeraun: await db.createDeity({
             id: "vhaeraun",
             name: "Vhaeraun",
             title: "God of Shadow",
             symbol: "fas fa-mask",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Vhaeraun's influence is strongest among dark elves and those who rebel against authority. His followers are often found among rogues, rebels, and those who deal in shadows.",
             },
@@ -621,14 +824,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dark Elves", "Rogues", "Rebels", "Thieves"],
             temples: "Hidden shrines and secret meeting places",
             symbols: ["Black mask", "Shadowy figure", "Crescent moon"],
-            colors: ["Red", "Black"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                ]
+            },
         }),
         eilistraee: await db.createDeity({
             id: "eilistraee",
             name: "Eilistraee",
             title: "Goddess of Song",
             symbol: "fas fa-music",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Eilistraee's influence is strongest among dark elves who seek redemption and those who appreciate music. Her followers are often found among bards, dancers, and those who seek redemption.",
             },
@@ -638,14 +846,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Redeemed Dark Elves", "Bards", "Dancers", "Redemption Seekers"],
             temples: "Music halls and dance studios",
             symbols: ["Unclad female drow with long hair dancing before a full moon with a silver bastard sword", "Musical note", "Dancing figure"],
-            colors: ["Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         gruumsh_one_eye: await db.createDeity({
             id: "gruumsh-one-eye",
             name: "Gruumsh One-Eye",
             title: "The One-Eyed God",
             symbol: "fas fa-eye-slash",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Since The Bringing, Gruumsh has found new followers among the orc tribes scattered across Alabastria's harsh lands, particularly in the Blood Badlands and other unforgiving territories.",
             },
@@ -655,14 +868,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Orcs", "Barbarians", "Conquerors"],
             temples: "War Camps",
             symbols: ["Triangular eye", "Broken sword"],
-            colors: ["Red", "Black"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                ]
+            },
         }),
         luthic: await db.createDeity({
             id: "luthic",
             name: "Luthic",
             title: "The Cave Mother",
             symbol: "fas fa-mountain",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Luthic's influence has been crucial for orc survival in Alabastria's harsh environments, particularly in the Blood Badlands where her followers have established hidden cave settlements.",
             },
@@ -672,14 +890,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Orc Mothers", "Healers", "Cave Dwellers"],
             temples: "Cave Sanctuaries",
             symbols: ["Cave bear", "Cave"],
-            colors: ["Brown", "Green"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.green.id },
+                ]
+            },
         }),
         ilneval: await db.createDeity({
             id: "ilneval",
             name: "Ilneval",
             title: "The War Chief",
             symbol: "fas fa-chess",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Ilneval's strategic wisdom has been invaluable for orc survival in Alabastria, helping them adapt their warfare tactics to the new world's challenges.",
             },
@@ -689,14 +912,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Orc Generals", "Tacticians", "War Leaders"],
             temples: "War Academies",
             symbols: ["Bloodied sword"],
-            colors: ["Red", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         bahgtru: await db.createDeity({
             id: "bahgtru",
             name: "Bahgtru",
             title: "The Brute",
             symbol: "fas fa-fist-raised",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Bahgtru's followers have become known for their incredible physical strength and unwavering loyalty, making them valuable allies and fearsome enemies in Alabastria.",
             },
@@ -706,14 +934,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Orc Warriors", "Berserkers", "Bodyguards"],
             temples: "Training Grounds",
             symbols: ["Broken bone"],
-            colors: ["Brown", "Red"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.red.id },
+                ]
+            },
         }),
         shargaas: await db.createDeity({
             id: "shargaas",
             name: "Shargaas",
             title: "The Night Stalker",
             symbol: "fas fa-mask",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Shargaas's followers have found new opportunities in Alabastria's complex political landscape, serving as spies, assassins, and information brokers.",
             },
@@ -723,14 +956,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Assassins", "Thieves", "Spies"],
             temples: "Hidden Shrines",
             symbols: ["Red crescent moon", "Horned mask"],
-            colors: ["Black", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         bahamut: await db.createDeity({
             id: "bahamut",
             name: "Bahamut",
             title: "The Platinum Dragon",
             symbol: "fas fa-shield-alt",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Bahamut's influence has been crucial for dragonborn integration into Alabastrian society, providing them with a moral compass and sense of purpose.",
             },
@@ -740,14 +978,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Dragonborn", "Paladins", "Noble Warriors"],
             temples: "Noble Temples",
             symbols: ["Dragon head", "Platinum scale", "Divine symbol", "Wing", "Platinum dragon"],
-            colors: ["Platinum", "White", "Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.platinum.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         tiamat: await db.createDeity({
             id: "tiamat",
             name: "Tiamat",
             title: "The Chromatic Dragon",
             symbol: "fas fa-crown",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Tiamat's influence has been a constant threat in Alabastria, with her followers seeking power, wealth, and domination over others.",
             },
@@ -757,14 +1002,22 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Evil Dragonborn", "Tyrants", "Greedy Merchants"],
             temples: "Dark Fortresses",
             symbols: ["Five-headed dragon", "Chromatic scale", "Evil symbol", "Claw", "Five-headed dragon"],
-            colors: ["Red", "Blue", "Green", "Black", "White"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.blue.id },
+                    { id: colors.green.id },
+                    { id: colors.black.id },
+                    { id: colors.white.id },
+                ]
+            },
         }),
         akadi: await db.createDeity({
             id: "akadi",
             name: "Akadi",
             title: "The Queen of Air",
             symbol: "fas fa-wind",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Neutral",
                 alabastriaContext: "Akadi's influence has been crucial for air genasi and sailors in Alabastria, helping them navigate the winds and adapt to change.",
             },
@@ -774,14 +1027,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Air Genasi", "Sailors", "Wanderers"],
             temples: "High Towers",
             symbols: ["Cloud", "Wind swirl", "Feather", "Air symbol", "Wind gust"],
-            colors: ["White", "Blue"],
+            colors: {
+                connect: [
+                    { id: colors.white.id },
+                    { id: colors.blue.id },
+                ]
+            },
         }),
         grumbar: await db.createDeity({
             id: "grumbar",
             name: "Grumbar",
             title: "The Earth Lord",
             symbol: "fas fa-mountain",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "Grumbar's influence has been essential for earth genasi and miners in Alabastria, helping them work with the land and extract its resources.",
             },
@@ -791,14 +1049,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Earth Genasi", "Miners", "Farmers"],
             temples: "Underground Shrines",
             symbols: ["Mountain"],
-            colors: ["Brown", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         kossuth: await db.createDeity({
             id: "kossuth",
             name: "Kossuth",
             title: "The Fire Lord",
             symbol: "fas fa-fire",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Neutral",
                 alabastriaContext: "Kossuth's influence has been crucial for fire genasi and blacksmiths in Alabastria, providing them with the power to forge weapons and tools.",
             },
@@ -808,14 +1071,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Fire Genasi", "Blacksmiths", "Warriors"],
             temples: "Forge Temples",
             symbols: ["Flame"],
-            colors: ["Red", "Orange"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.orange.id },
+                ]
+            },
         }),
         istishia: await db.createDeity({
             id: "istishia",
             name: "Istishia",
             title: "The Water Lord",
             symbol: "fas fa-water",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "True Neutral",
                 alabastriaContext: "Istishia's influence has been essential for water genasi and fishermen in Alabastria, helping them work with rivers and heal the sick.",
             },
@@ -825,14 +1093,19 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Water Genasi", "Fishermen", "Healers"],
             temples: "Riverside Shrines",
             symbols: ["Wave"],
-            colors: ["Blue", "White"],
+            colors: {
+                connect: [
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                ]
+            },
         }),
         the_raven_queen: await db.createDeity({
             id: "the-raven-queen",
             name: "The Raven Queen",
             title: "Goddess of Fate and Death",
             symbol: "fas fa-crow",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "The Raven Queen's influence has been crucial for those dealing with death and memory in Alabastria, particularly among the Shadar-kai and those who mourn the lost.",
             },
@@ -842,14 +1115,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Shadar-kai", "Mourners", "Necromancers"],
             temples: "Shadow Sanctuaries",
             symbols: ["Raven", "Crown", "Scythe", "Fate symbol", "Raven's crown"],
-            colors: ["Black", "Silver", "White", "Purple"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.silver.id },
+                    { id: colors.white.id },
+                    { id: colors.purple.id },
+                ]
+            },
         }),
         asmodeus: await db.createDeity({
             id: "asmodeus",
             name: "Asmodeus",
             title: "Lord of the Nine Hells",
             symbol: "fas fa-crown",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Asmodeus's influence in Alabastria has been subtle but persistent, with his followers often working through legal systems and contracts to gain power.",
             },
@@ -859,14 +1139,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Devils", "Tyrants", "Contract Lawyers"],
             temples: "Infernal Fortresses",
             symbols: ["Devil's head", "Infernal symbol", "Crown", "Flame", "Crown of Asmodeus"],
-            colors: ["Red", "Black", "Gold", "Crimson"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                    { id: colors.gold.id },
+                    { id: colors.crimson.id },
+                ]
+            },
         }),
         yondalla: await db.createDeity({
             id: "yondalla",
             name: "Yondalla",
             title: "The Protector and Provider",
             symbol: "fas fa-shield-alt",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Yondalla's influence has been essential for halfling communities in Alabastria, providing them with protection and prosperity in their new homes.",
             },
@@ -876,14 +1163,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Halflings", "Farmers", "Families"],
             temples: "Home Shrines",
             symbols: ["Shield", "Home", "Halfling symbol", "Cornucopia", "Shield of protection"],
-            colors: ["Green", "Brown", "Gold", "White"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.brown.id },
+                    { id: colors.gold.id },
+                    { id: colors.white.id },
+                ]
+            },
         }),
         arvoreen: await db.createDeity({
             id: "arvoreen",
             name: "Arvoreen",
             title: "The Defender",
             symbol: "fas fa-shield",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Good",
                 alabastriaContext: "Arvoreen's influence has been crucial for halfling defense in Alabastria, teaching them to protect their communities from threats.",
             },
@@ -893,14 +1187,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Halfling Guards", "Defenders", "Vigilantes"],
             temples: "Guard Posts",
             symbols: ["Shield", "Sword", "Halfling symbol", "Defense symbol", "Shield of Arvoreen"],
-            colors: ["Silver", "Blue", "White", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         cyrrollalee: await db.createDeity({
             id: "cyrrollalee",
             name: "Cyrrollalee",
             title: "The Hearthkeeper",
             symbol: "fas fa-heart",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Cyrrollalee's influence has been essential for building halfling communities in Alabastria, fostering friendship and trust among neighbors.",
             },
@@ -910,14 +1211,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Halfling Hosts", "Friends", "Community Builders"],
             temples: "Community Centers",
             symbols: ["Heart", "Handshake", "Home", "Friendship symbol", "Heart of friendship"],
-            colors: ["Pink", "Gold", "White", "Green"],
+            colors: {
+                connect: [
+                    { id: colors.pink.id },
+                    { id: colors.gold.id },
+                    { id: colors.white.id },
+                    { id: colors.green.id },
+                ]
+            },
         }),
         urogalan: await db.createDeity({
             id: "urogalan",
             name: "Urogalan",
             title: "The Earth Lord",
             symbol: "fas fa-mountain",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "Urogalan's influence has been important for halfling burial practices in Alabastria, providing them with proper death rites and earth connection.",
             },
@@ -927,14 +1235,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Halfling Gravediggers", "Earth Workers", "Mourners"],
             temples: "Graveyards",
             symbols: ["Mountain", "Shovel", "Grave", "Earth symbol", "Mountain of earth"],
-            colors: ["Brown", "Gray", "Green", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.gray.id },
+                    { id: colors.green.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         garl_glittergold: await db.createDeity({
             id: "garl-glittergold",
             name: "Garl Glittergold",
             title: "The Joker",
             symbol: "fas fa-smile",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Garl Glittergold's influence has been essential for gnome communities in Alabastria, providing them with luck and protection through humor.",
             },
@@ -944,14 +1259,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Gnomes", "Tricksters", "Protectors"],
             temples: "Playful Shrines",
             symbols: ["Gold nugget", "Gem", "Pickaxe", "Gnome symbol", "Golden gem"],
-            colors: ["Gold", "Green", "Blue", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.gold.id },
+                    { id: colors.green.id },
+                    { id: colors.blue.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         baervan_wildwanderer: await db.createDeity({
             id: "baervan-wildwanderer",
             name: "Baervan Wildwanderer",
             title: "The Forest Walker",
             symbol: "fas fa-tree",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Baervan Wildwanderer's influence has been important for gnome rangers and travelers in Alabastria, helping them navigate the wild places.",
             },
@@ -961,14 +1283,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Gnome Rangers", "Travelers", "Nature Lovers"],
             temples: "Forest Shrines",
             symbols: ["Tree", "Leaf", "Path", "Nature symbol", "Tree of life"],
-            colors: ["Green", "Brown", "Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.brown.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         baravar_cloakshadow: await db.createDeity({
             id: "baravar-cloakshadow",
             name: "Baravar Cloakshadow",
             title: "The Shadow Walker",
             symbol: "fas fa-mask",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Neutral",
                 alabastriaContext: "Baravar Cloakshadow's influence has been important for gnome illusionists and tricksters in Alabastria, teaching them the art of deception.",
             },
@@ -978,14 +1307,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Gnome Illusionists", "Tricksters", "Spies"],
             temples: "Hidden Shrines",
             symbols: ["Mask", "Shadow", "Cloak", "Trickery symbol", "Shadow mask"],
-            colors: ["Purple", "Black", "Silver", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.purple.id },
+                    { id: colors.black.id },
+                    { id: colors.silver.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         segojan_earthcaller: await db.createDeity({
             id: "segojan-earthcaller",
             name: "Segojan Earthcaller",
             title: "The Earth Speaker",
             symbol: "fas fa-mountain",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Neutral Good",
                 alabastriaContext: "Segojan Earthcaller's influence has been essential for gnome miners and earth workers in Alabastria, helping them work with the earth safely.",
             },
@@ -995,14 +1331,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Gnome Miners", "Earth Workers", "Burrowers"],
             temples: "Underground Shrines",
             symbols: ["Mountain", "Hammer", "Gem", "Earth symbol", "Mountain gem"],
-            colors: ["Brown", "Gold", "Green", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.gold.id },
+                    { id: colors.green.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         maglubiyet: await db.createDeity({
             id: "maglubiyet",
             name: "Maglubiyet",
             title: "The Mighty One",
             symbol: "fas fa-crown",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Maglubiyet's influence has been crucial for goblinoid survival in Alabastria, teaching them to dominate and conquer in the new world.",
             },
@@ -1012,14 +1355,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Goblins", "Hobgoblins", "Bugbears"],
             temples: "War Camps",
             symbols: ["Goblin symbol", "Skull", "War axe", "Banner", "Goblin crown"],
-            colors: ["Red", "Black", "Brown", "Yellow"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                    { id: colors.brown.id },
+                    { id: colors.yellow.id },
+                ]
+            },
         }),
         khurgorbaeyag: await db.createDeity({
             id: "khurgorbaeyag",
             name: "Khurgorbaeyag",
             title: "The Slave Driver",
             symbol: "fas fa-chain",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Khurgorbaeyag's influence has been important for goblinoid slavers in Alabastria, teaching them the art of oppression and control.",
             },
@@ -1029,14 +1379,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Goblin Slavers", "Tyrants", "Oppressors"],
             temples: "Slave Pits",
             symbols: ["Chain", "Whip", "Collar", "Slavery symbol", "Chain of slavery"],
-            colors: ["Black", "Red", "Brown", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.red.id },
+                    { id: colors.brown.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         bargrivyek: await db.createDeity({
             id: "bargrivyek",
             name: "Bargrivyek",
             title: "The Peacekeeper",
             symbol: "fas fa-handshake",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Neutral",
                 alabastriaContext: "Bargrivyek's influence has been rare but important for goblinoid cooperation in Alabastria, teaching them the value of unity and peace.",
             },
@@ -1046,14 +1403,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Goblin Diplomats", "Peacemakers", "Unifiers"],
             temples: "Diplomatic Centers",
             symbols: ["Handshake", "Peace sign", "Unity symbol", "Goblin symbol", "Hand of peace"],
-            colors: ["Green", "Gold", "White", "Blue"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.gold.id },
+                    { id: colors.white.id },
+                    { id: colors.blue.id },
+                ]
+            },
         }),
         nomog_geaya: await db.createDeity({
             id: "nomog-geaya",
             name: "Nomog-Geaya",
             title: "The Authority",
             symbol: "fas fa-gavel",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Nomog-Geaya's influence has been crucial for hobgoblin military organization in Alabastria, teaching them the importance of authority and discipline.",
             },
@@ -1063,14 +1427,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Hobgoblins", "Military Leaders", "Authorities"],
             temples: "Military Forts",
             symbols: ["Gavel", "Crown", "Authority symbol", "Hobgoblin symbol", "Gavel of authority"],
-            colors: ["Red", "Black", "Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         kurtulmak: await db.createDeity({
             id: "kurtulmak",
             name: "Kurtulmak",
             title: "The Kobold God",
             symbol: "fas fa-hammer",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Kurtulmak's influence has been essential for kobold survival in Alabastria, teaching them to build traps and tunnels for protection.",
             },
@@ -1080,14 +1451,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Kobolds", "Trap Makers", "Tunnelers"],
             temples: "Underground Lairs",
             symbols: ["Kobold symbol", "Trap", "Dagger", "Small skull", "Kobold trap"],
-            colors: ["Brown", "Red", "Black", "Yellow"],
+            colors: {
+                connect: [
+                    { id: colors.brown.id },
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                    { id: colors.yellow.id },
+                ]
+            },
         }),
         gith: await db.createDeity({
             id: "gith",
             name: "Gith",
             title: "The Liberator",
             symbol: "fas fa-fist-raised",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
                 alabastriaContext: "Gith's influence has been crucial for Gith communities in Alabastria, teaching them the value of freedom and the importance of fighting against oppression.",
             },
@@ -1097,14 +1475,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Githyanki", "Githzerai", "Liberators"],
             temples: "Liberation Shrines",
             symbols: ["Fist", "Sword", "Liberation symbol", "Gith symbol", "Fist of freedom"],
-            colors: ["Silver", "Blue", "White", "Gold"],
+            colors: {
+                connect: [
+                    { id: colors.silver.id },
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                ]
+            },
         }),
         vlaakith: await db.createDeity({
             id: "vlaakith",
             name: "Vlaakith",
             title: "The Lich-Queen",
             symbol: "fas fa-skull",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Lawful Evil",
                 alabastriaContext: "Vlaakith's influence has been important for Githyanki communities in Alabastria, teaching them the power of tyranny and undeath.",
             },
@@ -1114,14 +1499,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Githyanki", "Undead", "Tyrants"],
             temples: "Undead Fortresses",
             symbols: ["Skull", "Crown", "Lich symbol", "Githyanki symbol", "Crown of undeath"],
-            colors: ["Black", "Purple", "Silver", "Red"],
+            colors: {
+                connect: [
+                    { id: colors.black.id },
+                    { id: colors.purple.id },
+                    { id: colors.silver.id },
+                    { id: colors.red.id },
+                ]
+            },
         }),
         sseth: await db.createDeity({
             id: "sseth",
             name: "Sseth",
             title: "The Serpent Lord",
             symbol: "fas fa-eye",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Sseth's influence has been important for Yuan-Ti communities in Alabastria, teaching them the power of ambition and secrecy.",
             },
@@ -1131,14 +1523,21 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Yuan-Ti", "Ambition Seekers", "Deceivers"],
             temples: "Hidden Temples",
             symbols: ["Eye", "Snake", "Ambition symbol", "Yuan-ti symbol", "Eye of ambition"],
-            colors: ["Green", "Gold", "Black", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.gold.id },
+                    { id: colors.black.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         merrshaulk: await db.createDeity({
             id: "merrshaulk",
             name: "Merrshaulk",
             title: "The Slumbering Serpent",
             symbol: "fas fa-bed",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
                 alabastriaContext: "Merrshaulk's influence has been important for Yuan-Ti communities in Alabastria, teaching them the dangers of decadence and corruption.",
             },
@@ -1148,75 +1547,110 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
             followers: ["Yuan-Ti", "Corrupt Officials", "Decadent Rulers"],
             temples: "Corrupt Palaces",
             symbols: ["Bed", "Snake", "Decadence symbol", "Yuan-ti symbol", "Serpent of slumber"],
-            colors: ["Green", "Gold", "Black", "Purple"],
+            colors: {
+                connect: [
+                    { id: colors.green.id },
+                    { id: colors.gold.id },
+                    { id: colors.black.id },
+                    { id: colors.purple.id },
+                ]
+            },
         }),
         umberlee: await db.createDeity({
             id: "umberlee",
             name: "Umberlee",
             title: "The Bitch Queen",
             symbol: "fas fa-wave-square",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
-            alabastriaContext: "Umberlee's influence has been crucial for sailors and coastal folk in Alabastria, teaching them to respect the power of the sea and storms.",
-        },
+                alabastriaContext: "Umberlee's influence has been crucial for sailors and coastal folk in Alabastria, teaching them to respect the power of the sea and storms.",
+            },
             description: "The Chaotic Evil Queen of the Depths, goddess of the sea, storms and shipwrecks. She epitomizes the cruelty and unpredictability of the ocean. Sailors know that when tempests rage, it is Umberlee's laughter on the wind. She stands for arrogance and greed, demanding tribute of pearls to calm her rage. Umberlee's avatar is a towering sea goddess with green seaweed hair and a trident (or sometimes a manatee-faced water spirit). Her influence spans all sea-weather: she sends hurricanes, floods ships and feeds shipwreck survivors to her sharks.",
             pantheonId: pantheons.sea_powers.id,
             domains: ["Sea", "Storms", "Drowning"],
             followers: ["Sailors", "Storm Callers", "Sea Witches"],
             temples: "Storm Shrines",
             symbols: ["Wave", "Storm", "Sea symbol", "Trident", "Storm wave"],
-            colors: ["Blue", "White", "Silver", "Gray"],
+            colors: {
+                connect: [
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.silver.id },
+                    { id: colors.gray.id },
+                ]
+            },
         }),
         valkur: await db.createDeity({
             id: "valkur",
             name: "Valkur",
             title: "The Sailor's Friend",
             symbol: "fas fa-anchor",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
-            alabastriaContext: "Valkur's influence has been essential for sailors and sea travelers in Alabastria, providing them with protection and fair winds.",
-        },
+                alabastriaContext: "Valkur's influence has been essential for sailors and sea travelers in Alabastria, providing them with protection and fair winds.",
+            },
             description: "The Chaotic Good god of sailors, ships and favorable winds. Known as the Captain of the Waves, he embodies the daring spirit of sea captains. He stands for adventure on the ocean, courage and loyalty among a ship's crew. Valkur is often depicted as a rowdy, muscular sailor (sometimes half-orc) crowned with lightning-salmon, with a broad grin. Sailors pray to him for safe passage and bountiful voyages, knowing he will calm the seas for those brave enough to challenge them.",
             pantheonId: pantheons.sea_powers.id,
             domains: ["Sailors", "Protection", "Fair Seas"],
             followers: ["Sailors", "Coastal Guards", "Sea Travelers"],
             temples: "Harbor Shrines",
             symbols: ["Anchor", "Ship", "Sailor symbol", "Compass", "Anchor of safety"],
-            colors: ["Blue", "White", "Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.blue.id },
+                    { id: colors.white.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         deep_sashelas: await db.createDeity({
             id: "deep-sashelas",
             name: "Deep Sashelas",
             title: "The Sea Elf God",
             symbol: "fas fa-fish",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Good",
-            alabastriaContext: "Deep Sashelas's influence has been important for sea elves and coastal artists in Alabastria, inspiring creativity and knowledge of the sea.",
-        },
+                alabastriaContext: "Deep Sashelas's influence has been important for sea elves and coastal artists in Alabastria, inspiring creativity and knowledge of the sea.",
+            },
             description: "The Chaotic Good elven god of the sea and patron of aquatic elves. Called the Dolphin Prince, he created and guides the sea-elves. He stands for harmony with the ocean and the protection of marine life. Sashelas appears as a blue-green sea-elf or as guiding dolphin-shaped lights. His temples (often giant shells) dot the coasts, and his influence fosters peaceful relations among underwater races and defense against sea monsters.",
             pantheonId: pantheons.sea_powers.id,
             domains: ["Creativity", "Knowledge", "Sea"],
             followers: ["Sea Elves", "Artists", "Scholars"],
             temples: "Underwater Temples",
             symbols: ["Fish", "Coral", "Sea symbol", "Trident", "Coral trident"],
-            colors: ["Blue", "Green", "Gold", "Silver"],
+            colors: {
+                connect: [
+                    { id: colors.blue.id },
+                    { id: colors.green.id },
+                    { id: colors.gold.id },
+                    { id: colors.silver.id },
+                ]
+            },
         }),
         sekolah: await db.createDeity({
             id: "sekolah",
             name: "Sekolah",
             title: "The Shark God",
             symbol: "fas fa-khanda",
-            additionalProperties: { 
+            additionalProperties: {
                 alignment: "Chaotic Evil",
-            alabastriaContext: "Sekolah's influence has been important for Sahuagin communities in Alabastria, teaching them the power of predation and the hunt.",
-        },
+                alabastriaContext: "Sekolah's influence has been important for Sahuagin communities in Alabastria, teaching them the power of predation and the hunt.",
+            },
             description: "The Lawful Evil shark god of the sahuagin (sea devils). He embodies hunting and tyranny beneath the waves. Sekolah stands for brutality and primal might; his worshipers prize feats of strength and ruthlessness. His avatar is a colossal great white shark. His symbol is a white shark, and his influence drives sahuagin to savage raids on coastal peoples and dominion over the seas.",
             pantheonId: pantheons.sea_powers.id,
             domains: ["Sharks", "Predation", "Sahuagin"],
             followers: ["Sahuagin", "Shark Cultists", "Predators"],
             temples: "Underwater Lairs",
             symbols: ["Shark", "Fang", "Predation symbol", "Sahuagin symbol", "Shark's fang"],
-            colors: ["Gray", "Red", "Black", "White"],
+            colors: {
+                connect: [
+                    { id: colors.gray.id },
+                    { id: colors.red.id },
+                    { id: colors.black.id },
+                    { id: colors.white.id },
+                ]
+            },
         }),
     }
 }
