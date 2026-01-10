@@ -667,7 +667,6 @@ model Subrace {
   playstyle   String? @db.Text
   seeded      Boolean @default(false)
 
-  speedOverride           String?
   ageAdulthoodOverride    Int?
   ageLifespanOverride     Int?
   heightRangeHighOverride Float?
