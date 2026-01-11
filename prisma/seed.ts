@@ -213,6 +213,11 @@ async function main() {
         const deityHolyDays: seed.DeityHolyDays = await seed.seedDeityHolyDays({ deities });
         const deityHistories: seed.DeityHistories = await seed.seedDeityHistories({ deities, historicalPeriods });
         const deityRelationships: seed.DeityRelationships = await seed.seedDeityRelationships({ deities });
+        await seed.setRaceDeity({ races, deities });
+        await seed.setSubraceDeity({ subraces, deities });
+        await seed.setClassDeity({ classes, deities });
+        await seed.setSubclassDeity({ subclasses, deities });
+        await seed.setContinentDeity({ continents, deities });
         console.log('🔗 Seeding Connection Information...');
         const racesContinents: seed.RacesContinents = await seed.setRacesContinents({ races, continents });
         const subracesContinents: seed.SubracesContinents = await seed.setSubracesContinents({ subraces, continents });

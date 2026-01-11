@@ -1,1303 +1,830 @@
 [
-    {
-        "pantheon": "Human-Centric (Faerûn / Forgotten Realms)",
-        "description": "The primary pantheon of human civilizations, brought to Alabastria through The Bringing. These gods represent the core values and aspects of human society.",
-        "symbol": "fas fa-crown",
-        "deities": [
-            {
-                "name": "Cyric",
-                "title": "Prince of Lies",
-                "domains": [
-                    "Trickery",
-                    "Death",
-                    "Madness",
-                    "Intrigue"
-                ],
-                "alignment": "Chaotic Evil",
-                "symbol": "fas fa-sun-plant-wilt",
-                "description": "The god of lies, deception, madness, and murder. Cyric embodies betrayal, falsehood, and the destructive power of unrestrained ambition, delighting in the downfall of gods and mortals alike.",
-                "alabastria_context": "Since The Bringing, Cyric’s presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.",
-                "followers": [
-                    "Assassins",
-                    "Liars and deceivers",
-                    "Mad prophets",
-                    "Cultists",
-                    "Political conspirators"
-                ],
-                "holy_days": [
-                    "The Black Sun",
-                    "Night of Shattered Truths"
-                ],
-                "temples": "Hidden shrines, underground chambers, and abandoned ruins",
-                "allies": [
-                    "Shar",
-                    "Talona"
-                ],
-                "conflicts": [
-                    "Mystra",
-                    "Kelemvor",
-                    "Tempus",
-                    "Lathander"
-                ],
-                "symbols": [
-                    "Black sun with a purple core",
-                    "Broken halo",
-                    "Bloodstained dagger",
-                    "Cracked skull"
-                ],
-                "colors": [
-                    "Black",
-                    "Deep purple",
-                    "Blood red",
-                    "Ash gray"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "The Bringing weakened Cyric’s divine coherence, amplifying his madness. His early cults splintered, many turning violently on one another as conflicting visions spread.",
-                    "100-300_cycles": "Cyricite sects began infiltrating courts and guilds, engineering assassinations and civil unrest. Several short-lived theocracies collapsed due to internal betrayal.",
-                    "300-600_cycles": "A period known as the Fractured Dogma saw Cyric’s followers war against each other over contradictory revelations. Despite this, his influence grew through fear and chaos rather than devotion.",
-                    "600-800_cycles": "In the current age, Cyric is worshiped primarily in secret. His cults are blamed for several major political collapses and the rise of the Veiled Knives, an infamous assassin network operating across continents."
-                }
-            },
-            {
-                "name": "Tempus",
-                "title": "Lord of Battles",
-                "domains": [
-                    "War",
-                    "Battle",
-                    "Strategy"
-                ],
-                "alignment": "Neutral",
-                "symbol": "fas fa-pen-fancy",
-                "description": "The god of war, battle, and strategy. Tempus represents the honor and glory of combat, as well as the strategic thinking required for warfare.",
-                "alabastria_context": "Since The Bringing, Tempus has gained many followers among the Huntbound Order and military forces across all continents. His influence is strongest in Skratonia where organized warfare is most common.",
-                "followers": [
-                    "Warriors",
-                    "Soldiers",
-                    "Strategists",
-                    "Huntbound Order"
-                ],
-                "holy_days": [
-                    "Battle's Dawn",
-                    "Victory's End"
-                ],
-                "temples": "Fortresses and training grounds",
-                "allies": [
-                    "Tymora",
-                    "Lathander",
-                    "Mystra"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Crossed swords",
-                    "Burning sword",
-                    "War banner",
-                    "Shield with lightning bolt",
-                    "Sword and shield"
-                ],
-                "colors": [
-                    "Crimson red",
-                    "Gold",
-                    "Silver",
-                    "Steel gray"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Initially confused by The Bringing, Tempus's followers struggled to maintain their faith in a new world. Many turned to him for guidance during the early conflicts and resource wars.",
-                    "100-300_cycles": "Gained prominence during the First Continental War, with his temples becoming centers of military training and strategy. The Huntbound Order's founding in 755 cycles marked a major resurgence of his influence.",
-                    "300-600_cycles": "Became the patron deity of the Huntbound Order, with Tharos Raggenthraw being a devoted follower. His influence spread across all continents as the guild expanded.",
-                    "600-800_cycles": "Currently at the height of his power in Alabastria, with the Huntbound Order serving as his primary religious organization. His temples are found in every major city."
-                }
-            },
-            {
-                "name": "Mystra",
-                "title": "Goddess of Magic",
-                "domains": [
-                    "Magic",
-                    "The Weave",
-                    "Arcane Knowledge"
-                ],
-                "alignment": "Neutral Good",
-                "symbol": "fas fa-magic",
-                "description": "The goddess of magic and the Weave. She governs all arcane magic and is the patron of wizards and sorcerers.",
-                "alabastria_context": "Mystra's influence is strongest in Kuriguer where magical anomalies and research institutions are concentrated. Her followers have been instrumental in understanding the magical properties of Alabastria.",
-                "followers": [
-                    "Wizards",
-                    "Sorcerers",
-                    "Arcane Researchers",
-                    "Magic Scholars"
-                ],
-                "holy_days": [
-                    "Weave's Awakening",
-                    "Mystra's Blessing"
-                ],
-                "temples": "Libraries and magical academies",
-                "allies": [
-                    "Corellon Larethian",
-                    "Oghma",
-                    "Lathander"
-                ],
-                "conflicts": [
-                    "Cyric",
-                    "Bane",
-                    "Shar"
-                ],
-                "symbols": [
-                    "Seven-pointed star",
-                    "Weave pattern",
-                    "Mystra's symbol",
-                    "Arcane circle",
-                    "Magic staff"
-                ],
-                "colors": [
-                    "Deep blue",
-                    "Silver",
-                    "White",
-                    "Purple"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Her followers were among the first to adapt to Alabastria's unique magical properties, establishing the first magical research centers.",
-                    "100-300_cycles": "Gained significant influence during Kuriguer's Magic Surge, with her temples becoming centers of magical learning and research.",
-                    "300-600_cycles": "Established the first magical academies in Kuriguer, becoming the primary patron of magical education and research across Alabastria.",
-                    "600-800_cycles": "Currently maintains the most prestigious magical institutions in Alabastria, with her followers being the primary researchers of the continent's magical anomalies."
-                }
-            },
-            {
-                "name": "Lathander",
-                "title": "Morninglord",
-                "domains": [
-                    "Renewal",
-                    "Dawn",
-                    "Hope",
-                    "Spring"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-sun",
-                "description": "The god of renewal, dawn, and hope. He represents new beginnings, healing, and the triumph of light over darkness.",
-                "alabastria_context": "Lathander's influence is strongest in Skratonia where his temples serve as centers of healing and renewal. His followers are often found among healers and those seeking new beginnings.",
-                "followers": [
-                    "Healers",
-                    "Paladins",
-                    "Farmers",
-                    "Those Seeking Renewal"
-                ],
-                "holy_days": [
-                    "Dawn's Blessing",
-                    "Spring's Awakening"
-                ],
-                "temples": "Healing centers and agricultural communities",
-                "allies": [
-                    "Mystra",
-                    "Tymora",
-                    "Selûne"
-                ],
-                "conflicts": [
-                    "Shar",
-                    "Cyric",
-                    "Bane"
-                ],
-                "symbols": [
-                    "Rising sun",
-                    "Golden disk",
-                    "Dawn's light",
-                    "Spring flower",
-                    "Sunburst"
-                ],
-                "colors": [
-                    "Gold",
-                    "Yellow",
-                    "White",
-                    "Light blue"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Provided hope and healing during the chaotic early years of The Bringing, with his temples becoming sanctuaries for the displaced.",
-                    "100-300_cycles": "Gained prominence as a patron of agriculture and renewal, with his followers helping establish the first successful farming communities in Skratonia.",
-                    "300-600_cycles": "Became the primary patron of healing and renewal across all continents, with his temples serving as centers of medical knowledge and agricultural innovation.",
-                    "600-800_cycles": "Currently maintains the most extensive healing network in Alabastria, with his followers being the primary healers and agricultural advisors across all continents."
-                }
-            },
-            {
-                "name": "Selûne",
-                "title": "Our Lady of Silver",
-                "domains": [
-                    "Moon",
-                    "Navigation",
-                    "Stars",
-                    "Wanderers"
-                ],
-                "alignment": "Chaotic Good",
-                "symbol": "fas fa-moon",
-                "description": "The goddess of the moon, navigation, and wanderers. She guides travelers and protects those who journey under the stars.",
-                "alabastria_context": "Selûne's influence is strongest among coastal communities and travelers. Her followers are often found among sailors, rangers, and those who explore the unknown.",
-                "followers": [
-                    "Sailors",
-                    "Rangers",
-                    "Travelers",
-                    "Explorers"
-                ],
-                "holy_days": [
-                    "Moon's Blessing",
-                    "Star's Guidance"
-                ],
-                "temples": "Lighthouses and coastal shrines",
-                "allies": [
-                    "Lathander",
-                    "Tymora",
-                    "Corellon Larethian"
-                ],
-                "conflicts": [
-                    "Shar",
-                    "Cyric",
-                    "Bane"
-                ],
-                "symbols": [
-                    "Crescent moon",
-                    "Silver disk",
-                    "Star cluster",
-                    "Compass rose",
-                    "Moon and stars"
-                ],
-                "colors": [
-                    "Silver",
-                    "White",
-                    "Light blue",
-                    "Pale gold"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Guided the first explorers and settlers as they navigated the new world, with her temples serving as navigation aids and safe havens.",
-                    "100-300_cycles": "Gained prominence as a patron of exploration and trade, with her followers establishing the first trade routes and navigation systems.",
-                    "300-600_cycles": "Became the primary patron of maritime trade and exploration, with her temples serving as lighthouses and navigation centers along all coastlines.",
-                    "600-800_cycles": "Currently maintains the most extensive navigation network in Alabastria, with her followers being the primary guides for all maritime and overland travel."
-                }
-            },
-            {
-                "name": "Shar",
-                "title": "Mistress of the Night",
-                "domains": [
-                    "Darkness",
-                    "Secrets",
-                    "Loss",
-                    "Forgetting"
-                ],
-                "alignment": "Neutral Evil",
-                "symbol": "fas fa-eye-slash",
-                "description": "The goddess of darkness, secrets, and loss. She represents the hidden aspects of existence and the power of shadows.",
-                "alabastria_context": "Shar's influence is strongest in the darker corners of society and among those who deal in secrets. Her followers are often found among rogues, spies, and those who have lost much.",
-                "followers": [
-                    "Rogues",
-                    "Spies",
-                    "Those Who Have Lost",
-                    "Shadow Workers"
-                ],
-                "holy_days": [
-                    "Night's Embrace",
-                    "Shadow's Blessing"
-                ],
-                "temples": "Hidden shrines and secret meeting places",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who lost everything in The Bringing, with her temples serving as places of mourning and secret gathering.",
-                    "100-300_cycles": "Established a network of hidden shrines and secret societies, with her followers becoming the primary information brokers and spies across all continents.",
-                    "300-600_cycles": "Became the patron of the shadow economy and underground networks, with her followers controlling much of the information flow between continents.",
-                    "600-800_cycles": "Currently maintains the most extensive information network in Alabastria, with her followers being the primary spies and information brokers across all continents."
-                },
-                "allies": [
-                    "Cyric",
-                    "Bane",
-                    "Talona"
-                ],
-                "conflicts": [
-                    "Selûne",
-                    "Lathander",
-                    "Mystra"
-                ],
-                "symbols": [
-                    "Black disk",
-                    "Shadow veil",
-                    "Dark moon",
-                    "Mystery symbol",
-                    "Eclipse"
-                ],
-                "colors": [
-                    "Black",
-                    "Dark purple",
-                    "Deep blue",
-                    "Silver"
-                ]
-            },
-            {
-                "name": "Oghma",
-                "title": "The Binder of What Is Known",
-                "domains": [
-                    "Knowledge",
-                    "Inspiration",
-                    "Lore",
-                    "Communication"
-                ],
-                "alignment": "Neutral",
-                "symbol": "fas fa-book-open",
-                "description": "The god of knowledge, inspiration, and invention. Oghma embodies the preservation and sharing of all information, believing that truth and creativity should flow freely to enlighten the world.",
-                "alabastria_context": "Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.",
-                "followers": [
-                    "Scholars",
-                    "Bards",
-                    "Historians",
-                    "Scribes",
-                    "Inventors"
-                ],
-                "holy_days": [
-                    "The Day of Unbound Pages",
-                    "Festival of First Words"
-                ],
-                "temples": "Libraries, archives, universities, and scriptoria",
-                "allies": [
-                    "Mystra",
-                    "Deneir",
-                    "Lathander"
-                ],
-                "conflicts": [
-                    "Cyric",
-                    "Shar",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Open book with a blank page",
-                    "Quill crossed with a scroll",
-                    "Knot of knowledge",
-                    "Seven-pointed star of lore"
-                ],
-                "colors": [
-                    "White",
-                    "Sky blue",
-                    "Gold",
-                    "Soft gray"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "In the aftermath of The Bringing, Oghma’s faithful focused on salvaging texts, oral histories, and lost languages. Many risked their lives to preserve fragments of the old world’s knowledge.",
-                    "100-300_cycles": "Oghman libraries became centers of learning and diplomacy. The first Great Concord of Scholars was signed under his auspices, standardizing languages and historical records.",
-                    "300-600_cycles": "A golden age of invention and exploration emerged, driven by Oghma’s clergy encouraging experimentation and free exchange of ideas across continents.",
-                    "600-800_cycles": "In the present age, Oghma’s temples stand as neutral sanctuaries. His followers are instrumental in educating the masses and safeguarding truth against manipulation and deliberate falsehoods."
-                }
-            },
-            {
-                "name": "Deneir",
-                "title": "The First Scribe",
-                "domains": [
-                    "Knowledge",
-                    "Writing",
-                    "Glyphs",
-                    "Literature"
-                ],
-                "alignment": "Neutral Good",
-                "symbol": "fas fa-feather-pointed",
-                "description": "The god of writing, glyphs, and recorded knowledge. Deneir is the patron of scribes and chroniclers, devoted to the accurate preservation of truth through the written word.",
-                "alabastria_context": "Since The Bringing, Deneir’s followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.",
-                "followers": [
-                    "Scribes",
-                    "Librarians",
-                    "Archivists",
-                    "Chroniclers",
-                    "Rune scholars"
-                ],
-                "holy_days": [
-                    "The First Inscription",
-                    "Inkbound Vigil"
-                ],
-                "temples": "Scriptoria, record halls, rune libraries, and monasteries",
-                "allies": [
-                    "Oghma",
-                    "Mystra",
-                    "Lathander"
-                ],
-                "conflicts": [
-                    "Cyric",
-                    "Shar",
-                    "Mask"
-                ],
-                "symbols": [
-                    "Lit candle above an open book",
-                    "Runed quill",
-                    "Glyph-inscribed scroll",
-                    "Eye within a page"
-                ],
-                "colors": [
-                    "Ivory",
-                    "Ink black",
-                    "Gold",
-                    "Deep blue"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Following The Bringing, Deneir’s clergy raced to document events as they unfolded, believing that accurate records would prevent future chaos born of forgotten truth.",
-                    "100-300_cycles": "Deneirite monasteries became centers of law and record-keeping. Many early Alabastrian legal codes were penned under his guidance.",
-                    "300-600_cycles": "A surge in rune magic and glyph-based spellcraft elevated Deneir’s status among mages and artificers, solidifying his role as guardian of written magic.",
-                    "600-800_cycles": "In the current age, Deneir’s followers act as trusted neutral recorders of treaties, histories, and magical research, often serving as arbiters when truth is disputed."
-                }
-            },
-            {
-                "name": "Mask",
-                "title": "The Lord of Shadows",
-                "domains": [
-                    "Trickery",
-                    "Shadows",
-                    "Thievery",
-                    "Intrigue"
-                ],
-                "alignment": "Chaotic Neutral",
-                "symbol": "fas fa-masks-theater",
-                "description": "The god of shadows, thieves, and intrigue. Mask represents stealth, cleverness, and the art of taking what is forbidden, valuing wit and subtlety over brute force.",
-                "alabastria_context": "Since The Bringing, Mask has flourished in Alabastria’s expanding cities and trade hubs. His worship is strongest among thieves’ guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.",
-                "followers": [
-                    "Thieves",
-                    "Rogues",
-                    "Spies",
-                    "Smugglers",
-                    "Information brokers"
-                ],
-                "holy_days": [
-                    "The Long Shadow",
-                    "Night of Vanishing Coin"
-                ],
-                "temples": "Hidden guild halls, back-alley shrines, and shadowed catacombs",
-                "allies": [
-                    "Cyric",
-                    "Shar"
-                ],
-                "conflicts": [
-                    "Tyr",
-                    "Deneir",
-                    "Helm"
-                ],
-                "symbols": [
-                    "Black mask",
-                    "Shadowed dagger",
-                    "Coin with a hole",
-                    "Cloaked figure"
-                ],
-                "colors": [
-                    "Black",
-                    "Midnight blue",
-                    "Silver",
-                    "Smoke gray"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "In the uncertain days after The Bringing, Mask’s faithful became essential scouts, smugglers, and information gatherers. Many cities quietly relied on them despite public condemnation.",
-                    "100-300_cycles": "Thieves’ guilds formally organized under Mask’s loose patronage, creating networks that spanned continents and traded in secrets as readily as coin.",
-                    "300-600_cycles": "A golden age of espionage elevated Mask’s influence. Shadow wars between rival states were often decided by Maskan agents before armies ever marched.",
-                    "600-800_cycles": "In the present era, Mask is regarded with wary tolerance. His worship persists wherever laws are rigid, borders are tight, and secrets are valuable."
-                }
-            },
-            {
-                "name": "Helm",
-                "title": "The Vigilant One",
-                "domains": [
-                    "Protection",
-                    "Guardianship",
-                    "Duty",
-                    "Law"
-                ],
-                "alignment": "Lawful Neutral",
-                "symbol": "fas fa-shield-halved",
-                "description": "The god of guardians, protection, and vigilance. Helm embodies duty, steadfastness, and the unwavering defense of law and order against chaos and threats.",
-                "alabastria_context": "Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.",
-                "followers": [
-                    "Guards",
-                    "Soldiers",
-                    "Watchmen",
-                    "Paladins",
-                    "Lawful magistrates"
-                ],
-                "holy_days": [
-                    "The Vigil",
-                    "Day of the Watchtower"
-                ],
-                "temples": "Fortified temples, watchtowers, barracks, and city walls",
-                "allies": [
-                    "Tyr",
-                    "Lathander",
-                    "Oghma"
-                ],
-                "conflicts": [
-                    "Cyric",
-                    "Mask",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Closed helm",
-                    "Shield with an eye",
-                    "Watchtower",
-                    "Gauntleted fist"
-                ],
-                "colors": [
-                    "Steel gray",
-                    "Silver",
-                    "White",
-                    "Dark blue"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "After The Bringing, Helm’s followers focused on restoring order amidst widespread chaos. His priests advised leaders on maintaining law and discipline in vulnerable cities.",
-                    "100-300_cycles": "Helm’s influence expanded with the rise of city-states and organized militias. Watchtowers and fortified temples were constructed to safeguard urban centers.",
-                    "300-600_cycles": "Helm’s clergy became a respected force in law enforcement, mediating disputes and training guards. Many paladins and knights pledged service to him during regional conflicts.",
-                    "600-800_cycles": "In the present age, Helm’s faithful continue to safeguard Alabastria. His temples act as centers of civic defense, and his doctrines of vigilance and duty guide soldiers, guards, and lawkeepers across the land."
-                }
-            },
-            {
-                "name": "Tyr",
-                "title": "The Even-Handed",
-                "domains": [
-                    "Justice",
-                    "Law",
-                    "Honor",
-                    "Duty"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-scale-balanced",
-                "description": "The god of justice, law, and righteous duty. Tyr embodies fairness, honor, and the pursuit of justice, ensuring that the innocent are protected and the guilty are held accountable.",
-                "alabastria_context": "Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.",
-                "followers": [
-                    "Judges",
-                    "Paladins",
-                    "Lawyers",
-                    "City officials",
-                    "Soldiers upholding justice"
-                ],
-                "holy_days": [
-                    "Day of the Scales",
-                    "Judgment’s Dawn"
-                ],
-                "temples": "Courthouses, fortified temples, and halls of justice",
-                "allies": [
-                    "Helm",
-                    "Lathander",
-                    "Oghma"
-                ],
-                "conflicts": [
-                    "Cyric",
-                    "Mask",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Balanced scales",
-                    "Sword over scales",
-                    "Blindfolded hand holding scales",
-                    "Gauntlet holding a sword"
-                ],
-                "colors": [
-                    "White",
-                    "Gold",
-                    "Silver",
-                    "Crimson"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "Following The Bringing, Tyr’s faithful worked to stabilize cities and regions, establishing courts and promoting impartial justice in a chaotic world.",
-                    "100-300_cycles": "Tyr’s influence expanded as legal codes were formalized across Alabastria. Paladins of Tyr acted as judges, mediators, and protectors of law.",
-                    "300-600_cycles": "Tyr’s clergy gained recognition as moral arbiters, intervening in disputes between rulers and kingdoms. His doctrines of fairness became a cornerstone of governance.",
-                    "600-800_cycles": "In the current era, Tyr’s temples serve as centers of law and justice. His followers continue to uphold fairness, mediate conflicts, and punish wrongdoing, ensuring that Tyr’s ideals remain a guiding light in Alabastria."
-                }
-            },
-            {
-                "name": "Chauntea",
-                "title": "The Great Mother",
-                "domains": [
-                    "Agriculture",
-                    "Harvest",
-                    "Nature",
-                    "Life"
-                ],
-                "alignment": "Neutral Good",
-                "symbol": "fas fa-seedling",
-                "description": "The goddess of agriculture, fertility, and the nurturing of life. Chauntea embodies the growth of crops, the cycles of nature, and the sustenance of communities through careful stewardship of the land.",
-                "alabastria_context": "Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.",
-                "followers": [
-                    "Farmers",
-                    "Gardeners",
-                    "Rangers",
-                    "Druids",
-                    "Herbalists"
-                ],
-                "holy_days": [
-                    "Planting Day",
-                    "Harvest Home"
-                ],
-                "temples": "Granaries, farm shrines, garden temples, and rural sanctuaries",
-                "allies": [
-                    "Lathander",
-                    "Tyr",
-                    "Oghma"
-                ],
-                "conflicts": [
-                    "Talona",
-                    "Cyric",
-                    "Bane"
-                ],
-                "symbols": [
-                    "Sheaf of wheat",
-                    "Blooming flower",
-                    "Cornucopia",
-                    "Tree with deep roots"
-                ],
-                "colors": [
-                    "Green",
-                    "Earth brown",
-                    "Golden yellow",
-                    "Sky blue"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "After The Bringing, Chauntea’s clergy focused on restoring agricultural systems disrupted by chaos. Seeds were planted anew, and knowledge of irrigation and crop rotation was shared widely.",
-                    "100-300_cycles": "Rural communities grew in size and stability under her guidance. Festivals celebrating planting and harvest became widespread, reinforcing social cohesion.",
-                    "300-600_cycles": "Her influence extended into urban centers as granaries, gardens, and public farms were established to feed growing populations. Druidic orders allied with her for land stewardship.",
-                    "600-800_cycles": "In the present era, Chauntea’s followers continue to ensure food security, protect farmland, and celebrate the cycles of growth and harvest. Her teachings influence both peasants and rulers who value the prosperity of the land."
-                }
-            },
-            {
-                "name": "Ilmater",
-                "title": "The Crying God",
-                "domains": [
-                    "Endurance",
-                    "Suffering",
-                    "Compassion",
-                    "Healing"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-hand-holding-heart",
-                "description": "The god of endurance, suffering, and compassion. Ilmater embodies patience, selflessness, and the relief of pain, inspiring his followers to comfort the oppressed and aid those in distress.",
-                "alabastria_context": "Since The Bringing, Ilmater’s worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.",
-                "followers": [
-                    "Healers",
-                    "Clerics",
-                    "Monks",
-                    "Caregivers",
-                    "Refugees and the oppressed"
-                ],
-                "holy_days": [
-                    "Day of Tears",
-                    "Night of Quiet Vigil"
-                ],
-                "temples": "Hospitals, shelters, monasteries, and quiet sanctuaries",
-                "allies": [
-                    "Lathander",
-                    "Tyr",
-                    "Chauntea"
-                ],
-                "conflicts": [
-                    "Talona",
-                    "Bane",
-                    "Cyric"
-                ],
-                "symbols": [
-                    "Pair of hands bound with a red cord",
-                    "Weeping face",
-                    "Broken chain",
-                    "Heart encircled by flame"
-                ],
-                "colors": [
-                    "White",
-                    "Crimson red",
-                    "Pale blue",
-                    "Silver"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "After The Bringing, Ilmater’s followers focused on aiding those devastated by upheaval. Temples acted as emergency relief centers for the displaced and wounded.",
-                    "100-300_cycles": "Ilmaterite charities and hospitals were formalized, and orders of compassionate monks and clerics spread throughout Alabastria.",
-                    "300-600_cycles": "His clergy became mediators and healers in war-torn regions. Pilgrimages to sites of past tragedies grew as acts of penance and service.",
-                    "600-800_cycles": "In the present era, Ilmater’s temples are vital centers for social welfare. His followers continue to alleviate suffering, provide refuge, and advocate for endurance, patience, and hope in the face of adversity."
-                }
-            },
-            {
-                "name": "Talona",
-                "title": "Lady of Poison",
-                "domains": [
-                    "Poison",
-                    "Disease",
-                    "Decay",
-                    "Suffering"
-                ],
-                "alignment": "Chaotic Evil",
-                "symbol": "fas fa-skull-crossbones",
-                "description": "The goddess of poison, disease, and decay. Talona embodies silent death and lingering suffering, reveling in plagues, toxins, and the slow corruption of body and land.",
-                "alabastria_context": "Since The Bringing, Talona’s worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.",
-                "followers": [
-                    "Poisoners",
-                    "Plague cultists",
-                    "Assassins",
-                    "Alchemists",
-                    "Desperate commoners"
-                ],
-                "holy_days": [
-                    "The Weeping Blight",
-                    "Night of Bitter Breath"
-                ],
-                "temples": "Hidden shrines, plague pits, ruined hospitals, and alchemical dens",
-                "allies": [
-                    "Cyric",
-                    "Shar"
-                ],
-                "conflicts": [
-                    "Lathander",
-                    "Chauntea",
-                    "Ilmater",
-                    "Tempus"
-                ],
-                "symbols": [
-                    "Three teardrops falling from a skull",
-                    "Poisoned chalice",
-                    "Green-black serpent",
-                    "Withered flower"
-                ],
-                "colors": [
-                    "Sickly green",
-                    "Black",
-                    "Venom yellow",
-                    "Dark brown"
-                ],
-                "history_800_years": {
-                    "0-100_cycles": "In the chaos following The Bringing, Talona’s influence spread rapidly through uncontrolled disease and spoiled food supplies. Early cultists flourished among refugees and the dying.",
-                    "100-300_cycles": "Several devastating plagues were attributed to Talona’s favor or wrath. Her worship became deeply feared, and many cities outlawed even speaking her name.",
-                    "300-600_cycles": "Talona’s followers refined poisons and diseases into weapons, selling their services to criminals and rival states. Her cults became more organized and secretive.",
-                    "600-800_cycles": "In the current era, Talona is placated through forbidden rites rather than openly praised. Her cults are blamed for recent outbreaks collectively known as the Ashen Cough and the Black Bloom."
-                }
-            },
-            {
-                "name": "Tymora",
-                "title": "Lady Luck",
-                "domains": [
-                    "Good Fortune",
-                    "Luck",
-                    "Adventure",
-                    "Gambling"
-                ],
-                "alignment": "Chaotic Good",
-                "symbol": "fas fa-dice",
-                "description": "The goddess of good fortune and luck. She blesses adventurers and those who take risks for noble causes.",
-                "alabastria_context": "Tymora's influence is strongest among adventurers, gamblers, and those who take risks. Her followers are often found among the Huntbound Order and other adventuring groups.",
-                "followers": [
-                    "Adventurers",
-                    "Gamblers",
-                    "Risk Takers",
-                    "Huntbound Order"
-                ],
-                "holy_days": [
-                    "Luck's Blessing",
-                    "Adventure's Call"
-                ],
-                "temples": "Taverns and gambling halls",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who took risks to survive in the new world, with her temples serving as centers of hope and luck.",
-                    "100-300_cycles": "Became the patron of early adventurers and explorers, with her temples serving as gathering places for those seeking fortune and adventure.",
-                    "300-600_cycles": "Gained significant influence among the Huntbound Order and other adventuring groups, with her temples becoming centers of luck and fortune.",
-                    "600-800_cycles": "Currently maintains the most extensive network of luck and fortune in Alabastria, with her followers being the primary patrons of adventurers and risk takers."
-                },
-                "allies": [
-                    "Lathander",
-                    "Selûne",
-                    "Tempus"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Gold coin",
-                    "Lucky clover",
-                    "Dice",
-                    "Fortune wheel",
-                    "Four-leaf clover"
-                ],
-                "colors": [
-                    "Gold",
-                    "Green",
-                    "White",
-                    "Silver"
-                ]
-            },
-            {
-                "name": "Beshaba",
-                "title": "Lady Doom",
-                "domains": [
-                    "Misfortune",
-                    "Bad Luck",
-                    "Accidents",
-                    "Curses"
-                ],
-                "alignment": "Chaotic Evil",
-                "symbol": "fas fa-skull",
-                "description": "The goddess of misfortune and bad luck. She represents the darker side of chance and the consequences of poor decisions.",
-                "alabastria_context": "Beshaba's influence is strongest among those who have suffered great misfortune or who deal in curses and hexes. Her followers are often found among those who have been wronged.",
-                "followers": [
-                    "Those Who Have Suffered",
-                    "Cursed Individuals",
-                    "Hex Workers",
-                    "Victims of Misfortune"
-                ],
-                "holy_days": [
-                    "Doom's Call",
-                    "Misfortune's Blessing"
-                ],
-                "temples": "Cursed places and accident sites",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who suffered the most from The Bringing, with her temples serving as places of mourning and curse work.",
-                    "100-300_cycles": "Established a network of cursed shrines and accident sites, with her followers becoming the primary curse workers and hex specialists across all continents.",
-                    "300-600_cycles": "Became the patron of the cursed and wronged, with her temples serving as centers of curse work and misfortune magic.",
-                    "600-800_cycles": "Currently maintains the most extensive network of curse work and misfortune in Alabastria, with her followers being the primary curse workers and hex specialists."
-                },
-                "allies": [],
-                "conflicts": [],
-                "symbols": [
-                    "skull"
-                ],
-                "colors": [
-                    "Unknown color"
-                ]
-            },
-            {
-                "name": "Kelemvor",
-                "title": "Lord of the Dead",
-                "domains": [
-                    "Death",
-                    "Judgment",
-                    "The Dead",
-                    "Justice"
-                ],
-                "alignment": "Lawful Neutral",
-                "symbol": "fas fa-balance-scale",
-                "description": "The god of death and judgment. He ensures that the dead are properly judged and that death comes to all in its proper time.",
-                "alabastria_context": "Kelemvor's influence is strongest among those who deal with death and the dead. His followers are often found among clerics, undertakers, and those who seek justice.",
-                "followers": [
-                    "Clerics",
-                    "Undertakers",
-                    "Judges",
-                    "Those Seeking Justice"
-                ],
-                "holy_days": [
-                    "Death's Judgment",
-                    "Justice's Call"
-                ],
-                "temples": "Cemeteries and courthouses",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who dealt with the many deaths caused by The Bringing, with his temples serving as centers of death and judgment.",
-                    "100-300_cycles": "Became the primary patron of death and judgment across all continents, with his temples serving as centers of justice and the dead.",
-                    "300-600_cycles": "Established the most extensive network of death and judgment in Alabastria, with his followers being the primary judges and undertakers across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of death and judgment in Alabastria, with his followers being the primary judges and undertakers across all continents."
-                },
-                "allies": [
-                    "Lathander",
-                    "Mystra",
-                    "Tymora"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Skeleton",
-                    "Scale",
-                    "Sword",
-                    "Death symbol",
-                    "Scales of justice"
-                ],
-                "colors": [
-                    "Black",
-                    "White",
-                    "Silver",
-                    "Gray"
-                ]
-            },
-            {
-                "name": "Bane",
-                "title": "The Black Hand",
-                "domains": [
-                    "Tyranny",
-                    "Conquest",
-                    "Fear",
-                    "Oppression"
-                ],
-                "alignment": "Lawful Evil",
-                "symbol": "fas fa-fist-raised",
-                "description": "The god of tyranny and conquest. He represents the power of fear and oppression to control others.",
-                "alabastria_context": "Bane's influence is strongest among tyrants, conquerors, and those who seek to control others through fear. His followers are often found among the ruling classes and military leaders.",
-                "followers": [
-                    "Tyrants",
-                    "Conquerors",
-                    "Military Leaders",
-                    "Those Seeking Power"
-                ],
-                "holy_days": [
-                    "Tyranny's Call",
-                    "Conquest's Blessing"
-                ],
-                "temples": "Fortresses and military bases",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who sought to control the chaos of The Bringing, with his temples serving as centers of tyranny and conquest.",
-                    "100-300_cycles": "Became the patron of many ruling classes and military leaders, with his temples serving as centers of power and control across all continents.",
-                    "300-600_cycles": "Established a network of tyrannical rule and military conquest, with his followers being the primary tyrants and conquerors across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of tyranny and conquest in Alabastria, with his followers being the primary tyrants and conquerors across all continents."
-                },
-                "allies": [
-                    "Cyric",
-                    "Shar",
-                    "Talona"
-                ],
-                "conflicts": [
-                    "Tymora",
-                    "Lathander",
-                    "Mystra"
-                ],
-                "symbols": [
-                    "Clenched fist",
-                    "Black gauntlet",
-                    "Tyranny symbol",
-                    "Iron crown",
-                    "Fist of Bane"
-                ],
-                "colors": [
-                    "Black",
-                    "Red",
-                    "Dark gray",
-                    "Crimson"
-                ]
-            },
-            {
-                "name": "Myrkul",
-                "title": "Lord of Bones",
-                "domains": [
-                    "Undeath",
-                    "Necromancy",
-                    "The Undead",
-                    "Decay"
-                ],
-                "alignment": "Neutral Evil",
-                "symbol": "fas fa-skull-crossbones",
-                "description": "The god of undeath and necromancy. He represents the power of death and the undead.",
-                "alabastria_context": "Myrkul's influence is strongest among necromancers, undead, and those who deal with death magic. His followers are often found among the undead and those who seek to cheat death.",
-                "followers": [
-                    "Necromancers",
-                    "Undead",
-                    "Those Seeking Immortality",
-                    "Death Magic Users"
-                ],
-                "holy_days": [
-                    "Undeath's Call",
-                    "Necromancy's Blessing"
-                ],
-                "temples": "Necropolises and undead lairs",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who sought to cheat death in the new world, with his temples serving as centers of necromancy and undeath.",
-                    "100-300_cycles": "Became the patron of necromancers and undead across all continents, with his temples serving as centers of death magic and undeath.",
-                    "300-600_cycles": "Established a network of necromancy and undeath across all continents, with his followers being the primary necromancers and undead across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of necromancy and undeath in Alabastria, with his followers being the primary necromancers and undead across all continents."
-                },
-                "allies": [],
-                "conflicts": [],
-                "symbols": [
-                    "skull crossbones"
-                ],
-                "colors": [
-                    "Unknown color"
-                ]
-            },
-            {
-                "name": "Jergal",
-                "title": "Scribe of the Dead",
-                "domains": [
-                    "Records of the Dead",
-                    "Fate",
-                    "History",
-                    "Knowledge"
-                ],
-                "alignment": "True Neutral",
-                "symbol": "fas fa-scroll",
-                "description": "The god of records of the dead and fate. He maintains the records of all who have died and ensures that fate is properly recorded.",
-                "alabastria_context": "Jergal's influence is strongest among scribes, historians, and those who deal with records and knowledge. His followers are often found among scholars and record keepers.",
-                "followers": [
-                    "Scribes",
-                    "Historians",
-                    "Record Keepers",
-                    "Scholars"
-                ],
-                "holy_days": [
-                    "Record's Blessing",
-                    "Fate's Call"
-                ],
-                "temples": "Libraries and record halls",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among those who sought to record the history of The Bringing, with his temples serving as centers of record keeping and knowledge.",
-                    "100-300_cycles": "Became the patron of scribes and historians across all continents, with his temples serving as centers of record keeping and knowledge.",
-                    "300-600_cycles": "Established the most extensive network of record keeping and knowledge in Alabastria, with his followers being the primary scribes and historians across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of record keeping and knowledge in Alabastria, with his followers being the primary scribes and historians across all continents."
-                },
-                "allies": [],
-                "conflicts": [],
-                "symbols": [
-                    "scroll"
-                ],
-                "colors": [
-                    "Unknown color"
-                ]
-            }
-        ]
-    },
-    {
-        "pantheon": "Dwarves – Moradin's Folk",
-        "description": "The traditional pantheon of dwarven civilization, centered around Moradin and his family. These gods represent the core values of dwarven society: craftsmanship, honor, and family.",
-        "symbol": "fas fa-hammer",
-        "deities": [
-            {
-                "name": "Moradin",
-                "title": "Soul Forger",
-                "domains": [
-                    "Creation",
-                    "Forge",
-                    "Craftsmanship",
-                    "Dwarves"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-hammer",
-                "description": "The chief god of the dwarves and the creator of the dwarven race. He represents craftsmanship, creation, and the forge.",
-                "alabastria_context": "Moradin's influence is strongest among dwarven communities and craftsmen. His followers are often found among blacksmiths, miners, and those who work with metal.",
-                "followers": [
-                    "Dwarves",
-                    "Blacksmiths",
-                    "Miners",
-                    "Craftsmen"
-                ],
-                "holy_days": [
-                    "Forge's Blessing",
-                    "Creation's Call"
-                ],
-                "temples": "Forges and workshops",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among dwarven settlers who sought to establish their craft in the new world, with his temples serving as centers of craftsmanship and creation.",
-                    "100-300_cycles": "Became the patron of dwarven communities across all continents, with his temples serving as centers of craftsmanship and creation.",
-                    "300-600_cycles": "Established the most extensive network of craftsmanship and creation in Alabastria, with his followers being the primary craftsmen and creators across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of craftsmanship and creation in Alabastria, with his followers being the primary craftsmen and creators across all continents."
-                },
-                "allies": [
-                    "Lathander",
-                    "Mystra",
-                    "Tymora"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Hammer and anvil",
-                    "Mountain",
-                    "Forge",
-                    "Dwarven rune",
-                    "Hammer of Moradin"
-                ],
-                "colors": [
-                    "Brown",
-                    "Gold",
-                    "Orange",
-                    "Gray"
-                ]
-            },
-            {
-                "name": "Berronar Truesilver",
-                "title": "The Shield Mother",
-                "domains": [
-                    "Home",
-                    "Hearth",
-                    "Family",
-                    "Protection"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-shield-alt",
-                "description": "The goddess of home, hearth, and family. She represents the protective and nurturing aspects of dwarven society.",
-                "alabastria_context": "Berronar's influence is strongest among dwarven families and those who seek to protect their homes. Her followers are often found among mothers, protectors, and those who maintain homes.",
-                "followers": [
-                    "Dwarven Mothers",
-                    "Protectors",
-                    "Home Keepers",
-                    "Family Members"
-                ],
-                "holy_days": [
-                    "Hearth's Blessing",
-                    "Family's Call"
-                ],
-                "temples": "Homes and family shrines",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among dwarven families who sought to establish their homes in the new world, with her temples serving as centers of family and protection.",
-                    "100-300_cycles": "Became the patron of dwarven families across all continents, with her temples serving as centers of family and protection.",
-                    "300-600_cycles": "Established the most extensive network of family and protection in Alabastria, with her followers being the primary protectors and home keepers across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of family and protection in Alabastria, with her followers being the primary protectors and home keepers across all continents."
-                },
-                "allies": [
-                    "Moradin",
-                    "Lathander",
-                    "Tymora"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Shield",
-                    "Hammer",
-                    "Dwarven symbol",
-                    "Protection symbol",
-                    "Shield of truth"
-                ],
-                "colors": [
-                    "Silver",
-                    "Blue",
-                    "White",
-                    "Gold"
-                ]
-            },
-            {
-                "name": "Clangeddin Silverbeard",
-                "title": "The Battle Lord",
-                "domains": [
-                    "Battle",
-                    "War",
-                    "Honor",
-                    "Courage"
-                ],
-                "alignment": "Lawful Good",
-                "symbol": "fas fa-tents",
-                "description": "The god of battle and war. He represents the honor and courage of dwarven warriors.",
-                "alabastria_context": "Clangeddin's influence is strongest among dwarven warriors and those who fight for honor. His followers are often found among soldiers, paladins, and those who seek justice through combat.",
-                "followers": [
-                    "Dwarven Warriors",
-                    "Soldiers",
-                    "Paladins",
-                    "Honor Seekers"
-                ],
-                "holy_days": [
-                    "Battle's Call",
-                    "Honor's Blessing"
-                ],
-                "temples": "Barracks and training grounds",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among dwarven warriors who sought to protect their people in the new world, with his temples serving as centers of battle and honor.",
-                    "100-300_cycles": "Became the patron of dwarven warriors across all continents, with his temples serving as centers of battle and honor.",
-                    "300-600_cycles": "Established the most extensive network of battle and honor in Alabastria, with his followers being the primary warriors and honor seekers across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of battle and honor in Alabastria, with his followers being the primary warriors and honor seekers across all continents."
-                },
-                "allies": [
-                    "Moradin",
-                    "Lathander",
-                    "Tymora"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "War camp",
-                    "Battle axe",
-                    "Dwarven symbol",
-                    "Shield",
-                    "Axe of war"
-                ],
-                "colors": [
-                    "Silver",
-                    "Blue",
-                    "White",
-                    "Gold"
-                ]
-            },
-            {
-                "name": "Dugmaren Brightmantle",
-                "title": "The Gleam in the Eye",
-                "domains": [
-                    "Discovery",
-                    "Invention",
-                    "Innovation",
-                    "Knowledge"
-                ],
-                "alignment": "Chaotic Good",
-                "symbol": "fas fa-lightbulb",
-                "description": "The god of discovery and invention. He represents the innovative and curious aspects of dwarven society.",
-                "alabastria_context": "Dugmaren's influence is strongest among dwarven inventors and those who seek new knowledge. His followers are often found among engineers, researchers, and those who create new things.",
-                "followers": [
-                    "Dwarven Inventors",
-                    "Engineers",
-                    "Researchers",
-                    "Innovators"
-                ],
-                "holy_days": [
-                    "Discovery's Call",
-                    "Innovation's Blessing"
-                ],
-                "temples": "Libraries and workshops",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among dwarven inventors who sought to adapt their technology to the new world, with his temples serving as centers of discovery and innovation.",
-                    "100-300_cycles": "Became the patron of dwarven inventors across all continents, with his temples serving as centers of discovery and innovation.",
-                    "300-600_cycles": "Established the most extensive network of discovery and innovation in Alabastria, with his followers being the primary inventors and researchers across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of discovery and innovation in Alabastria, with his followers being the primary inventors and researchers across all continents."
-                },
-                "allies": [
-                    "Garl Glittergold",
-                    "Lathander",
-                    "Mystra"
-                ],
-                "conflicts": [
-                    "Bane",
-                    "Cyric",
-                    "Talona"
-                ],
-                "symbols": [
-                    "Light bulb",
-                    "Book",
-                    "Gnome symbol",
-                    "Innovation symbol",
-                    "Bright mantle"
-                ],
-                "colors": [
-                    "Gold",
-                    "Blue",
-                    "White",
-                    "Silver"
-                ]
-            },
-            {
-                "name": "Vergadain",
-                "title": "The Merchant King",
-                "domains": [
-                    "Wealth",
-                    "Luck",
-                    "Trade",
-                    "Commerce"
-                ],
-                "alignment": "Neutral",
-                "symbol": "fas fa-coins",
-                "description": "The god of wealth and trade. He represents the commercial and entrepreneurial aspects of dwarven society.",
-                "alabastria_context": "Vergadain's influence is strongest among dwarven merchants and those who deal in trade. His followers are often found among traders, merchants, and those who seek wealth.",
-                "followers": [
-                    "Dwarven Merchants",
-                    "Traders",
-                    "Wealth Seekers",
-                    "Entrepreneurs"
-                ],
-                "holy_days": [
-                    "Trade's Blessing",
-                    "Wealth's Call"
-                ],
-                "temples": "Markets and trading posts",
-                "history_800_years": {
-                    "0-100_cycles": "Gained followers among dwarven merchants who sought to establish trade in the new world, with his temples serving as centers of wealth and trade.",
-                    "100-300_cycles": "Became the patron of dwarven merchants across all continents, with his temples serving as centers of wealth and trade.",
-                    "300-600_cycles": "Established the most extensive network of wealth and trade in Alabastria, with his followers being the primary merchants and traders across all continents.",
-                    "600-800_cycles": "Currently maintains the most extensive network of wealth and trade in Alabastria, with his followers being the primary merchants and traders across all continents."
-                },
-                "allies": [],
-                "conflicts": [],
-                "symbols": [
-                    "coins"
-                ],
-                "colors": [
-                    "Unknown color"
-                ]
-            }
-        ]
-    }
+	{
+		"pantheon": "Human-Centric (Faerûn / Forgotten Realms)",
+		"description": "The primary pantheon of human civilizations, brought to Alabastria through The Bringing. These gods represent the core values and aspects of human society.",
+		"symbol": "fas fa-crown",
+		"deities": [
+			{
+				"name": "Cyric",
+				"title": "Prince of Lies",
+				"domains": ["Trickery", "Death", "Madness", "Intrigue"],
+				"alignment": "Chaotic Evil",
+				"symbol": "fas fa-sun-plant-wilt",
+				"description": "The god of lies, deception, madness, and murder. Cyric embodies betrayal, falsehood, and the destructive power of unrestrained ambition, delighting in the downfall of gods and mortals alike.",
+				"alabastria_context": "Since The Bringing, Cyric's presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.",
+				"followers": [
+					"Assassins",
+					"Liars and deceivers",
+					"Mad prophets",
+					"Cultists",
+					"Political conspirators"
+				],
+				"holy_days": ["The Black Sun", "Night of Shattered Truths"],
+				"temples": "Hidden shrines, underground chambers, and abandoned ruins",
+				"allies": ["Shar", "Talona"],
+				"conflicts": ["Mystra", "Kelemvor", "Tempus", "Lathander"],
+				"symbols": [
+					"Black sun with a purple core",
+					"Broken halo",
+					"Bloodstained dagger",
+					"Cracked skull"
+				],
+				"colors": ["Black", "Deep purple", "Blood red", "Ash gray"],
+				"history_800_years": {
+					"0-100_cycles": "The Bringing weakened Cyric's divine coherence, amplifying his madness. His early cults splintered, many turning violently on one another as conflicting visions spread.",
+					"100-300_cycles": "Cyricite sects began infiltrating courts and guilds, engineering assassinations and civil unrest. Several short-lived theocracies collapsed due to internal betrayal.",
+					"300-600_cycles": "A period known as the Fractured Dogma saw Cyric's followers war against each other over contradictory revelations. Despite this, his influence grew through fear and chaos rather than devotion.",
+					"600-800_cycles": "In the current age, Cyric is worshiped primarily in secret. His cults are blamed for several major political collapses and the rise of the Veiled Knives, an infamous assassin network operating across continents."
+				}
+			},
+			{
+				"name": "Tempus",
+				"title": "Lord of Battles",
+				"domains": ["War", "Battle", "Strategy"],
+				"alignment": "Neutral",
+				"symbol": "fas fa-pen-fancy",
+				"description": "The god of war, battle, and strategy. Tempus represents the honor and glory of combat, as well as the strategic thinking required for warfare.",
+				"alabastria_context": "Since The Bringing, Tempus has gained many followers among the Huntbound Order and military forces across all continents. His influence is strongest in Skratonia where organized warfare is most common.",
+				"followers": [
+					"Warriors",
+					"Soldiers",
+					"Strategists",
+					"Huntbound Order"
+				],
+				"holy_days": ["Battle's Dawn", "Victory's End"],
+				"temples": "Fortresses and training grounds",
+				"allies": ["Tymora", "Lathander", "Mystra"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Crossed swords",
+					"Burning sword",
+					"War banner",
+					"Shield with lightning bolt",
+					"Sword and shield"
+				],
+				"colors": ["Crimson red", "Gold", "Silver", "Steel gray"],
+				"history_800_years": {
+					"0-100_cycles": "Initially confused by The Bringing, Tempus's followers struggled to maintain their faith in a new world. Many turned to him for guidance during the early conflicts and resource wars.",
+					"100-300_cycles": "Gained prominence during the First Continental War, with his temples becoming centers of military training and strategy. The Huntbound Order's founding in 755 cycles marked a major resurgence of his influence.",
+					"300-600_cycles": "Became the patron deity of the Huntbound Order, with Tharos Raggenthraw being a devoted follower. His influence spread across all continents as the guild expanded.",
+					"600-800_cycles": "Currently at the height of his power in Alabastria, with the Huntbound Order serving as his primary religious organization. His temples are found in every major city."
+				}
+			},
+			{
+				"name": "Mystra",
+				"title": "Goddess of Magic",
+				"domains": ["Magic", "The Weave", "Arcane Knowledge"],
+				"alignment": "Neutral Good",
+				"symbol": "fas fa-magic",
+				"description": "The goddess of magic and the Weave. She governs all arcane magic and is the patron of wizards and sorcerers.",
+				"alabastria_context": "Mystra's influence is strongest in Kuriguer where magical anomalies and research institutions are concentrated. Her followers have been instrumental in understanding the magical properties of Alabastria.",
+				"followers": [
+					"Wizards",
+					"Sorcerers",
+					"Arcane Researchers",
+					"Magic Scholars"
+				],
+				"holy_days": ["Weave's Awakening", "Mystra's Blessing"],
+				"temples": "Libraries and magical academies",
+				"allies": ["Corellon Larethian", "Oghma", "Lathander"],
+				"conflicts": ["Cyric", "Bane", "Shar"],
+				"symbols": [
+					"Seven-pointed star",
+					"Weave pattern",
+					"Mystra's symbol",
+					"Arcane circle",
+					"Magic staff"
+				],
+				"colors": ["Deep blue", "Silver", "White", "Purple"],
+				"history_800_years": {
+					"0-100_cycles": "Her followers were among the first to adapt to Alabastria's unique magical properties, establishing the first magical research centers.",
+					"100-300_cycles": "Gained significant influence during Kuriguer's Magic Surge, with her temples becoming centers of magical learning and research.",
+					"300-600_cycles": "Established the first magical academies in Kuriguer, becoming the primary patron of magical education and research across Alabastria.",
+					"600-800_cycles": "Currently maintains the most prestigious magical institutions in Alabastria, with her followers being the primary researchers of the continent's magical anomalies."
+				}
+			},
+			{
+				"name": "Lathander",
+				"title": "Morninglord",
+				"domains": ["Renewal", "Dawn", "Hope", "Spring"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-sun",
+				"description": "The god of renewal, dawn, and hope. He represents new beginnings, healing, and the triumph of light over darkness.",
+				"alabastria_context": "Lathander's influence is strongest in Skratonia where his temples serve as centers of healing and renewal. His followers are often found among healers and those seeking new beginnings.",
+				"followers": [
+					"Healers",
+					"Paladins",
+					"Farmers",
+					"Those Seeking Renewal"
+				],
+				"holy_days": ["Dawn's Blessing", "Spring's Awakening"],
+				"temples": "Healing centers and agricultural communities",
+				"allies": ["Mystra", "Tymora", "Selûne"],
+				"conflicts": ["Shar", "Cyric", "Bane"],
+				"symbols": [
+					"Rising sun",
+					"Golden disk",
+					"Dawn's light",
+					"Spring flower",
+					"Sunburst"
+				],
+				"colors": ["Gold", "Yellow", "White", "Light blue"],
+				"history_800_years": {
+					"0-100_cycles": "Provided hope and healing during the chaotic early years of The Bringing, with his temples becoming sanctuaries for the displaced.",
+					"100-300_cycles": "Gained prominence as a patron of agriculture and renewal, with his followers helping establish the first successful farming communities in Skratonia.",
+					"300-600_cycles": "Became the primary patron of healing and renewal across all continents, with his temples serving as centers of medical knowledge and agricultural innovation.",
+					"600-800_cycles": "Currently maintains the most extensive healing network in Alabastria, with his followers being the primary healers and agricultural advisors across all continents."
+				}
+			},
+			{
+				"name": "Selûne",
+				"title": "Our Lady of Silver",
+				"domains": ["Moon", "Navigation", "Stars", "Wanderers"],
+				"alignment": "Chaotic Good",
+				"symbol": "fas fa-moon",
+				"description": "The goddess of the moon, navigation, and wanderers. She guides travelers and protects those who journey under the stars.",
+				"alabastria_context": "Selûne's influence is strongest among coastal communities and travelers. Her followers are often found among sailors, rangers, and those who explore the unknown.",
+				"followers": ["Sailors", "Rangers", "Travelers", "Explorers"],
+				"holy_days": ["Moon's Blessing", "Star's Guidance"],
+				"temples": "Lighthouses and coastal shrines",
+				"allies": ["Lathander", "Tymora", "Corellon Larethian"],
+				"conflicts": ["Shar", "Cyric", "Bane"],
+				"symbols": [
+					"Crescent moon",
+					"Silver disk",
+					"Star cluster",
+					"Compass rose",
+					"Moon and stars"
+				],
+				"colors": ["Silver", "White", "Light blue", "Pale gold"],
+				"history_800_years": {
+					"0-100_cycles": "Guided the first explorers and settlers as they navigated the new world, with her temples serving as navigation aids and safe havens.",
+					"100-300_cycles": "Gained prominence as a patron of exploration and trade, with her followers establishing the first trade routes and navigation systems.",
+					"300-600_cycles": "Became the primary patron of maritime trade and exploration, with her temples serving as lighthouses and navigation centers along all coastlines.",
+					"600-800_cycles": "Currently maintains the most extensive navigation network in Alabastria, with her followers being the primary guides for all maritime and overland travel."
+				}
+			},
+			{
+				"name": "Shar",
+				"title": "Mistress of the Night",
+				"domains": ["Darkness", "Secrets", "Loss", "Forgetting"],
+				"alignment": "Neutral Evil",
+				"symbol": "fas fa-eye-slash",
+				"description": "The goddess of darkness, secrets, and loss. She represents the hidden aspects of existence and the power of shadows.",
+				"alabastria_context": "Shar's influence is strongest in the darker corners of society and among those who deal in secrets. Her followers are often found among rogues, spies, and those who have lost much.",
+				"followers": [
+					"Rogues",
+					"Spies",
+					"Those Who Have Lost",
+					"Shadow Workers"
+				],
+				"holy_days": ["Night's Embrace", "Shadow's Blessing"],
+				"temples": "Hidden shrines and secret meeting places",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who lost everything in The Bringing, with her temples serving as places of mourning and secret gathering.",
+					"100-300_cycles": "Established a network of hidden shrines and secret societies, with her followers becoming the primary information brokers and spies across all continents.",
+					"300-600_cycles": "Became the patron of the shadow economy and underground networks, with her followers controlling much of the information flow between continents.",
+					"600-800_cycles": "Currently maintains the most extensive information network in Alabastria, with her followers being the primary spies and information brokers across all continents."
+				},
+				"allies": ["Cyric", "Bane", "Talona"],
+				"conflicts": ["Selûne", "Lathander", "Mystra"],
+				"symbols": [
+					"Black disk",
+					"Shadow veil",
+					"Dark moon",
+					"Mystery symbol",
+					"Eclipse"
+				],
+				"colors": ["Black", "Dark purple", "Deep blue", "Silver"]
+			},
+			{
+				"name": "Oghma",
+				"title": "The Binder of What Is Known",
+				"domains": [
+					"Knowledge",
+					"Inspiration",
+					"Lore",
+					"Communication"
+				],
+				"alignment": "Neutral",
+				"symbol": "fas fa-book-open",
+				"description": "The god of knowledge, inspiration, and invention. Oghma embodies the preservation and sharing of all information, believing that truth and creativity should flow freely to enlighten the world.",
+				"alabastria_context": "Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.",
+				"followers": [
+					"Scholars",
+					"Bards",
+					"Historians",
+					"Scribes",
+					"Inventors"
+				],
+				"holy_days": [
+					"The Day of Unbound Pages",
+					"Festival of First Words"
+				],
+				"temples": "Libraries, archives, universities, and scriptoria",
+				"allies": ["Mystra", "Deneir", "Lathander"],
+				"conflicts": ["Cyric", "Shar", "Talona"],
+				"symbols": [
+					"Open book with a blank page",
+					"Quill crossed with a scroll",
+					"Knot of knowledge",
+					"Seven-pointed star of lore"
+				],
+				"colors": ["White", "Sky blue", "Gold", "Soft gray"],
+				"history_800_years": {
+					"0-100_cycles": "In the aftermath of The Bringing, Oghma's faithful focused on salvaging texts, oral histories, and lost languages. Many risked their lives to preserve fragments of the old world's knowledge.",
+					"100-300_cycles": "Oghman libraries became centers of learning and diplomacy. The first Great Concord of Scholars was signed under his auspices, standardizing languages and historical records.",
+					"300-600_cycles": "A golden age of invention and exploration emerged, driven by Oghma's clergy encouraging experimentation and free exchange of ideas across continents.",
+					"600-800_cycles": "In the present age, Oghma's temples stand as neutral sanctuaries. His followers are instrumental in educating the masses and safeguarding truth against manipulation and deliberate falsehoods."
+				}
+			},
+			{
+				"name": "Deneir",
+				"title": "The First Scribe",
+				"domains": ["Knowledge", "Writing", "Glyphs", "Literature"],
+				"alignment": "Neutral Good",
+				"symbol": "fas fa-feather-pointed",
+				"description": "The god of writing, glyphs, and recorded knowledge. Deneir is the patron of scribes and chroniclers, devoted to the accurate preservation of truth through the written word.",
+				"alabastria_context": "Since The Bringing, Deneir's followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.",
+				"followers": [
+					"Scribes",
+					"Librarians",
+					"Archivists",
+					"Chroniclers",
+					"Rune scholars"
+				],
+				"holy_days": ["The First Inscription", "Inkbound Vigil"],
+				"temples": "Scriptoria, record halls, rune libraries, and monasteries",
+				"allies": ["Oghma", "Mystra", "Lathander"],
+				"conflicts": ["Cyric", "Shar", "Mask"],
+				"symbols": [
+					"Lit candle above an open book",
+					"Runed quill",
+					"Glyph-inscribed scroll",
+					"Eye within a page"
+				],
+				"colors": ["Ivory", "Ink black", "Gold", "Deep blue"],
+				"history_800_years": {
+					"0-100_cycles": "Following The Bringing, Deneir's clergy raced to document events as they unfolded, believing that accurate records would prevent future chaos born of forgotten truth.",
+					"100-300_cycles": "Deneirite monasteries became centers of law and record-keeping. Many early Alabastrian legal codes were penned under his guidance.",
+					"300-600_cycles": "A surge in rune magic and glyph-based spellcraft elevated Deneir's status among mages and artificers, solidifying his role as guardian of written magic.",
+					"600-800_cycles": "In the current age, Deneir's followers act as trusted neutral recorders of treaties, histories, and magical research, often serving as arbiters when truth is disputed."
+				}
+			},
+			{
+				"name": "Mask",
+				"title": "The Lord of Shadows",
+				"domains": ["Trickery", "Shadows", "Thievery", "Intrigue"],
+				"alignment": "Chaotic Neutral",
+				"symbol": "fas fa-masks-theater",
+				"description": "The god of shadows, thieves, and intrigue. Mask represents stealth, cleverness, and the art of taking what is forbidden, valuing wit and subtlety over brute force.",
+				"alabastria_context": "Since The Bringing, Mask has flourished in Alabastria's expanding cities and trade hubs. His worship is strongest among thieves' guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.",
+				"followers": [
+					"Thieves",
+					"Rogues",
+					"Spies",
+					"Smugglers",
+					"Information brokers"
+				],
+				"holy_days": ["The Long Shadow", "Night of Vanishing Coin"],
+				"temples": "Hidden guild halls, back-alley shrines, and shadowed catacombs",
+				"allies": ["Cyric", "Shar"],
+				"conflicts": ["Tyr", "Deneir", "Helm"],
+				"symbols": [
+					"Black mask",
+					"Shadowed dagger",
+					"Coin with a hole",
+					"Cloaked figure"
+				],
+				"colors": ["Black", "Midnight blue", "Silver", "Smoke gray"],
+				"history_800_years": {
+					"0-100_cycles": "In the uncertain days after The Bringing, Mask's faithful became essential scouts, smugglers, and information gatherers. Many cities quietly relied on them despite public condemnation.",
+					"100-300_cycles": "Thieves' guilds formally organized under Mask's loose patronage, creating networks that spanned continents and traded in secrets as readily as coin.",
+					"300-600_cycles": "A golden age of espionage elevated Mask's influence. Shadow wars between rival states were often decided by Maskan agents before armies ever marched.",
+					"600-800_cycles": "In the present era, Mask is regarded with wary tolerance. His worship persists wherever laws are rigid, borders are tight, and secrets are valuable."
+				}
+			},
+			{
+				"name": "Helm",
+				"title": "The Vigilant One",
+				"domains": ["Protection", "Guardianship", "Duty", "Law"],
+				"alignment": "Lawful Neutral",
+				"symbol": "fas fa-shield-halved",
+				"description": "The god of guardians, protection, and vigilance. Helm embodies duty, steadfastness, and the unwavering defense of law and order against chaos and threats.",
+				"alabastria_context": "Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.",
+				"followers": [
+					"Guards",
+					"Soldiers",
+					"Watchmen",
+					"Paladins",
+					"Lawful magistrates"
+				],
+				"holy_days": ["The Vigil", "Day of the Watchtower"],
+				"temples": "Fortified temples, watchtowers, barracks, and city walls",
+				"allies": ["Tyr", "Lathander", "Oghma"],
+				"conflicts": ["Cyric", "Mask", "Talona"],
+				"symbols": [
+					"Closed helm",
+					"Shield with an eye",
+					"Watchtower",
+					"Gauntleted fist"
+				],
+				"colors": ["Steel gray", "Silver", "White", "Dark blue"],
+				"history_800_years": {
+					"0-100_cycles": "After The Bringing, Helm's followers focused on restoring order amidst widespread chaos. His priests advised leaders on maintaining law and discipline in vulnerable cities.",
+					"100-300_cycles": "Helm's influence expanded with the rise of city-states and organized militias. Watchtowers and fortified temples were constructed to safeguard urban centers.",
+					"300-600_cycles": "Helm's clergy became a respected force in law enforcement, mediating disputes and training guards. Many paladins and knights pledged service to him during regional conflicts.",
+					"600-800_cycles": "In the present age, Helm's faithful continue to safeguard Alabastria. His temples act as centers of civic defense, and his doctrines of vigilance and duty guide soldiers, guards, and lawkeepers across the land."
+				}
+			},
+			{
+				"name": "Tyr",
+				"title": "The Even-Handed",
+				"domains": ["Justice", "Law", "Honor", "Duty"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-scale-balanced",
+				"description": "The god of justice, law, and righteous duty. Tyr embodies fairness, honor, and the pursuit of justice, ensuring that the innocent are protected and the guilty are held accountable.",
+				"alabastria_context": "Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.",
+				"followers": [
+					"Judges",
+					"Paladins",
+					"Lawyers",
+					"City officials",
+					"Soldiers upholding justice"
+				],
+				"holy_days": ["Day of the Scales", "Judgment's Dawn"],
+				"temples": "Courthouses, fortified temples, and halls of justice",
+				"allies": ["Helm", "Lathander", "Oghma"],
+				"conflicts": ["Cyric", "Mask", "Talona"],
+				"symbols": [
+					"Balanced scales",
+					"Sword over scales",
+					"Blindfolded hand holding scales",
+					"Gauntlet holding a sword"
+				],
+				"colors": ["White", "Gold", "Silver", "Crimson"],
+				"history_800_years": {
+					"0-100_cycles": "Following The Bringing, Tyr's faithful worked to stabilize cities and regions, establishing courts and promoting impartial justice in a chaotic world.",
+					"100-300_cycles": "Tyr's influence expanded as legal codes were formalized across Alabastria. Paladins of Tyr acted as judges, mediators, and protectors of law.",
+					"300-600_cycles": "Tyr's clergy gained recognition as moral arbiters, intervening in disputes between rulers and kingdoms. His doctrines of fairness became a cornerstone of governance.",
+					"600-800_cycles": "In the current era, Tyr's temples serve as centers of law and justice. His followers continue to uphold fairness, mediate conflicts, and punish wrongdoing, ensuring that Tyr's ideals remain a guiding light in Alabastria."
+				}
+			},
+			{
+				"name": "Chauntea",
+				"title": "The Great Mother",
+				"domains": ["Agriculture", "Harvest", "Nature", "Life"],
+				"alignment": "Neutral Good",
+				"symbol": "fas fa-seedling",
+				"description": "The goddess of agriculture, fertility, and the nurturing of life. Chauntea embodies the growth of crops, the cycles of nature, and the sustenance of communities through careful stewardship of the land.",
+				"alabastria_context": "Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.",
+				"followers": [
+					"Farmers",
+					"Gardeners",
+					"Rangers",
+					"Druids",
+					"Herbalists"
+				],
+				"holy_days": ["Planting Day", "Harvest Home"],
+				"temples": "Granaries, farm shrines, garden temples, and rural sanctuaries",
+				"allies": ["Lathander", "Tyr", "Oghma"],
+				"conflicts": ["Talona", "Cyric", "Bane"],
+				"symbols": [
+					"Sheaf of wheat",
+					"Blooming flower",
+					"Cornucopia",
+					"Tree with deep roots"
+				],
+				"colors": ["Green", "Earth brown", "Golden yellow", "Sky blue"],
+				"history_800_years": {
+					"0-100_cycles": "After The Bringing, Chauntea's clergy focused on restoring agricultural systems disrupted by chaos. Seeds were planted anew, and knowledge of irrigation and crop rotation was shared widely.",
+					"100-300_cycles": "Rural communities grew in size and stability under her guidance. Festivals celebrating planting and harvest became widespread, reinforcing social cohesion.",
+					"300-600_cycles": "Her influence extended into urban centers as granaries, gardens, and public farms were established to feed growing populations. Druidic orders allied with her for land stewardship.",
+					"600-800_cycles": "In the present era, Chauntea's followers continue to ensure food security, protect farmland, and celebrate the cycles of growth and harvest. Her teachings influence both peasants and rulers who value the prosperity of the land."
+				}
+			},
+			{
+				"name": "Ilmater",
+				"title": "The Crying God",
+				"domains": ["Endurance", "Suffering", "Compassion", "Healing"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-hand-holding-heart",
+				"description": "The god of endurance, suffering, and compassion. Ilmater embodies patience, selflessness, and the relief of pain, inspiring his followers to comfort the oppressed and aid those in distress.",
+				"alabastria_context": "Since The Bringing, Ilmater's worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.",
+				"followers": [
+					"Healers",
+					"Clerics",
+					"Monks",
+					"Caregivers",
+					"Refugees and the oppressed"
+				],
+				"holy_days": ["Day of Tears", "Night of Quiet Vigil"],
+				"temples": "Hospitals, shelters, monasteries, and quiet sanctuaries",
+				"allies": ["Lathander", "Tyr", "Chauntea"],
+				"conflicts": ["Talona", "Bane", "Cyric"],
+				"symbols": [
+					"Pair of hands bound with a red cord",
+					"Weeping face",
+					"Broken chain",
+					"Heart encircled by flame"
+				],
+				"colors": ["White", "Crimson red", "Pale blue", "Silver"],
+				"history_800_years": {
+					"0-100_cycles": "After The Bringing, Ilmater's followers focused on aiding those devastated by upheaval. Temples acted as emergency relief centers for the displaced and wounded.",
+					"100-300_cycles": "Ilmaterite charities and hospitals were formalized, and orders of compassionate monks and clerics spread throughout Alabastria.",
+					"300-600_cycles": "His clergy became mediators and healers in war-torn regions. Pilgrimages to sites of past tragedies grew as acts of penance and service.",
+					"600-800_cycles": "In the present era, Ilmater's temples are vital centers for social welfare. His followers continue to alleviate suffering, provide refuge, and advocate for endurance, patience, and hope in the face of adversity."
+				}
+			},
+			{
+				"name": "Talona",
+				"title": "Lady of Poison",
+				"domains": ["Poison", "Disease", "Decay", "Suffering"],
+				"alignment": "Chaotic Evil",
+				"symbol": "fas fa-skull-crossbones",
+				"description": "The goddess of poison, disease, and decay. Talona embodies silent death and lingering suffering, reveling in plagues, toxins, and the slow corruption of body and land.",
+				"alabastria_context": "Since The Bringing, Talona's worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.",
+				"followers": [
+					"Poisoners",
+					"Plague cultists",
+					"Assassins",
+					"Alchemists",
+					"Desperate commoners"
+				],
+				"holy_days": ["The Weeping Blight", "Night of Bitter Breath"],
+				"temples": "Hidden shrines, plague pits, ruined hospitals, and alchemical dens",
+				"allies": ["Cyric", "Shar"],
+				"conflicts": ["Lathander", "Chauntea", "Ilmater", "Tempus"],
+				"symbols": [
+					"Three teardrops falling from a skull",
+					"Poisoned chalice",
+					"Green-black serpent",
+					"Withered flower"
+				],
+				"colors": [
+					"Sickly green",
+					"Black",
+					"Venom yellow",
+					"Dark brown"
+				],
+				"history_800_years": {
+					"0-100_cycles": "In the chaos following The Bringing, Talona's influence spread rapidly through uncontrolled disease and spoiled food supplies. Early cultists flourished among refugees and the dying.",
+					"100-300_cycles": "Several devastating plagues were attributed to Talona's favor or wrath. Her worship became deeply feared, and many cities outlawed even speaking her name.",
+					"300-600_cycles": "Talona's followers refined poisons and diseases into weapons, selling their services to criminals and rival states. Her cults became more organized and secretive.",
+					"600-800_cycles": "In the current era, Talona is placated through forbidden rites rather than openly praised. Her cults are blamed for recent outbreaks collectively known as the Ashen Cough and the Black Bloom."
+				}
+			},
+			{
+				"name": "Tymora",
+				"title": "Lady Luck",
+				"domains": ["Good Fortune", "Luck", "Adventure", "Gambling"],
+				"alignment": "Chaotic Good",
+				"symbol": "fas fa-dice",
+				"description": "The goddess of good fortune and luck. She blesses adventurers and those who take risks for noble causes.",
+				"alabastria_context": "Tymora's influence is strongest among adventurers, gamblers, and those who take risks. Her followers are often found among the Huntbound Order and other adventuring groups.",
+				"followers": [
+					"Adventurers",
+					"Gamblers",
+					"Risk Takers",
+					"Huntbound Order"
+				],
+				"holy_days": ["Luck's Blessing", "Adventure's Call"],
+				"temples": "Taverns and gambling halls",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who took risks to survive in the new world, with her temples serving as centers of hope and luck.",
+					"100-300_cycles": "Became the patron of early adventurers and explorers, with her temples serving as gathering places for those seeking fortune and adventure.",
+					"300-600_cycles": "Gained significant influence among the Huntbound Order and other adventuring groups, with her temples becoming centers of luck and fortune.",
+					"600-800_cycles": "Currently maintains the most extensive network of luck and fortune in Alabastria, with her followers being the primary patrons of adventurers and risk takers."
+				},
+				"allies": ["Lathander", "Selûne", "Tempus"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Gold coin",
+					"Lucky clover",
+					"Dice",
+					"Fortune wheel",
+					"Four-leaf clover"
+				],
+				"colors": ["Gold", "Green", "White", "Silver"]
+			},
+			{
+				"name": "Beshaba",
+				"title": "Lady Doom",
+				"domains": ["Misfortune", "Bad Luck", "Accidents", "Curses"],
+				"alignment": "Chaotic Evil",
+				"symbol": "fas fa-skull",
+				"description": "The goddess of misfortune and bad luck. She represents the darker side of chance and the consequences of poor decisions.",
+				"alabastria_context": "Beshaba's influence is strongest among those who have suffered great misfortune or who deal in curses and hexes. Her followers are often found among those who have been wronged.",
+				"followers": [
+					"Those Who Have Suffered",
+					"Cursed Individuals",
+					"Hex Workers",
+					"Victims of Misfortune"
+				],
+				"holy_days": ["Doom's Call", "Misfortune's Blessing"],
+				"temples": "Cursed places and accident sites",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who suffered the most from The Bringing, with her temples serving as places of mourning and curse work.",
+					"100-300_cycles": "Established a network of cursed shrines and accident sites, with her followers becoming the primary curse workers and hex specialists across all continents.",
+					"300-600_cycles": "Became the patron of the cursed and wronged, with her temples serving as centers of curse work and misfortune magic.",
+					"600-800_cycles": "Currently maintains the most extensive network of curse work and misfortune in Alabastria, with her followers being the primary curse workers and hex specialists."
+				},
+				"allies": [],
+				"conflicts": [],
+				"symbols": ["skull"],
+				"colors": ["Unknown color"]
+			},
+			{
+				"name": "Kelemvor",
+				"title": "Lord of the Dead",
+				"domains": ["Death", "Judgment", "The Dead", "Justice"],
+				"alignment": "Lawful Neutral",
+				"symbol": "fas fa-balance-scale",
+				"description": "The god of death and judgment. He ensures that the dead are properly judged and that death comes to all in its proper time.",
+				"alabastria_context": "Kelemvor's influence is strongest among those who deal with death and the dead. His followers are often found among clerics, undertakers, and those who seek justice.",
+				"followers": [
+					"Clerics",
+					"Undertakers",
+					"Judges",
+					"Those Seeking Justice"
+				],
+				"holy_days": ["Death's Judgment", "Justice's Call"],
+				"temples": "Cemeteries and courthouses",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who dealt with the many deaths caused by The Bringing, with his temples serving as centers of death and judgment.",
+					"100-300_cycles": "Became the primary patron of death and judgment across all continents, with his temples serving as centers of justice and the dead.",
+					"300-600_cycles": "Established the most extensive network of death and judgment in Alabastria, with his followers being the primary judges and undertakers across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of death and judgment in Alabastria, with his followers being the primary judges and undertakers across all continents."
+				},
+				"allies": ["Lathander", "Mystra", "Tymora"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Skeleton",
+					"Scale",
+					"Sword",
+					"Death symbol",
+					"Scales of justice"
+				],
+				"colors": ["Black", "White", "Silver", "Gray"]
+			},
+			{
+				"name": "Bane",
+				"title": "The Black Hand",
+				"domains": ["Tyranny", "Conquest", "Fear", "Oppression"],
+				"alignment": "Lawful Evil",
+				"symbol": "fas fa-fist-raised",
+				"description": "The god of tyranny and conquest. He represents the power of fear and oppression to control others.",
+				"alabastria_context": "Bane's influence is strongest among tyrants, conquerors, and those who seek to control others through fear. His followers are often found among the ruling classes and military leaders.",
+				"followers": [
+					"Tyrants",
+					"Conquerors",
+					"Military Leaders",
+					"Those Seeking Power"
+				],
+				"holy_days": ["Tyranny's Call", "Conquest's Blessing"],
+				"temples": "Fortresses and military bases",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who sought to control the chaos of The Bringing, with his temples serving as centers of tyranny and conquest.",
+					"100-300_cycles": "Became the patron of many ruling classes and military leaders, with his temples serving as centers of power and control across all continents.",
+					"300-600_cycles": "Established a network of tyrannical rule and military conquest, with his followers being the primary tyrants and conquerors across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of tyranny and conquest in Alabastria, with his followers being the primary tyrants and conquerors across all continents."
+				},
+				"allies": ["Cyric", "Shar", "Talona"],
+				"conflicts": ["Tymora", "Lathander", "Mystra"],
+				"symbols": [
+					"Clenched fist",
+					"Black gauntlet",
+					"Tyranny symbol",
+					"Iron crown",
+					"Fist of Bane"
+				],
+				"colors": ["Black", "Red", "Dark gray", "Crimson"]
+			},
+			{
+				"name": "Myrkul",
+				"title": "Lord of Bones",
+				"domains": ["Undeath", "Necromancy", "The Undead", "Decay"],
+				"alignment": "Neutral Evil",
+				"symbol": "fas fa-skull-crossbones",
+				"description": "The god of undeath and necromancy. He represents the power of death and the undead.",
+				"alabastria_context": "Myrkul's influence is strongest among necromancers, undead, and those who deal with death magic. His followers are often found among the undead and those who seek to cheat death.",
+				"followers": [
+					"Necromancers",
+					"Undead",
+					"Those Seeking Immortality",
+					"Death Magic Users"
+				],
+				"holy_days": ["Undeath's Call", "Necromancy's Blessing"],
+				"temples": "Necropolises and undead lairs",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who sought to cheat death in the new world, with his temples serving as centers of necromancy and undeath.",
+					"100-300_cycles": "Became the patron of necromancers and undead across all continents, with his temples serving as centers of death magic and undeath.",
+					"300-600_cycles": "Established a network of necromancy and undeath across all continents, with his followers being the primary necromancers and undead across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of necromancy and undeath in Alabastria, with his followers being the primary necromancers and undead across all continents."
+				},
+				"allies": [],
+				"conflicts": [],
+				"symbols": ["skull crossbones"],
+				"colors": ["Unknown color"]
+			},
+			{
+				"name": "Jergal",
+				"title": "Scribe of the Dead",
+				"domains": [
+					"Records of the Dead",
+					"Fate",
+					"History",
+					"Knowledge"
+				],
+				"alignment": "True Neutral",
+				"symbol": "fas fa-scroll",
+				"description": "The god of records of the dead and fate. He maintains the records of all who have died and ensures that fate is properly recorded.",
+				"alabastria_context": "Jergal's influence is strongest among scribes, historians, and those who deal with records and knowledge. His followers are often found among scholars and record keepers.",
+				"followers": [
+					"Scribes",
+					"Historians",
+					"Record Keepers",
+					"Scholars"
+				],
+				"holy_days": ["Record's Blessing", "Fate's Call"],
+				"temples": "Libraries and record halls",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among those who sought to record the history of The Bringing, with his temples serving as centers of record keeping and knowledge.",
+					"100-300_cycles": "Became the patron of scribes and historians across all continents, with his temples serving as centers of record keeping and knowledge.",
+					"300-600_cycles": "Established the most extensive network of record keeping and knowledge in Alabastria, with his followers being the primary scribes and historians across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of record keeping and knowledge in Alabastria, with his followers being the primary scribes and historians across all continents."
+				},
+				"allies": [],
+				"conflicts": [],
+				"symbols": ["scroll"],
+				"colors": ["Unknown color"]
+			}
+		]
+	},
+	{
+		"pantheon": "Dwarves – Moradin's Folk",
+		"description": "The traditional pantheon of dwarven civilization, centered around Moradin and his family. These gods represent the core values of dwarven society: craftsmanship, honor, and family.",
+		"symbol": "fas fa-hammer",
+		"deities": [
+			{
+				"name": "Moradin",
+				"title": "Soul Forger",
+				"domains": ["Creation", "Forge", "Craftsmanship", "Dwarves"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-hammer",
+				"description": "The chief god of the dwarves and the creator of the dwarven race. He represents craftsmanship, creation, and the forge.",
+				"alabastria_context": "Moradin's influence is strongest among dwarven communities and craftsmen. His followers are often found among blacksmiths, miners, and those who work with metal.",
+				"followers": ["Dwarves", "Blacksmiths", "Miners", "Craftsmen"],
+				"holy_days": ["Forge's Blessing", "Creation's Call"],
+				"temples": "Forges and workshops",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among dwarven settlers who sought to establish their craft in the new world, with his temples serving as centers of craftsmanship and creation.",
+					"100-300_cycles": "Became the patron of dwarven communities across all continents, with his temples serving as centers of craftsmanship and creation.",
+					"300-600_cycles": "Established the most extensive network of craftsmanship and creation in Alabastria, with his followers being the primary craftsmen and creators across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of craftsmanship and creation in Alabastria, with his followers being the primary craftsmen and creators across all continents."
+				},
+				"allies": ["Lathander", "Mystra", "Tymora"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Hammer and anvil",
+					"Mountain",
+					"Forge",
+					"Dwarven rune",
+					"Hammer of Moradin"
+				],
+				"colors": ["Brown", "Gold", "Orange", "Gray"]
+			},
+			{
+				"name": "Berronar Truesilver",
+				"title": "The Shield Mother",
+				"domains": ["Home", "Hearth", "Family", "Protection"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-shield-alt",
+				"description": "The goddess of home, hearth, and family. She represents the protective and nurturing aspects of dwarven society.",
+				"alabastria_context": "Berronar's influence is strongest among dwarven families and those who seek to protect their homes. Her followers are often found among mothers, protectors, and those who maintain homes.",
+				"followers": [
+					"Dwarven Mothers",
+					"Protectors",
+					"Home Keepers",
+					"Family Members"
+				],
+				"holy_days": ["Hearth's Blessing", "Family's Call"],
+				"temples": "Homes and family shrines",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among dwarven families who sought to establish their homes in the new world, with her temples serving as centers of family and protection.",
+					"100-300_cycles": "Became the patron of dwarven families across all continents, with her temples serving as centers of family and protection.",
+					"300-600_cycles": "Established the most extensive network of family and protection in Alabastria, with her followers being the primary protectors and home keepers across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of family and protection in Alabastria, with her followers being the primary protectors and home keepers across all continents."
+				},
+				"allies": ["Moradin", "Lathander", "Tymora"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Shield",
+					"Hammer",
+					"Dwarven symbol",
+					"Protection symbol",
+					"Shield of truth"
+				],
+				"colors": ["Silver", "Blue", "White", "Gold"]
+			},
+			{
+				"name": "Clangeddin Silverbeard",
+				"title": "The Battle Lord",
+				"domains": ["Battle", "War", "Honor", "Courage"],
+				"alignment": "Lawful Good",
+				"symbol": "fas fa-tents",
+				"description": "The god of battle and war. He represents the honor and courage of dwarven warriors.",
+				"alabastria_context": "Clangeddin's influence is strongest among dwarven warriors and those who fight for honor. His followers are often found among soldiers, paladins, and those who seek justice through combat.",
+				"followers": [
+					"Dwarven Warriors",
+					"Soldiers",
+					"Paladins",
+					"Honor Seekers"
+				],
+				"holy_days": ["Battle's Call", "Honor's Blessing"],
+				"temples": "Barracks and training grounds",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among dwarven warriors who sought to protect their people in the new world, with his temples serving as centers of battle and honor.",
+					"100-300_cycles": "Became the patron of dwarven warriors across all continents, with his temples serving as centers of battle and honor.",
+					"300-600_cycles": "Established the most extensive network of battle and honor in Alabastria, with his followers being the primary warriors and honor seekers across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of battle and honor in Alabastria, with his followers being the primary warriors and honor seekers across all continents."
+				},
+				"allies": ["Moradin", "Lathander", "Tymora"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"War camp",
+					"Battle axe",
+					"Dwarven symbol",
+					"Shield",
+					"Axe of war"
+				],
+				"colors": ["Silver", "Blue", "White", "Gold"]
+			},
+			{
+				"name": "Dugmaren Brightmantle",
+				"title": "The Gleam in the Eye",
+				"domains": [
+					"Discovery",
+					"Invention",
+					"Innovation",
+					"Knowledge"
+				],
+				"alignment": "Chaotic Good",
+				"symbol": "fas fa-lightbulb",
+				"description": "The god of discovery and invention. He represents the innovative and curious aspects of dwarven society.",
+				"alabastria_context": "Dugmaren's influence is strongest among dwarven inventors and those who seek new knowledge. His followers are often found among engineers, researchers, and those who create new things.",
+				"followers": [
+					"Dwarven Inventors",
+					"Engineers",
+					"Researchers",
+					"Innovators"
+				],
+				"holy_days": ["Discovery's Call", "Innovation's Blessing"],
+				"temples": "Libraries and workshops",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among dwarven inventors who sought to adapt their technology to the new world, with his temples serving as centers of discovery and innovation.",
+					"100-300_cycles": "Became the patron of dwarven inventors across all continents, with his temples serving as centers of discovery and innovation.",
+					"300-600_cycles": "Established the most extensive network of discovery and innovation in Alabastria, with his followers being the primary inventors and researchers across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of discovery and innovation in Alabastria, with his followers being the primary inventors and researchers across all continents."
+				},
+				"allies": ["Garl Glittergold", "Lathander", "Mystra"],
+				"conflicts": ["Bane", "Cyric", "Talona"],
+				"symbols": [
+					"Light bulb",
+					"Book",
+					"Gnome symbol",
+					"Innovation symbol",
+					"Bright mantle"
+				],
+				"colors": ["Gold", "Blue", "White", "Silver"]
+			},
+			{
+				"name": "Vergadain",
+				"title": "The Merchant King",
+				"domains": ["Wealth", "Luck", "Trade", "Commerce"],
+				"alignment": "Neutral",
+				"symbol": "fas fa-coins",
+				"description": "The god of wealth and trade. He represents the commercial and entrepreneurial aspects of dwarven society.",
+				"alabastria_context": "Vergadain's influence is strongest among dwarven merchants and those who deal in trade. His followers are often found among traders, merchants, and those who seek wealth.",
+				"followers": [
+					"Dwarven Merchants",
+					"Traders",
+					"Wealth Seekers",
+					"Entrepreneurs"
+				],
+				"holy_days": ["Trade's Blessing", "Wealth's Call"],
+				"temples": "Markets and trading posts",
+				"history_800_years": {
+					"0-100_cycles": "Gained followers among dwarven merchants who sought to establish trade in the new world, with his temples serving as centers of wealth and trade.",
+					"100-300_cycles": "Became the patron of dwarven merchants across all continents, with his temples serving as centers of wealth and trade.",
+					"300-600_cycles": "Established the most extensive network of wealth and trade in Alabastria, with his followers being the primary merchants and traders across all continents.",
+					"600-800_cycles": "Currently maintains the most extensive network of wealth and trade in Alabastria, with his followers being the primary merchants and traders across all continents."
+				},
+				"allies": [],
+				"conflicts": [],
+				"symbols": ["coins"],
+				"colors": ["Unknown color"]
+			}
+		]
+	}
 ]

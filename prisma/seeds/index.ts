@@ -40,5 +40,10 @@ export * from './connections/racesSubclasses';
 export * from './connections/subclassesContinents';
 export * from './connections/subracesSubclasses';
 export * from './connections/worldsMonths';
+export * from './connections/raceDeities';
+export * from './connections/subraceDeities';
+export * from './connections/classDeities';
+export * from './connections/subclassDeities';
+export * from './connections/continentDeities';
 
 export * from './constants/color';

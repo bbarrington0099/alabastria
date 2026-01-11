@@ -327,39 +327,6 @@ export async function getRaces() {
     });
 }
 
-export async function getRaceBySlug(slug: string) {
-    return prisma.race.findUnique({
-        where: { slug },
-        include: {
-            abilityScoreIncreases: true,
-            languages: true,
-            traits: true,
-            subraces: {
-                include: {
-                    /* abilityScoreIncreases: true, */
-                    /* traits: true, */
-                },
-            },
-            recommendedClasses: {
-                include: {
-                    class: true,
-                },
-            },
-            continentLocations: {
-                include: {
-                    continent: true,
-                },
-            },
-            deityRecommendations: {
-                include: {
-                    deity: true,
-                },
-            },
-            names: true,
-        },
-    });
-}
-
 // ============================================================================
 // CLASSES
 // ============================================================================
@@ -393,31 +360,6 @@ export async function getClasses() {
         orderBy: { name: "asc" },
         include: {
             subclasses: true,
-        },
-    });
-}
-
-export async function getClassBySlug(slug: string) {
-    return prisma.class.findUnique({
-        where: { slug },
-        include: {
-            savingThrows: true,
-            //keyFeatures: true,
-            subclasses: {
-                include: {
-                    //keyFeatures: true,
-                },
-            },
-            recommendedRaces: {
-                include: {
-                    race: true,
-                },
-            },
-            deityRecommendations: {
-                include: {
-                    deity: true,
-                },
-            },
         },
     });
 }
@@ -480,6 +422,46 @@ export async function createDeityRelationship(data: Prisma.DeityRelationshipUnch
     });
 }
 
+export async function createRaceDeity(data: Prisma.RaceDeityUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.RaceDeityGetPayload<{}>> {
+    return await prisma.raceDeity.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createSubraceDeity(data: Prisma.SubraceDeityUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.SubraceDeityGetPayload<{}>> {
+    return await prisma.subraceDeity.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createClassDeity(data: Prisma.ClassDeityUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.ClassDeityGetPayload<{}>> {
+    return await prisma.classDeity.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createSubclassDeity(data: Prisma.SubclassDeityUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.SubclassDeityGetPayload<{}>> {
+    return await prisma.subclassDeity.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
+export async function createContinentDeity(data: Prisma.ContinentDeityUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.ContinentDeityGetPayload<{}>> {
+    return await prisma.continentDeity.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
+    });
+}
+
 export async function getPantheons() {
     return prisma.pantheon.findMany({
         orderBy: { name: "asc" },
@@ -497,40 +479,6 @@ export async function getDeities() {
         include: {
             pantheon: true,
             domains: true,
-        },
-    });
-}
-
-export async function getDeityBySlug(slug: string) {
-    return prisma.deity.findUnique({
-        where: { slug },
-        include: {
-            pantheon: true,
-            domains: true,
-            followers: true,
-            holyDays: true,
-            symbols: true,
-            colors: true,
-            history: true,
-            alliesFrom: {
-                include: {
-                    relatedDeity: true,
-                },
-            },
-            alliesTo: {
-                include: {
-                    deity: true,
-                },
-            },
-            recommendations: {
-                include: {
-                    race: true,
-                    subrace: true,
-                    class: true,
-                    subclass: true,
-                    continent: true,
-                },
-            },
         },
     });
 }

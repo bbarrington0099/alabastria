@@ -87,7 +87,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Chaotic Evil',
 				alabastriaContext:
-					'Since The Bringing, Cyric’s presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.',
+					"Since The Bringing, Cyric's presence in Alabastria has been subtle but deeply corrosive. His cult thrives in the shadows of major cities, especially where political intrigue, secret wars, and assassinations are common. His influence is most feared in fractured states and among criminal syndicates.",
 			},
 			description:
 				"A chaotic evil Faerûnian god, the Prince of Lies and Dark Sun. Cyric is a petty, megalomaniacal deity of strife, murder, lies, intrigue, deception, and illusions, claiming superiority over all other gods. He delights in weaving deadly betrayal and chaos; legends say he often appears as a slim man with chalk-white skin and blazing dark eyes. Through his cults, Cyric's influence spreads via murder, conflicts and conspiracies across the Realms.",
@@ -118,7 +118,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Neutral',
 				alabastriaContext:
-					'Since The Bringing, Tempus has gained many followers among the Huntbound Order and military forces across all continents. His influence is strongest in Skratonia where organized warfare is most common.',
+					"Since The Bringing, Tempus has gained many followers among the Huntbound Order and military forces across all continents. His influence is strongest in Skratonia where organized warfare is most common.",
 			},
 			description:
 				"The Chaotic Neutral Lord of Battles, god of war and honorable combat. He stands for valor, courage and the glory of battle, urging warriors to fight bravely and resolve disputes by force (cowardice is anathema). His domain covers all martial strife and righteous warfare; soldiers of every army pray to him for strength and victory. Tempus's legendary avatar is a towering 12-foot-tall armored warrior wielding a massive battle-axe, symbolizing the fury and discipline of combat.",
@@ -278,7 +278,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Neutral',
 				alabastriaContext:
-					'Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.',
+					"Since The Bringing, Oghma has become a stabilizing force in Alabastria, revered by scholars seeking to preserve pre-Bringing knowledge and to understand the new world. His temples often serve as libraries, universities, and neutral grounds for discourse across cultures.",
 			},
 			description:
 				'The Unaligned (or Neutral) god of knowledge, inspiration and invention. Known as the Binder of What is Known, he oversees all recorded lore and ideas. Oghma stands for creativity in speech and writing, the spread of knowledge, and the power of the word; he is patron of bards, scribes, and scholars. He is depicted as a handsome, well-dressed man (often dark-haired) and his symbol is a blank scroll. His influence spans all collected knowledge, from ancient tomes to new inventions.',
@@ -308,7 +308,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Neutral Good',
 				alabastriaContext:
-					'Since The Bringing, Deneir’s followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.',
+					"Since The Bringing, Deneir's followers have worked closely with Oghman temples to transcribe fading memories and endangered texts. In Alabastria, his influence is strongest wherever laws, histories, and magical formulae must be carefully recorded and protected.",
 			},
 			description:
 				"The Neutral Good lesser deity of glyphs, imagery, literature and cartography. As Oghma's scribe, Deneir embodies written and visual communication, inspiring artists, librarians, and mapmakers. He stands for the preservation of knowledge and the beauty of written language. Deneir is often portrayed as an old, gentle sage (long white beard, violet eyes) holding a quill and scroll. His influence covers libraries, art academies and the written word across the Realms.",
@@ -344,7 +344,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Chaotic Neutral',
 				alabastriaContext:
-					'Since The Bringing, Mask has flourished in Alabastria’s expanding cities and trade hubs. His worship is strongest among thieves’ guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.',
+					"Since The Bringing, Mask has flourished in Alabastria's expanding cities and trade hubs. His worship is strongest among thieves' guilds, smugglers, and information brokers, where secrecy and misdirection are essential to survival.",
 			},
 			description:
 				'The Chaotic Neutral (often Neutral Evil) god of shadows and thieves. Called the Lord of Shadows, he represents secrecy, stealth, and intrigue. Mask stands for cunning thievery and covert operations; his worshipers include burglars, assassins, and spies who use trickery as a tool. He is depicted wearing a blank black velvet mask or cloak, usually seen as a dark-hooded figure with a featureless mask and red-tipped symbol. His influence covers the hidden corners of the world and the manipulation of darkness.',
@@ -375,7 +375,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Lawful Neutral',
 				alabastriaContext:
-					'Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.',
+					"Since The Bringing, Helm has been revered by city guards, watchmen, and defenders of the realm in Alabastria. His temples often serve as barracks, training halls, and places of sanctuary during times of unrest.",
 			},
 			description:
 				'The Lawful Neutral god of guardians, protection and vigilance. Known as the Vigilant One, Helm epitomizes duty and watchfulness. He stands for the steadfast defense of the helpless, inspiring guards and soldiers to constant vigilance. He is usually portrayed as a towering, fully armored warrior whose helm hides his face, and his symbol is an open eye. His power safeguards frontier posts, keeps, and paladins on guard, ever watchful against threats.',
@@ -410,7 +410,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Lawful Good',
 				alabastriaContext:
-					'Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.',
+					"Since The Bringing, Tyr has been a guiding force for judges, magistrates, and paladins in Alabastria. His teachings underpin many of the legal systems in cities and kingdoms, emphasizing fairness, accountability, and moral responsibility.",
 			},
 			description:
 				'The Lawful Good god of justice and righteousness. Tyr is the blind, one-handed "Even-Handed" god who embodies fair judgment and the rule of law. He stands for honor, rightful punishment, and the willingness to sacrifice for the greater good. Tyr\'s symbol is a balanced scale atop a warhammer, reflecting that both might and mercy serve justice. He is depicted as a noble armored warrior missing his hand, and he leads crusades against tyranny and evil in Faerûn.',
@@ -440,7 +440,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Neutral Good',
 				alabastriaContext:
-					'Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.',
+					"Since The Bringing, Chauntea has been revered by farmers, gardeners, and rural communities across Alabastria. Her temples often serve as centers of agricultural knowledge, seasonal festivals, and communal guidance on cultivation.",
 			},
 			description:
 				"The Neutral Good Earthmother, goddess of agriculture, life and the harvest. Chauntea embodies fertility of the land, nurturing crops, livestock and nature's bounty. She stands for growth, sustenance and community—the provider of food and the seasons. Often shown as a generous mother figure with flowers in her hair, she is usually depicted as a kindly, robust woman (white hair, farming garb) tending fields. Her followers include farmers and gardeners; her influence ensures abundant harvests and seasonal renewal.",
@@ -471,7 +471,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Lawful Good',
 				alabastriaContext:
-					'Since The Bringing, Ilmater’s worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.',
+					"Since The Bringing, Ilmater's worship has grown among refugees, the sick, and those affected by war and disaster in Alabastria. His temples often double as hospitals, orphanages, and shelters, serving as beacons of mercy and care.",
 			},
 			description:
 				'The Lawful Good god of endurance, suffering and martyrdom. Called the Crying God or One Who Endures, Ilmater is the patron of the oppressed and the sick. He stands for compassion and perseverance, encouraging mercy and soothing pain; he teaches that suffering can have purpose. He is typically depicted as a gentle, kneeling figure (often wounded himself) with bands on his arms, signifying his willingness to share burdens. His influence is found in hospitals and orphanages, and he inspires aid to those in torment.',
@@ -506,7 +506,7 @@ export async function seedDeities(params: SeedDeitiesParams): Promise<Deities> {
 			additionalProperties: {
 				alignment: 'Chaotic Evil',
 				alabastriaContext:
-					'Since The Bringing, Talona’s worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.',
+					"Since The Bringing, Talona's worship has surged during times of plague, famine, and environmental collapse. Her cults are strongest in overcrowded cities, war-torn regions, and areas struck by unexplained illness. Many secretly placate her rather than openly worship her, hoping to avert her attention.",
 			},
 			description:
 				'The Chaotic Evil goddess of poison, disease, and decay. She personifies sickness, plague and the maladies of the body. Talona stands for the inevitability of illness and the raw destructive power of contagion; outbreaks and mysterious poisons are her gifts (or curses). She is often depicted as a gaunt, withered crone or a beautiful temptress whose touch means death; both forms foretell disease. Her influence is felt wherever sickness spreads, and her shrines are marked with symbols of disease (vines or stalks).',

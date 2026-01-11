@@ -211,7 +211,7 @@ model Continent {
   guilds                 Guild[]
   creatureTypes          ContinentCreatureType[]
   legendaryCreatures     LegendaryCreature[]
-  deityRecommendations   DeityRecommendation[]
+  deityRecommendations   ContinentDeity[]
   historicalEvents       HistoricalEvent[]
   professionRestrictions ProfessionContinentRestriction[]
   factionPresence        FactionContinentPresence[]
@@ -580,7 +580,7 @@ model Race {
   subraces                Subrace[]
   subclassRecommendations RaceSubclassRecommendation[]
   continentLocations      RaceContinent[]
-  deityRecommendations    DeityRecommendation[]        @relation("RaceDeityRecs")
+  deityRecommendations    RaceDeity[]
   characters              Character[]
   worlds                  World[]
 }
@@ -685,7 +685,7 @@ model Subrace {
   worlds                  World[]
   continentLocations      SubraceContinent[]
   subclassRecommendations SubraceSubclassRecommendation[]
-  deityRecommendations    DeityRecommendation[]           @relation("SubraceDeityRecs")
+  deityRecommendations    SubraceDeity[]
   characters              Character[]
 }
 
@@ -710,7 +710,7 @@ model Class {
 
   worlds               World[]
   subclasses           Subclass[]
-  deityRecommendations DeityRecommendation[] @relation("ClassDeityRecs")
+  deityRecommendations ClassDeity[]
   characters           Character[]
 }
 
@@ -728,7 +728,7 @@ model Subclass {
   raceRecommendations    RaceSubclassRecommendation[]
   subraceRecommendations SubraceSubclassRecommendation[]
   continentLocations     SubclassContinent[]
-  deityRecommendations   DeityRecommendation[]           @relation("SubclassDeityRecs")
+  deityRecommendations   SubclassDeity[]
   characters             Character[]
 }
 
@@ -795,8 +795,12 @@ model Deity {
   alliesFrom DeityRelationship[] @relation("DeityFrom")
   alliesTo   DeityRelationship[] @relation("DeityTo")
 
-  recommendations DeityRecommendation[]
-  characters      Character[]
+  races      RaceDeity[]
+  subraces   SubraceDeity[]
+  classes    ClassDeity[]
+  subclasses SubclassDeity[]
+  continents ContinentDeity[]
+  characters Character[]
 }
 
 model DeityHolyDay {
@@ -840,23 +844,84 @@ model DeityRelationship {
   relatedDeity         Deity                     @relation("DeityTo", fields: [relatedDeityId], references: [id], onDelete: Cascade)
 }
 
-model DeityRecommendation {
-  id                   String     @id @default(uuid())
-  isPrimary            Boolean    @default(true)
-  reasoning            String?    @db.Text
-  additionalProperties Json?
+enum DeityRecommendationType {
+  PRIMARY
+  SECONDARY
+}
+
+model RaceDeity {
+  id        String  @id @default(uuid())
+  reasoning String?  @db.Text
+  relationType DeityRecommendationType
+  seeded    Boolean @default(false)
+
+  raceId               String
+  race                 Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
   deityId              String
-  deity                Deity      @relation(fields: [deityId], references: [id], onDelete: Cascade)
-  raceId               String?
-  race                 Race?      @relation("RaceDeityRecs", fields: [raceId], references: [id])
-  subraceId            String?
-  subrace              Subrace?   @relation("SubraceDeityRecs", fields: [subraceId], references: [id])
-  classId              String?
-  class                Class?     @relation("ClassDeityRecs", fields: [classId], references: [id])
-  subclassId           String?
-  subclass             Subclass?  @relation("SubclassDeityRecs", fields: [subclassId], references: [id])
-  continentId          String?
-  continent            Continent? @relation(fields: [continentId], references: [id])
+  deity                Deity  @relation(fields: [deityId], references: [id])
+  additionalProperties Json?
+
+  @@unique([raceId, deityId])
+}
+
+model SubraceDeity {
+  id        String  @id @default(uuid())
+  reasoning String?  @db.Text
+  relationType DeityRecommendationType
+  seeded    Boolean @default(false)
+
+  subraceId            String
+  subrace              Subrace @relation(fields: [subraceId], references: [id], onDelete: Cascade)
+  deityId              String
+  deity                Deity   @relation(fields: [deityId], references: [id])
+  additionalProperties Json?
+
+  @@unique([subraceId, deityId])
+}
+
+model ClassDeity {
+  id        String  @id @default(uuid())
+  reasoning String?  @db.Text
+  relationType DeityRecommendationType
+  seeded    Boolean @default(false)
+
+  classId              String
+  class                Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+  deityId              String
+  deity                Deity  @relation(fields: [deityId], references: [id])
+  additionalProperties Json?
+
+  @@unique([classId, deityId])
+}
+
+model SubclassDeity {
+  id        String  @id @default(uuid())
+  reasoning String?  @db.Text
+  relationType DeityRecommendationType
+  seeded    Boolean @default(false)
+
+  subclassId           String
+  subclass             Subclass @relation(fields: [subclassId], references: [id], onDelete: Cascade)
+  deityId              String
+  deity                Deity    @relation(fields: [deityId], references: [id])
+  additionalProperties Json?
+
+  @@unique([subclassId, deityId])
+}
+
+model ContinentDeity {
+  id        String  @id @default(uuid())
+  reasoning String?  @db.Text
+  relationType DeityRecommendationType
+  seeded    Boolean @default(false)
+
+  continentId          String
+  continent            Continent @relation(fields: [continentId], references: [id], onDelete: Cascade)
+  deityId              String
+  deity                Deity     @relation(fields: [deityId], references: [id])
+  additionalProperties Json?
+
+  @@unique([continentId, deityId])
 }
 
 // ============================================================================
@@ -1028,11 +1093,7 @@ model WeekDay {
 model Character {
   id                   String   @id @default(uuid())
   name                 String
-  level                Int      @default(1)
-  backgroundSummary    String?  @db.Text
   imagePath            String?
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
   additionalProperties Json?
   // Demographics
   gender               String?
@@ -1040,7 +1101,6 @@ model Character {
   birthDate            String?
 
   // Physical & Personality
-  physicalDescription String? @db.Text
   appearance          String? @db.Text
   personality         String? @db.Text
   gearLoadout         String? @db.Text
@@ -1056,31 +1116,36 @@ model Character {
   // Relations to Core Data
   userId             String?
   user               User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  raceId             String
-  race               Race              @relation(fields: [raceId], references: [id])
+
+  raceId             String?
+  race               Race?             @relation(fields: [raceId], references: [id])
   subraceId          String?
   subrace            Subrace?          @relation(fields: [subraceId], references: [id])
+
   classId            String?
   class              Class?            @relation(fields: [classId], references: [id])
   subclassId         String?
   subclass           Subclass?         @relation(fields: [subclassId], references: [id])
+
   deityId            String?
   deity              Deity?            @relation(fields: [deityId], references: [id])
   deityReasoning     String?           @db.Text
+  
   fromContinentId    String?
   fromContinent      Continent?        @relation(fields: [fromContinentId], references: [id])
   fromTownId         String?
   fromTown           Town?             @relation("homeTown", fields: [fromTownId], references: [id])
   livesInTownId      String?
   livesInTown        Town?             @relation("LivesInTown", fields: [livesInTownId], references: [id])
+
   familyGenerationId String?
   familyGeneration   FamilyGeneration? @relation(fields: [familyGenerationId], references: [id])
 
   worlds         World[]
-  creatureSizeId String
-  creatureSize   CreatureSize @relation(fields: [creatureSizeId], references: [id])
-  creatureTypeId String
-  creatureType   CreatureType @relation(fields: [creatureTypeId], references: [id])
+  creatureSizeId String?
+  creatureSize   CreatureSize? @relation(fields: [creatureSizeId], references: [id])
+  creatureTypeId String?
+  creatureType   CreatureType? @relation(fields: [creatureTypeId], references: [id])
 
   // Character Role Links
   guildMemberships            GuildMember[]

@@ -182,9 +182,8 @@ export async function createRaceName(data: Prisma.RaceNameUncheckedCreateInput):
     return db.createRaceName(data, true);
 }
 
-export async function createRace(data: Prisma.RaceUncheckedCreateInput & { alabastriaLore: string }): Promise<Prisma.RaceGetPayload<{}>> {
-    const { alabastriaLore, ...raceData } = data;
-    const race = await db.createRace(raceData, true);
+export async function createRace(data: Prisma.RaceUncheckedCreateInput }): Promise<Prisma.RaceGetPayload<{}>> {
+    const race = await db.createRace(data, true);
     await prisma.$transaction(async (prisma) => {
         const world = await prisma.world.findUnique({
             where: { id: 'alabastria' },
@@ -325,6 +324,26 @@ export async function createDeity(data: Prisma.DeityUncheckedCreateInput): Promi
 
 export async function createDeityRelationship(data: Prisma.DeityRelationshipUncheckedCreateInput): Promise<Prisma.DeityRelationshipGetPayload<{}>> {
     return db.createDeityRelationship(data, true);
+}
+
+export async function createRaceDeity(data: Prisma.RaceDeityUncheckedCreateInput): Promise<Prisma.RaceDeityGetPayload<{}>> {
+    return db.createRaceDeity(data, true);
+}
+
+export async function createSubraceDeity(data: Prisma.SubraceDeityUncheckedCreateInput): Promise<Prisma.SubraceDeityGetPayload<{}>> {
+    return db.createSubraceDeity(data, true);
+}
+
+export async function createClassDeity(data: Prisma.ClassDeityUncheckedCreateInput): Promise<Prisma.ClassDeityGetPayload<{}>> {
+    return db.createClassDeity(data, true);
+}
+
+export async function createSubclassDeity(data: Prisma.SubclassDeityUncheckedCreateInput): Promise<Prisma.SubclassDeityGetPayload<{}>> {
+    return db.createSubclassDeity(data, true);
+}
+
+export async function createContinentDeity(data: Prisma.ContinentDeityUncheckedCreateInput): Promise<Prisma.ContinentDeityGetPayload<{}>> {
+    return db.createContinentDeity(data, true);
 }
 
 // ============================================================================
