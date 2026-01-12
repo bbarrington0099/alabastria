@@ -562,7 +562,7 @@ export async function createSubclassContinent(data: Prisma.SubclassContinentUnch
 // CHARACTERS
 // ============================================================================
 
-export async function createCharacter(data: Prisma.CharacterUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.CharacterGetPayload<{}>> {
+export async function createCharacter(data: Prisma.CharacterCreateInput, seeded: boolean = false): Promise<Prisma.CharacterGetPayload<{}>> {
     return await prisma.character.upsert({
         where: { id: data.id },
         update: data,

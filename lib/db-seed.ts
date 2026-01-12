@@ -182,7 +182,7 @@ export async function createRaceName(data: Prisma.RaceNameUncheckedCreateInput):
     return db.createRaceName(data, true);
 }
 
-export async function createRace(data: Prisma.RaceUncheckedCreateInput }): Promise<Prisma.RaceGetPayload<{}>> {
+export async function createRace(data: Prisma.RaceUncheckedCreateInput): Promise<Prisma.RaceGetPayload<{}>> {
     const race = await db.createRace(data, true);
     await prisma.$transaction(async (prisma) => {
         const world = await prisma.world.findUnique({
@@ -374,7 +374,7 @@ export async function createSubclassContinent(data: Prisma.SubclassContinentUnch
 // CHARACTERS
 // ============================================================================
 
-export async function createCharacter(data: Prisma.CharacterUncheckedCreateInput): Promise<Prisma.CharacterGetPayload<{}>> {
+export async function createCharacter(data: Prisma.CharacterCreateInput): Promise<Prisma.CharacterGetPayload<{}>> {
     const character = await db.createCharacter(data, true);
     await prisma.$transaction(async (prisma) => {
         const world = await prisma.world.findUnique({

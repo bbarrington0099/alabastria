@@ -45,9 +45,9 @@ model User {
   apiKeys  ApiKey[]
 
   // App relations
-  masterOfGuilds Guild[]     @relation("GuildMasters")
-  memberOfGuilds Guild[]     @relation("GuildMembers")
-  characters     Character[]
+  masterOfFactions Faction[]   @relation("FactionMasters")
+  memberOfFactions Faction[]   @relation("FactionMembers")
+  characters       Character[]
 
   ownedWorlds    World[]
   forgedWorlds   World[] @relation("WorldForgers")
@@ -120,6 +120,7 @@ model World {
   surfaceAreaSq        BigInt?
   currentDate          String?
   yearCalled           String  @default("years")
+  imagePath            String?
   additionalProperties Json?
 
   historicalPeriods HistoricalPeriod[]
@@ -135,7 +136,6 @@ model World {
   subclasses         Subclass[]
   pantheons          Pantheon[]
   deities            Deity[]
-  guilds             Guild[]
   characters         Character[]
   creatureTypes      CreatureType[]
   legendaryCreatures LegendaryCreature[]
@@ -208,7 +208,6 @@ model Continent {
   raceLocations          RaceContinent[]
   subraceLocations       SubraceContinent[]
   subclassLocations      SubclassContinent[]
-  guilds                 Guild[]
   creatureTypes          ContinentCreatureType[]
   legendaryCreatures     LegendaryCreature[]
   deityRecommendations   ContinentDeity[]
@@ -243,16 +242,17 @@ enum ContinentLanguagePrevalence {
 }
 
 model Kingdom {
-  id              String  @id @default(uuid())
-  seeded          Boolean @default(false)
-  name            String
-  description     String? @db.Text
-  surfaceAreaSqMi BigInt?
-  primaryColor    String?
-  secondaryColor  String?
-  flagSymbol      String?
-  flagDescription String? @db.Text
-
+  id                   String  @id @default(uuid())
+  seeded               Boolean @default(false)
+  name                 String
+  description          String? @db.Text
+  surfaceAreaSqMi      BigInt?
+  primaryColor         String?
+  secondaryColor       String?
+  flagSymbol           String?
+  flagDescription      String? @db.Text
+  mapImagePath         String?
+  flagImagePath        String?
   additionalProperties Json?
 
   dateFounded   String?
@@ -296,6 +296,7 @@ model Town {
   population  Int?
   type        TownType @default(VILLAGE)
 
+  imagePath            String?
   additionalProperties Json?
 
   continentId String
@@ -304,10 +305,9 @@ model Town {
   capitalOfContinent Continent? @relation("ContinentCapital")
 
   regions                Region[]                    @relation("RegionTowns")
-  guildHalls             GuildHall[]
-  professionRestrictions ProfessionTownRestriction[]
   factionBases           FactionBase[]
-  characterJobs          CharacterTownJob[]
+  professionRestrictions ProfessionTownRestriction[]
+  characterJobs          CharacterProfession[]
   factionRelationships   FactionTownRelationship[]
   graveyardId            String?
   graveyard              Graveyard?                  @relation(fields: [graveyardId], references: [id], onDelete: Cascade)
@@ -320,35 +320,20 @@ model Town {
   quests                 Quest[]
 }
 
-model ShopItem {
-  id                String  @id @default(uuid())
-  seeded            Boolean @default(false)
-  name              String
-  description       String? @db.Text
-  price             Int?
-  currency          String?
-  change            Int?
-  changeCurrency    String?
-  quantityAvailable Int?
-
-  additionalProperties Json?
-
-  shops Shop[]
-}
-
 model Shop {
-  id          String     @id @default(uuid())
-  seeded      Boolean    @default(false)
+  id          String  @id @default(uuid())
+  seeded      Boolean @default(false)
   name        String
-  description String?    @db.Text
+  description String? @db.Text
   type        String?
-  inventory   ShopItem[]
+  inventory   Json? // e.g., list of items or services, including prices, quantitiy, etc.
+  // When creating a new shop, query for shops with the same type to generate inventory recommendations
 
   additionalProperties Json?
 
   townId  String?
-  town    Town?              @relation(fields: [townId], references: [id], onDelete: Cascade)
-  workers CharacterTownJob[]
+  town    Town?                 @relation(fields: [townId], references: [id], onDelete: Cascade)
+  workers CharacterProfession[]
 }
 
 model Region {
@@ -850,10 +835,10 @@ enum DeityRecommendationType {
 }
 
 model RaceDeity {
-  id        String  @id @default(uuid())
-  reasoning String?  @db.Text
+  id           String                  @id @default(uuid())
+  reasoning    String?                 @db.Text
   relationType DeityRecommendationType
-  seeded    Boolean @default(false)
+  seeded       Boolean                 @default(false)
 
   raceId               String
   race                 Race   @relation(fields: [raceId], references: [id], onDelete: Cascade)
@@ -865,10 +850,10 @@ model RaceDeity {
 }
 
 model SubraceDeity {
-  id        String  @id @default(uuid())
-  reasoning String?  @db.Text
+  id           String                  @id @default(uuid())
+  reasoning    String?                 @db.Text
   relationType DeityRecommendationType
-  seeded    Boolean @default(false)
+  seeded       Boolean                 @default(false)
 
   subraceId            String
   subrace              Subrace @relation(fields: [subraceId], references: [id], onDelete: Cascade)
@@ -880,10 +865,10 @@ model SubraceDeity {
 }
 
 model ClassDeity {
-  id        String  @id @default(uuid())
-  reasoning String?  @db.Text
+  id           String                  @id @default(uuid())
+  reasoning    String?                 @db.Text
   relationType DeityRecommendationType
-  seeded    Boolean @default(false)
+  seeded       Boolean                 @default(false)
 
   classId              String
   class                Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -895,10 +880,10 @@ model ClassDeity {
 }
 
 model SubclassDeity {
-  id        String  @id @default(uuid())
-  reasoning String?  @db.Text
+  id           String                  @id @default(uuid())
+  reasoning    String?                 @db.Text
   relationType DeityRecommendationType
-  seeded    Boolean @default(false)
+  seeded       Boolean                 @default(false)
 
   subclassId           String
   subclass             Subclass @relation(fields: [subclassId], references: [id], onDelete: Cascade)
@@ -910,10 +895,10 @@ model SubclassDeity {
 }
 
 model ContinentDeity {
-  id        String  @id @default(uuid())
-  reasoning String?  @db.Text
+  id           String                  @id @default(uuid())
+  reasoning    String?                 @db.Text
   relationType DeityRecommendationType
-  seeded    Boolean @default(false)
+  seeded       Boolean                 @default(false)
 
   continentId          String
   continent            Continent @relation(fields: [continentId], references: [id], onDelete: Cascade)
@@ -922,134 +907,6 @@ model ContinentDeity {
   additionalProperties Json?
 
   @@unique([continentId, deityId])
-}
-
-// ============================================================================
-// GUILDS & MEMBERS
-// ============================================================================
-
-model GuildRank {
-  id                   String             @id @default(uuid())
-  name                 String
-  imagePath            String?
-  levelLow             Int
-  levelHigh            Int
-  additionalProperties Json?
-  guild                Guild[]
-  guildStaff           GuildStaff[]
-  guildMembers         GuildMember[]
-  quests               Quest[]
-  questParticipants    QuestParticipant[]
-}
-
-enum MemberStatus {
-  ACTIVE
-  INACTIVE
-  DECEASED
-  RETIRED
-  MISSING
-  HIATUS
-  EXPELLED
-  ABROAD
-}
-
-model Guild {
-  id                   String        @id @default(uuid())
-  name                 String
-  description          String        @db.Text
-  emblemPath           String?
-  foundedDate          String?
-  seeded               Boolean       @default(false)
-  additionalProperties Json?
-  worlds               World[]
-  continents           Continent[]
-  guildHalls           GuildHall[]
-  roles                GuildRole[]
-  staff                GuildStaff[]
-  members              GuildMember[]
-  quests               Quest[]
-  guildMasterUsers     User[]        @relation("GuildMasters")
-  guildMemberUsers     User[]        @relation("GuildMembers")
-  guildRanks           GuildRank[]
-}
-
-model GuildRole {
-  id                   String       @id @default(uuid())
-  name                 String
-  description          String?      @db.Text
-  seeded               Boolean      @default(false)
-  additionalProperties Json?
-  guildStaff           GuildStaff[]
-  guild                Guild[]
-}
-
-model GuildStaff {
-  id                   String     @id @default(uuid())
-  rankId               String
-  rank                 GuildRank  @relation(fields: [rankId], references: [id])
-  seeded               Boolean    @default(false)
-  additionalProperties Json?
-  guildRoleId          String
-  guildRole            GuildRole  @relation(fields: [guildRoleId], references: [id], onDelete: Cascade)
-  characterId          String
-  character            Character  @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  guildId              String
-  guild                Guild      @relation(fields: [guildId], references: [id], onDelete: Cascade)
-  guildHallId          String?
-  guildHall            GuildHall? @relation(fields: [guildHallId], references: [id])
-}
-
-model GuildMember {
-  id                   String       @id @default(uuid())
-  rankId               String
-  rank                 GuildRank    @relation(fields: [rankId], references: [id])
-  status               MemberStatus @default(ACTIVE)
-  specialization       String?
-  seeded               Boolean      @default(false)
-  additionalProperties Json?
-  characterId          String
-  character            Character    @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  guildId              String
-  guild                Guild        @relation(fields: [guildId], references: [id], onDelete: Cascade)
-
-  tags                GuildMemberTag[]               @relation("GuildMemberTag")
-  achievements        GuildMemberAchievement[]       @relation("GuildMemberAchievement")
-  questParticipations QuestParticipant[]
-  factionMemberships  FactionGuildMemberMembership[] @relation("FactionGuildMember")
-}
-
-model GuildMemberTag {
-  id                   String        @id @default(uuid())
-  tag                  String
-  additionalProperties Json?
-  members              GuildMember[] @relation("GuildMemberTag")
-}
-
-model GuildMemberAchievement {
-  id                   String        @id @default(uuid())
-  name                 String
-  description          String?       @db.Text
-  additionalProperties Json?
-  members              GuildMember[] @relation("GuildMemberAchievement")
-}
-
-model GuildHall {
-  id                   String       @id @default(uuid())
-  name                 String
-  description          String?      @db.Text
-  imagePath            String?
-  services             String[]
-  createdAt            DateTime     @default(now())
-  updatedAt            DateTime     @updatedAt
-  seeded               Boolean      @default(false)
-  additionalProperties Json?
-  guildId              String
-  guild                Guild        @relation(fields: [guildId], references: [id], onDelete: Cascade)
-  staff                GuildStaff[]
-  graveyard            Graveyard?   @relation(fields: [graveyardId], references: [id])
-  graveyardId          String?
-  townId               String
-  town                 Town         @relation(fields: [townId], references: [id], onDelete: Cascade)
 }
 
 // ============================================================================
@@ -1091,52 +948,55 @@ model WeekDay {
 }
 
 model Character {
-  id                   String   @id @default(uuid())
-  name                 String
-  imagePath            String?
-  additionalProperties Json?
+  id                    String   @id @default(uuid())
+  seeded                Boolean  @default(false)
+  name                  String
+  preNominalHonorifics  String[]
+  postNominalHonorifics String[]
+  imagePath             String?
+  additionalProperties  Json?
   // Demographics
-  gender               String?
-  age                  Int?
-  birthDate            String?
+  gender                String?
+  age                   Int?
+  birthDate             String?
 
   // Physical & Personality
-  appearance          String? @db.Text
-  personality         String? @db.Text
-  gearLoadout         String? @db.Text
-  keyAttributes       String? @db.Text
-  ideals              String? @db.Text
-  bonds               String? @db.Text
-  flaws               String? @db.Text
-  backstory           String? @db.Text
+  appearance    String? @db.Text
+  personality   String? @db.Text
+  gearLoadout   String? @db.Text
+  keyAttributes String? @db.Text
+  ideals        String? @db.Text
+  bonds         String? @db.Text
+  flaws         String? @db.Text
+  backstory     String? @db.Text
 
   // Languages
   languages Language[]
 
   // Relations to Core Data
-  userId             String?
-  user               User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  raceId             String?
-  race               Race?             @relation(fields: [raceId], references: [id])
-  subraceId          String?
-  subrace            Subrace?          @relation(fields: [subraceId], references: [id])
+  raceId    String?
+  race      Race?    @relation(fields: [raceId], references: [id])
+  subraceId String?
+  subrace   Subrace? @relation(fields: [subraceId], references: [id])
 
-  classId            String?
-  class              Class?            @relation(fields: [classId], references: [id])
-  subclassId         String?
-  subclass           Subclass?         @relation(fields: [subclassId], references: [id])
+  classId    String?
+  class      Class?    @relation(fields: [classId], references: [id])
+  subclassId String?
+  subclass   Subclass? @relation(fields: [subclassId], references: [id])
 
-  deityId            String?
-  deity              Deity?            @relation(fields: [deityId], references: [id])
-  deityReasoning     String?           @db.Text
-  
-  fromContinentId    String?
-  fromContinent      Continent?        @relation(fields: [fromContinentId], references: [id])
-  fromTownId         String?
-  fromTown           Town?             @relation("homeTown", fields: [fromTownId], references: [id])
-  livesInTownId      String?
-  livesInTown        Town?             @relation("LivesInTown", fields: [livesInTownId], references: [id])
+  deityId        String?
+  deity          Deity?  @relation(fields: [deityId], references: [id])
+  deityReasoning String? @db.Text
+
+  fromContinentId String?
+  fromContinent   Continent? @relation(fields: [fromContinentId], references: [id])
+  fromTownId      String?
+  fromTown        Town?      @relation("homeTown", fields: [fromTownId], references: [id])
+  livesInTownId   String?
+  livesInTown     Town?      @relation("LivesInTown", fields: [livesInTownId], references: [id])
 
   familyGenerationId String?
   familyGeneration   FamilyGeneration? @relation(fields: [familyGenerationId], references: [id])
@@ -1148,17 +1008,15 @@ model Character {
   creatureType   CreatureType? @relation(fields: [creatureTypeId], references: [id])
 
   // Character Role Links
-  guildMemberships            GuildMember[]
-  guildStaffings              GuildStaff[]
-  questAuthor                 Quest[]
-  continentRuler              CharacterContinentRuler?
-  kingdomRuler                CharacterKingdomRuler?
-  townJobs                    CharacterTownJob[]
-  factionRelationships        CharacterFactionRelationship[]
-  characterFactionMemberships FactionCharacterMembership[]
-  guildFactionMemberships     FactionGuildMemberMembership[] @relation("FactionGuildMemberChar")
-  relationshipsFrom           CharacterRelationship[]        @relation("CharacterFrom")
-  relationshipsTo             CharacterRelationship[]        @relation("CharacterTo")
+  factionMemberships   FactionMember[]
+  factionStaffings     FactionStaff[]
+  questAuthor          Quest[]
+  continentRuler       CharacterContinentRuler?
+  kingdomRuler         CharacterKingdomRuler?
+  townJobs             CharacterProfession[]
+  factionRelationships CharacterFactionRelationship[]
+  relationshipsFrom    CharacterRelationship[]        @relation("CharacterFrom")
+  relationshipsTo      CharacterRelationship[]        @relation("CharacterTo")
 
   // Quest & Gameplay
   quests QuestMemberReport[]
@@ -1190,20 +1048,6 @@ model FamilyTree {
 }
 
 // Character Role Links
-model CharacterTownJob {
-  id                   String              @id @default(uuid())
-  jobTitle             String?
-  description          String?             @db.Text
-  additionalProperties Json?
-  characterId          String
-  character            Character           @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  townId               String?
-  town                 Town?               @relation(fields: [townId], references: [id], onDelete: Cascade)
-  professionId         String
-  profession           CharacterProfession @relation(fields: [professionId], references: [id])
-  shopId               String?
-  shop                 Shop?               @relation(fields: [shopId], references: [id], onDelete: Cascade)
-}
 
 model CharacterKingdomRuler {
   id                   String    @id @default(uuid())
@@ -1250,13 +1094,12 @@ model CharacterRelationship {
 
 // Graveyard
 model Graveyard {
-  id                   String      @id @default(uuid())
+  id                   String        @id @default(uuid())
   name                 String?
-  description          String?     @db.Text
+  description          String?       @db.Text
   additionalProperties Json?
   towns                Town[]
-  factions             Faction[]
-  guildHalls           GuildHall[]
+  factionBases         FactionBase[]
 
   entries GraveyardEntry[]
 }
@@ -1279,27 +1122,28 @@ model GraveyardEntry {
 // ============================================================================
 
 model Quest {
-  id                   String     @id @default(uuid())
+  id                   String       @id @default(uuid())
   name                 String
-  description          String     @db.Text
+  description          String       @db.Text
   rankId               String?
-  rank                 GuildRank? @relation(fields: [rankId], references: [id])
+  rank                 FactionRank? @relation(fields: [rankId], references: [id])
   commissionedById     String?
-  commissionedBy       Character? @relation(fields: [commissionedById], references: [id])
+  commissionedBy       Character?   @relation(fields: [commissionedById], references: [id])
   dateCommissioned     String?
   dateDue              String?
   dateCompleted        String?
   location             String?
   outcome              String?
-  extraNotes           String?    @db.Text
-  seeded               Boolean    @default(false)
+  extraNotes           String?      @db.Text
+  seeded               Boolean      @default(false)
   additionalProperties Json?
-  guildId              String
-  guild                Guild      @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  imagePath            String?
+  factionId            String
+  faction              Faction      @relation(fields: [factionId], references: [id], onDelete: Cascade)
   townId               String?
-  town                 Town?      @relation(fields: [townId], references: [id], onDelete: Cascade)
+  town                 Town?        @relation(fields: [townId], references: [id], onDelete: Cascade)
   continentId          String?
-  continent            Continent? @relation(fields: [continentId], references: [id], onDelete: Cascade)
+  continent            Continent?   @relation(fields: [continentId], references: [id], onDelete: Cascade)
 
   participants  QuestParticipant[]
   enemies       QuestEnemy[]
@@ -1310,15 +1154,15 @@ model Quest {
 }
 
 model QuestParticipant {
-  id                   String      @id @default(uuid())
+  id                   String        @id @default(uuid())
   rankAtTimeId         String
-  rankAtTime           GuildRank   @relation(fields: [rankAtTimeId], references: [id])
+  rankAtTime           FactionRank   @relation(fields: [rankAtTimeId], references: [id])
   role                 String?
   additionalProperties Json?
   questId              String
-  quest                Quest       @relation(fields: [questId], references: [id], onDelete: Cascade)
+  quest                Quest         @relation(fields: [questId], references: [id], onDelete: Cascade)
   memberId             String
-  member               GuildMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  member               FactionMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
   @@unique([questId, memberId])
 }
@@ -1385,7 +1229,9 @@ model CharacterProfession {
   additionalProperties   Json?
   restrictedToContinents ProfessionContinentRestriction[]
   restrictedToTowns      ProfessionTownRestriction[]
-  characterJobs          CharacterTownJob[]
+  towns                  Town[]
+  shops                  Shop[]
+  characters             Character[]
 }
 
 model ProfessionContinentRestriction {
@@ -1423,140 +1269,129 @@ model CharacterRelationshipType {
 // FACTIONS
 // ============================================================================
 
-enum FactionInfluenceLevel {
-  MINOR
-  MODERATE
-  MAJOR
-  DOMINANT
-  HIDDEN
-}
-
-enum CharacterFactionRelationshipType {
-  MEMBER
-  LEADER
-  FORMER_MEMBER
-  ALLY
-  ENEMY
-  NEUTRAL
-  RIVAL
-  SUPPORTER
-}
-
 model Faction {
-  id                     String                         @id @default(uuid())
-  name                   String
-  description            String                         @db.Text
-  mainPurpose            String                         @db.Text
-  emblemPath             String?
-  foundedCycle           Int?
-  seeded                 Boolean                        @default(false)
-  createdAt              DateTime                       @default(now())
-  updatedAt              DateTime                       @updatedAt
-  additionalProperties   Json?
-  worlds                 World[]
-  continentPresence      FactionContinentPresence[]
-  bases                  FactionBase[]
-  characterMembers       FactionCharacterMembership[]
-  guildMembers           FactionGuildMemberMembership[]
+  id                   String  @id @default(uuid())
+  name                 String
+  description          String  @db.Text
+  mainPurpose          String  @db.Text
+  emblemPath           String?
+  foundedDate          String?
+  seeded               Boolean @default(false)
+  additionalProperties Json?
+
+  worlds            World[]
+  continentPresence FactionContinentPresence[]
+  townRelationships FactionTownRelationship[]
+  relationshipsFrom FactionRelationship[]      @relation("FactionFrom")
+  relationshipsTo   FactionRelationship[]      @relation("FactionTo")
+  historicEvents    FactionHistoricEvent[]
+
+  quests Quest[]
+
+  factionBases           FactionBase[]
+  factionRanks           FactionRank[]
+  characterMembers       FactionMember[]
+  characterStaff         FactionStaff[]
   characterRelationships CharacterFactionRelationship[]
-  relationshipsFrom      FactionRelationship[]          @relation("FactionFrom")
-  relationshipsTo        FactionRelationship[]          @relation("FactionTo")
-  townRelationships      FactionTownRelationship[]
-  historicEvents         FactionHistoricEvent[]
-  graveyardId            String?
-  graveyard              Graveyard?                     @relation(fields: [graveyardId], references: [id], onDelete: Cascade)
+
+  factionMasterUsers User[] @relation("FactionMasters")
+  factionMemberUsers User[] @relation("FactionMembers")
+}
+
+model FactionRank {
+  id                   String             @id @default(uuid())
+  name                 String
+  imagePath            String?
+  levelLow             Int
+  levelHigh            Int
+  additionalProperties Json?
+  faction              Faction[]
+  factionStaff         FactionStaff[]
+  factionMembers       FactionMember[]
+  quests               Quest[]
+  questParticipants    QuestParticipant[]
+}
+
+enum MemberStatus {
+  ACTIVE
+  INACTIVE
+  DECEASED
+  RETIRED
+  MISSING
+  HIATUS
+  EXPELLED
+  ABROAD
+}
+
+model FactionMember {
+  id                   String       @id @default(uuid())
+  joinedDate           String?
+  isSecretMember       Boolean      @default(false)
+  rankId               String
+  rank                 FactionRank  @relation(fields: [rankId], references: [id])
+  status               MemberStatus @default(ACTIVE)
+  specialization       String?
+  seeded               Boolean      @default(false)
+  additionalProperties Json?
+  characterId          String
+  character            Character    @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  factionId            String
+  faction              Faction      @relation(fields: [factionId], references: [id], onDelete: Cascade)
+
+  tags                String[]
+  achievements        String[]
+  questParticipations QuestParticipant[]
+  factionBases        FactionBase[]
+}
+
+model FactionStaff {
+  id                   String        @id @default(uuid())
+  rankId               String?
+  rank                 FactionRank?  @relation(fields: [rankId], references: [id])
+  positionTitle        String?
+  responsibilities     String?       @db.Text
+  seeded               Boolean       @default(false)
+  additionalProperties Json?
+  factionBases         FactionBase[]
+  characterId          String
+  character            Character     @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  factionId            String
+  faction              Faction       @relation(fields: [factionId], references: [id], onDelete: Cascade)
 }
 
 model FactionContinentPresence {
-  id                   String                @id @default(uuid())
-  influenceLevel       FactionInfluenceLevel
-  description          String?               @db.Text
+  id                   String    @id @default(uuid())
+  influenceLevel       String? // Example: "MINOR", "MODERATE", "MAJOR", "DOMINANT", "HIDDEN"
+  description          String?   @db.Text
   additionalProperties Json?
   factionId            String
-  faction              Faction               @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  faction              Faction   @relation(fields: [factionId], references: [id], onDelete: Cascade)
   continentId          String
-  continent            Continent             @relation(fields: [continentId], references: [id])
+  continent            Continent @relation(fields: [continentId], references: [id])
 
   @@unique([factionId, continentId])
 }
 
 model FactionBase {
-  id                   String  @id @default(uuid())
+  id                   String     @id @default(uuid())
   name                 String
-  description          String  @db.Text
-  townRelationship     String  @db.Text
-  isHeadquarters       Boolean @default(false)
-  isSecret             Boolean @default(false)
-  seeded               Boolean @default(false)
+  description          String     @db.Text
+  imagePath            String?
+  services             String[]
+  isSecret             Boolean    @default(false)
+  seeded               Boolean    @default(false)
   additionalProperties Json?
   factionId            String
-  faction              Faction @relation(fields: [factionId], references: [id], onDelete: Cascade)
-  townId               String
-  town                 Town    @relation(fields: [townId], references: [id])
+  faction              Faction    @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  townId               String?
+  town                 Town?      @relation(fields: [townId], references: [id])
+  graveyardId          String?
+  graveyard            Graveyard? @relation(fields: [graveyardId], references: [id])
 
-  characterMembers FactionCharacterMembership[]
-  guildMembers     FactionGuildMemberMembership[]
+  members FactionMember[]
+  staff   FactionStaff[]
 
   @@unique([factionId, townId, name])
-}
-
-model FactionRole {
-  id                   String                         @id @default(uuid())
-  name                 String
-  description          String?                        @db.Text
-  rankOrder            Int                            @default(0)
-  seeded               Boolean                        @default(false)
-  additionalProperties Json?
-  characterMemberships FactionCharacterMembership[]
-  guildMemberships     FactionGuildMemberMembership[]
-}
-
-model FactionCharacterMembership {
-  id                   String       @id @default(uuid())
-  joinedCycle          Int?
-  notes                String?      @db.Text
-  isSecret             Boolean      @default(false)
-  additionalProperties Json?
-  factionId            String
-  faction              Faction      @relation(fields: [factionId], references: [id], onDelete: Cascade)
-  characterId          String
-  character            Character    @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  roleId               String
-  role                 FactionRole  @relation(fields: [roleId], references: [id])
-  baseId               String?
-  base                 FactionBase? @relation(fields: [baseId], references: [id])
-
-  @@unique([factionId, characterId])
-}
-
-model FactionGuildMemberMembership {
-  id                   String       @id @default(uuid())
-  joinedCycle          Int?
-  notes                String?      @db.Text
-  isSecret             Boolean      @default(false)
-  additionalProperties Json?
-  factionId            String
-  faction              Faction      @relation(fields: [factionId], references: [id], onDelete: Cascade)
-  guildMemberId        String
-  guildMember          GuildMember  @relation("FactionGuildMember", fields: [guildMemberId], references: [id], onDelete: Cascade)
-  characterId          String
-  character            Character    @relation("FactionGuildMemberChar", fields: [characterId], references: [id], onDelete: Cascade)
-  roleId               String
-  role                 FactionRole  @relation(fields: [roleId], references: [id])
-  baseId               String?
-  base                 FactionBase? @relation(fields: [baseId], references: [id])
-
-  @@unique([factionId, guildMemberId])
-  @@unique([factionId, characterId])
-}
-
-model FactionRelationshipType {
-  id                   String                @id @default(uuid())
-  name                 String
-  description          String?               @db.Text
-  seeded               Boolean               @default(false)
-  additionalProperties Json?
-  relationships        FactionRelationship[]
 }
 
 model FactionRelationship {
@@ -1569,22 +1404,21 @@ model FactionRelationship {
   toFactionId          String
   toFaction            Faction @relation("FactionTo", fields: [toFactionId], references: [id], onDelete: Cascade)
 
-  relationshipTypeId String
-  relationshipType   FactionRelationshipType @relation(fields: [relationshipTypeId], references: [id])
+  relationshipType String // e.g., "ALLIED", "HOSTILE", "NEUTRAL", "TRADE_PARTNER", "RIVAL", "PROTECTOR", "SUBSERVIENT", "ENEMY"
 
   @@unique([fromFactionId, toFactionId])
 }
 
 // Character-Faction Relationships
 model CharacterFactionRelationship {
-  id                   String                           @id @default(uuid())
-  type                 CharacterFactionRelationshipType
-  notes                String?                          @db.Text
+  id                   String    @id @default(uuid())
+  type                 String // e.g., "ALLY", "ENEMY", "SUPPORTER", "TRADE_PARTNER"
+  notes                String?   @db.Text
   additionalProperties Json?
   characterId          String
-  character            Character                        @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  character            Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
   factionId            String
-  faction              Faction                          @relation(fields: [factionId], references: [id], onDelete: Cascade)
+  faction              Faction   @relation(fields: [factionId], references: [id], onDelete: Cascade)
 
   @@unique([characterId, factionId, type])
 }

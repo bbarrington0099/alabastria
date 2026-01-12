@@ -297,7 +297,7 @@ export async function seedDeityHolyDays(
 		}),
 		tyr_judgment_s_dawn: await db.createDeityHolyDay({
 			id: 'tyr-judgment-s-dawn',
-			name: 'Judgment's Dawn',
+			name: "Judgment's Dawn",
 			deityId: deities.tyr.id,
 
 			date: '',
