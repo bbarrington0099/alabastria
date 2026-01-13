@@ -29,6 +29,9 @@ export * from './deityHolyDay';
 export * from './deityHistory';
 export * from './deityRelationship';
 export * from './character';
+export * from './familyTree';
+export * from './familyGeneration';
+export * from './characterRelationship';
 
 export * from './connections/kingdomCapitals';
 export * from './connections/continentCaptials';
@@ -45,5 +48,6 @@ export * from './connections/subraceDeities';
 export * from './connections/classDeities';
 export * from './connections/subclassDeities';
 export * from './connections/continentDeities';
+export * from './connections/characterFamilyGenerations';
 
 export * from './constants/color';

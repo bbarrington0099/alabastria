@@ -393,192 +393,36 @@ export async function createCharacter(data: Prisma.CharacterCreateInput): Promis
     return character;
 }
 
-// ============================================================================
-// GUILDS
-// ============================================================================
-
-export async function createGuild(data: {
-    name: string;
-    description: string;
-    emblemPath?: string;
-    foundedCycle?: number;
-    continentId?: string;
-}) {
-    const slug = slugify(data.name);
-    return prisma.guild.upsert({
-        where: { slug },
-        update: data,
-        create: { ...data, slug, seeded: true },
+export async function createFamilyTree(data: Prisma.FamilyTreeCreateInput): Promise<Prisma.FamilyTreeGetPayload<{}>> {
+    const familyTree = await db.createFamilyTree(data, true);
+    await prisma.$transaction(async (prisma) => {
+        const world = await prisma.world.findUnique({
+            where: { id: 'alabastria' },
+        });
+        if (world) {
+            await prisma.familyTree.update({
+                where: { id: familyTree.id },
+                data: {
+                    worlds: {
+                        connect: { id: world.id },
+                    },
+                },
+            });
+        }
     });
+    return familyTree;
 }
 
-export async function createGuildRole(data: {
-    name: string;
-    description?: string;
-}) {
-    return prisma.guildRole.upsert({
-        where: { id: data.name }, // Assuming name is used as id for upsert
-        update: data,
-        create: { ...data, seeded: true, id: data.name }, // Ensure id is passed for create as well
-    });
+export async function createFamilyGeneration(data: Prisma.FamilyGenerationUncheckedCreateInput): Promise<Prisma.FamilyGenerationGetPayload<{}>> {
+    return db.createFamilyGeneration(data, true);
 }
 
-export async function createGuildStaff(data: {
-    guildId: string;
-    guildRoleId: string;
-    rank: GuildRank;
-    characterId: string;
-}) {
-    return prisma.guildStaff.upsert({
-        where: { characterId: data.characterId },
-        update: data,
-        create: { ...data, seeded: true },
-    });
+export async function createCharacterRelationship(data: Prisma.CharacterRelationshipCreateInput): Promise<Prisma.CharacterRelationshipGetPayload<{}>> {
+    return db.createCharacterRelationship(data, true);
 }
 
-export async function createGuildMember(data: {
-    guildId: string;
-    rank: GuildRank;
-    status?: MemberStatus;
-    specialization?: string;
-    managedById?: string;
-    characterId: string;
-}) {
-    return prisma.guildMember.upsert({
-        where: { characterId: data.characterId },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-// ============================================================================
-// QUESTS
-// ============================================================================
-
-export async function createQuestReport(data: {
-    guildId: string;
-    name: string;
-    summary: string;
-    rank: GuildRank;
-    commissionedBy?: string;
-    date?: string;
-    location?: string;
-    duration?: string;
-    outcome?: string;
-    extraNotes?: string;
-}) {
-    return prisma.questReport.upsert({
-        where: { id: data.guildId },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-// ============================================================================
-// FACTIONS
-// ============================================================================
-
-export async function createFaction(data: {
-    name: string;
-    description: string;
-    mainPurpose: string;
-    emblemPath?: string;
-    foundedCycle?: number;
-}) {
-    const slug = slugify(data.name);
-    return prisma.faction.upsert({
-        where: { slug },
-        update: data,
-        create: { ...data, slug, seeded: true },
-    });
-}
-
-export async function createFactionRole(data: {
-    name: string;
-    description?: string;
-    rankOrder?: number;
-}) {
-    return prisma.factionRole.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-export async function createFactionRelationshipType(data: {
-    name: string;
-    description?: string;
-}) {
-    return prisma.factionRelationshipType.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-// ============================================================================
-// NPC SYSTEM
-// ============================================================================
-
-export async function createNPCProfession(data: {
-    name: string;
-    description?: string;
-    category?: string;
-    restrictionType?: ProfessionRestrictionType;
-}) {
-    return prisma.nPCProfession.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-export async function createNPCRelationshipType(data: {
-    name: string;
-    description?: string;
-}) {
-    return prisma.nPCRelationshipType.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-// ============================================================================
-// PLAYSTYLE GUIDE
-// ============================================================================
-
-export async function createPlaystyleCategory(data: {
-    name: string;
-    description: string;
-}) {
-    return prisma.playstyleCategory.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-export async function createRoleDescription(data: {
-    name: string;
-    description: string;
-}) {
-    return prisma.roleDescription.upsert({
-        where: { name: data.name },
-        update: data,
-        create: { ...data, seeded: true },
-    });
-}
-
-export async function createComplexityLevel(data: {
-    level: string;
-    description: string;
-}) {
-    return prisma.complexityLevel.upsert({
-        where: { level: data.level },
-        update: data,
-        create: { ...data, seeded: true },
-    });
+export async function setCharacterFamilyGeneration(characterId: string, familyGenerationId: string): Promise<boolean> {
+    return db.setCharacterFamilyGeneration(characterId, familyGenerationId);
 }
 
 // ============================================================================

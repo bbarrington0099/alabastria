@@ -226,6 +226,10 @@ async function main() {
         const subracesSubclasses: seed.SubracesSubclasses = await seed.setSubracesSubclasses({ subraces, subclasses });
         console.log('🧝‍♂️ Seeding Character Information...');
         const characters: seed.Characters = await seed.seedCharacters({ races, subraces, classes, subclasses, languages, deities, continents, towns, creatureSizes, creatureTypes });
+        const familyTrees: seed.FamilyTrees = await seed.seedFamilyTrees();
+        const familyGenerations: seed.FamilyGenerations = await seed.seedFamilyGenerations({ familyTrees });
+        await seed.setCharacterFamilyGenerations({ characters, familyGenerations });
+        const characterRelationships: seed.CharacterRelationships = await seed.seedCharacterRelationships({ characters, familyTrees });
     } catch (error) {
         console.error(`   ❌ Error seeding data:`, error);
         process.exit(1);

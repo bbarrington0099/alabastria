@@ -471,31 +471,9 @@ export async function createContinentDeity(data: Prisma.ContinentDeityUncheckedC
     });
 }
 
-export async function getPantheons() {
-    return prisma.pantheon.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            deities: {
-                orderBy: { name: "asc" },
-            },
-        },
-    });
-}
-
-export async function getDeities() {
-    return prisma.deity.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            pantheon: true,
-            domains: true,
-        },
-    });
-}
-
 // ============================================================================
 // RECOMMENDATIONS
 // ============================================================================
-// RaceClassRecommendation, DeityRecommendation, PlaystyleClassRecommendation?, RaceContinent and continent subclasses
 
 export async function createRaceSubclassRecommendation(data: Prisma.RaceSubclassRecommendationUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.RaceSubclassRecommendationGetPayload<{}>> {
     return await prisma.raceSubclassRecommendation.upsert({
@@ -579,262 +557,55 @@ export async function createCharacter(data: Prisma.CharacterCreateInput, seeded:
     });
 }
 
-// ============================================================================
-// GUILDS
-// ============================================================================
-
-export async function getGuilds() {
-    return prisma.guild.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            continent: true,
-            _count: {
-                select: {
-                    members: true,
-                    staff: true,
-                    quests: true,
-                },
-            },
-        },
+export async function createFamilyTree(data: Prisma.FamilyTreeCreateInput, seeded: boolean = false): Promise<Prisma.FamilyTreeGetPayload<{}>> {
+    return await prisma.familyTree.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-export async function getGuildBySlug(slug: string) {
-    return prisma.guild.findUnique({
-        where: { slug },
-        include: {
-            continent: true,
-            staff: {
-                include: {
-                    race: true,
-                    class: true,
-                    deity: true,
-                },
-            },
-            members: {
-                include: {
-                    race: true,
-                    subrace: true,
-                    class: true,
-                    subclass: true,
-                    deity: true,
-                    tags: true,
-                    achievements: true,
-                },
-            },
-            quests: {
-                orderBy: { createdAt: "desc" },
-                include: {
-                    participants: {
-                        include: {
-                            member: true,
-                        },
-                    },
-                },
-            },
-        },
+export async function createFamilyGeneration(data: Prisma.FamilyGenerationUncheckedCreateInput, seeded: boolean = false): Promise<Prisma.FamilyGenerationGetPayload<{}>> {
+    await prisma.$transaction(async (tx) => {
+        const existingGenerations = await tx.familyGeneration.findMany({
+            where: { familyTreeId: data.familyTreeId },
+            orderBy: { generationNumber: "asc" },
+        });
+        if (existingGenerations.length > 0 && data.generationNumber < existingGenerations[0].generationNumber) {
+            data.generationNumber = existingGenerations[0].generationNumber;
+            for (const gen of existingGenerations) {
+                await tx.familyGeneration.update({
+                    where: { id: gen.id },
+                    data: { generationNumber: gen.generationNumber + 1 },
+                });
+            }
+        };
+    });
+
+    return await prisma.familyGeneration.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-// ============================================================================
-// FACTIONS
-// ============================================================================
-
-export async function getFactions() {
-    return prisma.faction.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            continentPresence: {
-                include: {
-                    continent: true,
-                },
-            },
-            _count: {
-                select: {
-                    bases: true,
-                    npcMembers: true,
-                    guildMembers: true,
-                },
-            },
-        },
+export async function createCharacterRelationship(data: Prisma.CharacterRelationshipCreateInput, seeded: boolean = false): Promise<Prisma.CharacterRelationshipGetPayload<{}>> {
+    return await prisma.characterRelationship.upsert({
+        where: { id: data.id },
+        update: data,
+        create: { ...data, seeded },
     });
 }
 
-export async function getFactionBySlug(slug: string) {
-    return prisma.faction.findUnique({
-        where: { slug },
-        include: {
-            continentPresence: {
-                include: {
-                    continent: true,
-                },
-            },
-            bases: {
-                include: {
-                    town: {
-                        include: {
-                            continent: true,
-                        },
-                    },
-                },
-            },
-            npcMembers: {
-                include: {
-                    npc: true,
-                    role: true,
-                    base: true,
-                },
-            },
-            guildMembers: {
-                include: {
-                    guildMember: true,
-                    role: true,
-                    base: true,
-                },
-            },
-            relationshipsFrom: {
-                include: {
-                    toFaction: true,
-                    relationshipType: true,
-                },
-            },
-            relationshipsTo: {
-                include: {
-                    fromFaction: true,
-                    relationshipType: true,
-                },
-            },
-        },
-    });
-}
-
-// ============================================================================
-// HISTORY
-// ============================================================================
-
-export async function getHistoricalPeriods() {
-    return prisma.historicalPeriod.findMany({
-        orderBy: { sortOrder: "asc" },
-        include: {
-            events: {
-                orderBy: { sortOrder: "asc" },
-            },
-        },
-    });
-}
-
-// ============================================================================
-// NPC PROFESSIONS
-// ============================================================================
-
-export async function getProfessions() {
-    return prisma.nPCProfession.findMany({
-        orderBy: { name: "asc" },
-        include: {
-            restrictedToContinents: {
-                include: {
-                    continent: true,
-                },
-            },
-            restrictedToTowns: {
-                include: {
-                    town: {
-                        include: {
-                            continent: true,
-                        },
-                    },
-                },
-            },
-        },
-    });
-}
-
-export async function getAvailableProfessions(continentId?: string, townId?: string) {
-    const professions = await prisma.nPCProfession.findMany({
-        include: {
-            restrictedToContinents: {
-                include: {
-                    continent: true,
-                },
-            },
-            restrictedToTowns: {
-                include: {
-                    town: true,
-                },
-            },
-        },
-    });
-
-    return professions.filter((profession) => {
-        if (profession.restrictionType === "UNRESTRICTED") {
-            return true;
-        }
-
-        if (profession.restrictionType === "CONTINENT" && continentId) {
-            return profession.restrictedToContinents.some(
-                (r) => r.continent.id === continentId
-            );
-        }
-
-        if (profession.restrictionType === "TOWN" && townId) {
-            return profession.restrictedToTowns.some(
-                (r) => r.town.id === townId
-            );
-        }
-
+export async function setCharacterFamilyGeneration(characterId: string, familyGenerationId: string): Promise<boolean> {
+    try {
+        await prisma.character.update({
+            where: { id: characterId },
+            data: { familyGenerationId },
+        });
+    } catch (error) {
+        console.error(`Error setting character to family generation: ${error}`);
         return false;
-    });
+    }
+    return true;
 }
-
-// ============================================================================
-// RELATIONSHIP TYPES
-// ============================================================================
-
-export async function getNPCRelationshipTypes() {
-    return prisma.nPCRelationshipType.findMany({
-        orderBy: { name: "asc" },
-    });
-}
-
-export async function getFactionRelationshipTypes() {
-    return prisma.factionRelationshipType.findMany({
-        orderBy: { name: "asc" },
-    });
-}
-
-export async function getFactionRoles() {
-    return prisma.factionRole.findMany({
-        orderBy: { rankOrder: "asc" },
-    });
-}
-
-// ============================================================================
-// USER HELPERS
-// ============================================================================
-
-export async function getUserByEmail(email: string) {
-    return prisma.user.findUnique({
-        where: { email },
-    });
-}
-
-export async function isUserGuildDM(userId: string, guildId: string) {
-    const dm = await prisma.guildDM.findUnique({
-        where: {
-            userId_guildId: {
-                userId,
-                guildId,
-            },
-        },
-    });
-    return !!dm;
-}
-
-// ============================================================================
-// UTILITY FUNCTIONS
-// ============================================================================
-
-export function generateSlug(name: string): string {
-    return slugify(name);
-}
-

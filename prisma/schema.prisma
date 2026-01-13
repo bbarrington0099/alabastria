@@ -23,7 +23,7 @@ model UserRole {
   contentPillarsPerWorldLimit      Int // e.g., races, classes, continents, pantheons, guilds, etc.
   contentStructuresPerPillarLimit  Int // e.g., towns, factions, landmarks, deities, quests, creature types, etc.
   contentElementsPerStructureLimit Int // e.g., shops, legendary creatures, family trees, historical events, etc.
-  contentItemsPerWorldLimit        Int // e.g., shop items, characters, etc.
+  contentItemsPerWorldLimit        Int // e.g., quests, characters, etc.
 }
 
 model User {
@@ -1137,6 +1137,7 @@ model FamilyGeneration {
   generationNumber     Int
   additionalProperties Json?
   deleted              Boolean    @default(false)
+  seeded               Boolean    @default(false)
   familyTreeId         String
   familyTree           FamilyTree @relation(fields: [familyTreeId], references: [id])
 
@@ -1151,6 +1152,7 @@ model FamilyTree {
   description          String?                 @db.Text
   additionalProperties Json?
   deleted              Boolean                 @default(false)
+  seeded               Boolean                 @default(false)
   generations          FamilyGeneration[]
   memberRelationships  CharacterRelationship[]
   worlds               World[]
@@ -1191,17 +1193,17 @@ model CharacterRelationship {
   description          String?   @db.Text
   additionalProperties Json?
   deleted              Boolean   @default(false)
+  seeded               Boolean   @default(false)
+  fromCharacterType    String // e.g., "parent", "sibling", "friend", "rival", "spouse", etc.
   fromCharacterId      String
   fromCharacter        Character @relation("CharacterFrom", fields: [fromCharacterId], references: [id])
+  toCharacterType      String // e.g., "parent", "sibling", "friend", "rival", "spouse", etc.
   toCharacterId        String
   toCharacter          Character @relation("CharacterTo", fields: [toCharacterId], references: [id])
 
-  relationshipTypeId String
-  relationshipType   CharacterRelationshipType @relation(fields: [relationshipTypeId], references: [id])
+  relationshipType   String
   familyTreeId       String?
   familyTree         FamilyTree?               @relation(fields: [familyTreeId], references: [id])
-
-  @@unique([fromCharacterId, toCharacterId, relationshipTypeId])
 }
 
 // Graveyard
@@ -1381,16 +1383,6 @@ model ProfessionTownRestriction {
   town                 Town                @relation(fields: [townId], references: [id])
 
   @@unique([professionId, townId])
-}
-
-model CharacterRelationshipType {
-  id                     String                  @id @default(uuid())
-  name                   String
-  description            String?
-  seeded                 Boolean                 @default(false)
-  additionalProperties   Json?
-  deleted                Boolean                 @default(false)
-  characterRelationships CharacterRelationship[]
 }
 
 // ============================================================================
